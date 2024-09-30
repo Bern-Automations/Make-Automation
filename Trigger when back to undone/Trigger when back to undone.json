@@ -1,0 +1,1810 @@
+{
+    "name": "Trigger when back to undone | Should be active",
+    "flow": [
+        {
+            "id": 2,
+            "module": "gateway:CustomWebHook",
+            "version": 1,
+            "parameters": {
+                "hook": 475789,
+                "maxResults": 1
+            },
+            "mapper": {},
+            "metadata": {
+                "designer": {
+                    "x": -300,
+                    "y": 150
+                },
+                "restore": {
+                    "parameters": {
+                        "hook": {
+                            "data": {
+                                "editable": "true"
+                            },
+                            "label": "My gateway-webhook webhook"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "hook",
+                        "type": "hook:gateway-webhook",
+                        "label": "Webhook",
+                        "required": true
+                    },
+                    {
+                        "name": "maxResults",
+                        "type": "number",
+                        "label": "Maximum number of results"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 3,
+            "module": "airtable:ActionGetRecord",
+            "version": 3,
+            "parameters": {
+                "__IMTCONN__": 771874
+            },
+            "mapper": {
+                "id": "{{2.id}}",
+                "base": "appLEhSvk48VvE4n7",
+                "table": "tbl6eC4gPGXW9C988",
+                "useColumnId": false
+            },
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 150
+                },
+                "restore": {
+                    "expect": {
+                        "base": {
+                            "mode": "chose",
+                            "label": "Internal Project Plan"
+                        },
+                        "table": {
+                            "mode": "chose",
+                            "label": "Tasks"
+                        },
+                        "useColumnId": {
+                            "mode": "chose"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "airtable2"
+                            },
+                            "label": "tech offertizer TOKEN"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:airtable3,airtable2",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "base",
+                        "type": "select",
+                        "label": "Base",
+                        "required": true
+                    },
+                    {
+                        "name": "useColumnId",
+                        "type": "boolean",
+                        "label": "Use Column ID",
+                        "required": true
+                    },
+                    {
+                        "name": "table",
+                        "type": "select",
+                        "label": "Table",
+                        "required": true
+                    },
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "Record ID",
+                        "required": true
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "ID"
+                    },
+                    {
+                        "name": "createdTime",
+                        "type": "date",
+                        "label": "Created Time"
+                    },
+                    {
+                        "name": "Name",
+                        "type": "text",
+                        "label": "Name"
+                    },
+                    {
+                        "name": "Task Name",
+                        "type": "text",
+                        "label": "Task Name"
+                    },
+                    {
+                        "name": "Reviewer",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Reviewer"
+                    },
+                    {
+                        "name": "Attachment",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            },
+                            {
+                                "name": "filename",
+                                "type": "filename",
+                                "label": "File name"
+                            },
+                            {
+                                "name": "size",
+                                "type": "uinteger",
+                                "label": "Size"
+                            },
+                            {
+                                "name": "type",
+                                "type": "text",
+                                "label": "MIME type"
+                            },
+                            {
+                                "name": "thumbnails",
+                                "spec": [
+                                    {
+                                        "name": "small",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Small"
+                                    },
+                                    {
+                                        "name": "large",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Large"
+                                    },
+                                    {
+                                        "name": "full",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Full"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Thumbnails"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Attachment"
+                    },
+                    {
+                        "name": "Sync Task Info",
+                        "type": "array",
+                        "label": "Sync Task Info"
+                    },
+                    {
+                        "name": "Task-number",
+                        "type": "text",
+                        "label": "Task-number"
+                    },
+                    {
+                        "name": "My Task Interface Link",
+                        "type": "text",
+                        "label": "My Task Interface Link"
+                    },
+                    {
+                        "name": "ADG Sync Ticket Number",
+                        "type": "array",
+                        "label": "ADG Sync Ticket Number"
+                    },
+                    {
+                        "name": "Autonumber",
+                        "type": "number",
+                        "label": "Autonumber"
+                    },
+                    {
+                        "name": "Parent Task",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Parent Task"
+                    },
+                    {
+                        "name": "Start Date",
+                        "time": false,
+                        "type": "date",
+                        "label": "Start Date"
+                    },
+                    {
+                        "name": "My Task Link (Personal)",
+                        "type": "text",
+                        "label": "My Task Link (Personal)"
+                    },
+                    {
+                        "name": "Est Hours (legacy field)",
+                        "type": "number",
+                        "label": "Est Hours (legacy field)"
+                    },
+                    {
+                        "name": "End Date",
+                        "time": false,
+                        "type": "date",
+                        "label": "End Date"
+                    },
+                    {
+                        "name": "User",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "User"
+                    },
+                    {
+                        "name": "Is this a Interna Economy Project Task",
+                        "type": "array",
+                        "label": "Is this a Interna Economy Project Task"
+                    },
+                    {
+                        "name": "Project Google Drive Folder",
+                        "type": "array",
+                        "label": "Project Google Drive Folder"
+                    },
+                    {
+                        "name": "Drive Folder Name",
+                        "type": "text",
+                        "label": "Drive Folder Name"
+                    },
+                    {
+                        "name": "Drive",
+                        "type": "text",
+                        "label": "Drive"
+                    },
+                    {
+                        "name": "Actual Hours Legacy",
+                        "type": "array",
+                        "label": "Actual Hours Legacy"
+                    },
+                    {
+                        "name": "Assignee",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "email",
+                                "type": "email",
+                                "label": "Email"
+                            },
+                            {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Assignee"
+                    },
+                    {
+                        "name": "Description",
+                        "type": "text",
+                        "label": "Description"
+                    },
+                    {
+                        "name": "Status",
+                        "type": "text",
+                        "label": "Status"
+                    },
+                    {
+                        "name": "Assignee (from User)",
+                        "type": "array",
+                        "label": "Assignee (from User)"
+                    },
+                    {
+                        "name": "Assignee (from PM)",
+                        "type": "array",
+                        "label": "Assignee (from PM)"
+                    },
+                    {
+                        "name": "Project",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Project"
+                    },
+                    {
+                        "name": "Created",
+                        "type": "date",
+                        "label": "Created"
+                    },
+                    {
+                        "name": "Hubstaff Task ID",
+                        "type": "text",
+                        "label": "Hubstaff Task ID"
+                    },
+                    {
+                        "name": "Hubstaff Project ID (from Project)",
+                        "type": "array",
+                        "label": "Hubstaff Project ID (from Project)"
+                    },
+                    {
+                        "name": "Hubstaff User ID (from User)",
+                        "type": "array",
+                        "label": "Hubstaff User ID (from User)"
+                    },
+                    {
+                        "name": "Hubstaff Task Created Date",
+                        "time": false,
+                        "type": "date",
+                        "label": "Hubstaff Task Created Date"
+                    },
+                    {
+                        "name": "Time Log",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Time Log"
+                    },
+                    {
+                        "name": "Company (from Project)",
+                        "type": "array",
+                        "label": "Company (from Project)"
+                    },
+                    {
+                        "name": "Est vs Actual Hours",
+                        "type": "text",
+                        "label": "Est vs Actual Hours"
+                    },
+                    {
+                        "name": "Created By",
+                        "type": "text",
+                        "label": "Created By"
+                    },
+                    {
+                        "name": "internal slack thread",
+                        "type": "text",
+                        "label": "internal slack thread"
+                    },
+                    {
+                        "name": "Dependencies",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Dependencies"
+                    },
+                    {
+                        "name": "Urgency",
+                        "type": "text",
+                        "label": "Urgency"
+                    },
+                    {
+                        "name": "Last Modified",
+                        "type": "date",
+                        "label": "Last Modified"
+                    },
+                    {
+                        "name": "Calculation",
+                        "type": "text",
+                        "label": "Calculation"
+                    },
+                    {
+                        "name": "Calculation copy",
+                        "type": "text",
+                        "label": "Calculation copy"
+                    },
+                    {
+                        "name": "Dev Sync Adgrabber Sync Tasks",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Dev Sync Adgrabber Sync Tasks"
+                    },
+                    {
+                        "name": "Goal Description",
+                        "type": "array",
+                        "label": "Goal Description"
+                    },
+                    {
+                        "name": "ADG_attachment",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            },
+                            {
+                                "name": "filename",
+                                "type": "filename",
+                                "label": "File name"
+                            },
+                            {
+                                "name": "size",
+                                "type": "uinteger",
+                                "label": "Size"
+                            },
+                            {
+                                "name": "type",
+                                "type": "text",
+                                "label": "MIME type"
+                            },
+                            {
+                                "name": "thumbnails",
+                                "spec": [
+                                    {
+                                        "name": "small",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Small"
+                                    },
+                                    {
+                                        "name": "large",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Large"
+                                    },
+                                    {
+                                        "name": "full",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Full"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Thumbnails"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "ADG_attachment"
+                    },
+                    {
+                        "name": "Solution or Answer from the Assigned User or Reviewer Info When Done",
+                        "type": "text",
+                        "label": "Solution or Answer from the Assigned User or Reviewer Info When Done"
+                    },
+                    {
+                        "name": "Adg Task ID (from Dev Sync Adgrabber Sync Tasks)",
+                        "type": "array",
+                        "label": "Adg Task ID (from Dev Sync Adgrabber Sync Tasks)"
+                    },
+                    {
+                        "name": "Start Date (from Dev Sync Adgrabber Sync Tasks)",
+                        "type": "array",
+                        "label": "Start Date (from Dev Sync Adgrabber Sync Tasks)"
+                    },
+                    {
+                        "name": "End Date (from Dev Sync Adgrabber Sync Tasks)",
+                        "type": "array",
+                        "label": "End Date (from Dev Sync Adgrabber Sync Tasks)"
+                    },
+                    {
+                        "name": "Task/Invoicing Status_Internal",
+                        "type": "text",
+                        "label": "Task/Invoicing Status_Internal"
+                    },
+                    {
+                        "name": "Status (from Dev Sync Adgrabber Sync Tasks)",
+                        "type": "array",
+                        "label": "Status (from Dev Sync Adgrabber Sync Tasks)"
+                    },
+                    {
+                        "name": "INV",
+                        "type": "array",
+                        "label": "INV"
+                    },
+                    {
+                        "name": "Estimated Hours (or so far)",
+                        "type": "array",
+                        "label": "Estimated Hours (or so far)"
+                    },
+                    {
+                        "name": "Scheduler Ticket Link (from Dev Sync Adgrabber Sync Tasks)",
+                        "type": "array",
+                        "label": "Scheduler Ticket Link (from Dev Sync Adgrabber Sync Tasks)"
+                    },
+                    {
+                        "name": "Week",
+                        "type": "text",
+                        "label": "Week"
+                    },
+                    {
+                        "name": "Paid/Unpaid",
+                        "type": "array",
+                        "label": "Paid/Unpaid"
+                    },
+                    {
+                        "name": "Invoice text",
+                        "type": "text",
+                        "label": "Invoice text"
+                    },
+                    {
+                        "name": "Other  details to add in invoicing",
+                        "type": "text",
+                        "label": "Other  details to add in invoicing"
+                    },
+                    {
+                        "name": "Invoice URL (from Invoice) (from Dev Sync Adgrabber Sync Tasks)",
+                        "type": "array",
+                        "label": "Invoice URL (from Invoice) (from Dev Sync Adgrabber Sync Tasks)"
+                    },
+                    {
+                        "name": "Invoice text (from Invoice) (from Dev Sync Adgrabber Sync Tasks)",
+                        "type": "array",
+                        "label": "Invoice text (from Invoice) (from Dev Sync Adgrabber Sync Tasks)"
+                    },
+                    {
+                        "name": "Invoices New Synced From Budget",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Invoices New Synced From Budget"
+                    },
+                    {
+                        "name": "invoice pdf (from Invoices)",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            },
+                            {
+                                "name": "filename",
+                                "type": "filename",
+                                "label": "File name"
+                            },
+                            {
+                                "name": "size",
+                                "type": "uinteger",
+                                "label": "Size"
+                            },
+                            {
+                                "name": "type",
+                                "type": "text",
+                                "label": "MIME type"
+                            },
+                            {
+                                "name": "thumbnails",
+                                "spec": [
+                                    {
+                                        "name": "small",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Small"
+                                    },
+                                    {
+                                        "name": "large",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Large"
+                                    },
+                                    {
+                                        "name": "full",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Full"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Thumbnails"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "invoice pdf (from Invoices)"
+                    },
+                    {
+                        "name": "Invoice_formatted",
+                        "type": "array",
+                        "label": "Invoice_formatted"
+                    },
+                    {
+                        "name": "Issue Date (from Invoices)",
+                        "type": "array",
+                        "label": "Issue Date (from Invoices)"
+                    },
+                    {
+                        "name": "Invoicing Status (from Dev Sync Adgrabber Sync Tasks)",
+                        "type": "array",
+                        "label": "Invoicing Status (from Dev Sync Adgrabber Sync Tasks)"
+                    },
+                    {
+                        "name": "Hours Invoiced",
+                        "type": "number",
+                        "label": "Hours Invoiced"
+                    },
+                    {
+                        "name": "INVOICE STATUS",
+                        "type": "text",
+                        "label": "INVOICE STATUS"
+                    },
+                    {
+                        "name": "backup_task/invoicing ",
+                        "type": "text",
+                        "label": "backup_task/invoicing "
+                    },
+                    {
+                        "name": "part 2",
+                        "type": "text",
+                        "label": "part 2"
+                    },
+                    {
+                        "name": "Is robin status the same?",
+                        "type": "text",
+                        "label": "Is robin status the same?"
+                    },
+                    {
+                        "name": "Client approved",
+                        "type": "boolean",
+                        "label": "Client approved"
+                    },
+                    {
+                        "name": "Part 1",
+                        "type": "text",
+                        "label": "Part 1"
+                    },
+                    {
+                        "name": "Part 3",
+                        "type": "text",
+                        "label": "Part 3"
+                    },
+                    {
+                        "name": "Part 4",
+                        "type": "array",
+                        "label": "Part 4"
+                    },
+                    {
+                        "name": "4 stage status",
+                        "type": "text",
+                        "label": "4 stage status"
+                    },
+                    {
+                        "name": "dev (from Dev Sync Adgrabber Sync Tasks)",
+                        "type": "array",
+                        "label": "dev (from Dev Sync Adgrabber Sync Tasks)"
+                    },
+                    {
+                        "name": "We Should Invoice?",
+                        "type": "boolean",
+                        "label": "We Should Invoice?"
+                    },
+                    {
+                        "name": "Invoice category/section",
+                        "type": "text",
+                        "label": "Invoice category/section"
+                    },
+                    {
+                        "name": "Why should we invoice it? ",
+                        "type": "text",
+                        "label": "Why should we invoice it? "
+                    },
+                    {
+                        "name": "ADG slack thread link (from Dev Sync Adgrabber Sync Tasks)",
+                        "type": "array",
+                        "label": "ADG slack thread link (from Dev Sync Adgrabber Sync Tasks)"
+                    },
+                    {
+                        "name": "ADG Slack Thread",
+                        "type": "array",
+                        "label": "ADG Slack Thread"
+                    },
+                    {
+                        "name": "Task name (from Dev Sync Adgrabber Sync Tasks)",
+                        "type": "array",
+                        "label": "Task name (from Dev Sync Adgrabber Sync Tasks)"
+                    },
+                    {
+                        "name": "Meeting 23 November Comment",
+                        "type": "text",
+                        "label": "Meeting 23 November Comment",
+                        "multiline": true
+                    },
+                    {
+                        "name": "Suggest Invoice",
+                        "type": "number",
+                        "label": "Suggest Invoice"
+                    },
+                    {
+                        "name": "Internal_Which Slack Channel",
+                        "type": "text",
+                        "label": "Internal_Which Slack Channel"
+                    },
+                    {
+                        "name": "Label",
+                        "type": "text",
+                        "label": "Label"
+                    },
+                    {
+                        "name": "Record details",
+                        "type": "text",
+                        "label": "Record details"
+                    },
+                    {
+                        "name": "NOW",
+                        "type": "text",
+                        "label": "NOW"
+                    },
+                    {
+                        "name": "Internal Slack thread sent date and time",
+                        "time": true,
+                        "type": "date",
+                        "label": "Internal Slack thread sent date and time"
+                    },
+                    {
+                        "name": "Proj",
+                        "type": "text",
+                        "label": "Proj"
+                    },
+                    {
+                        "name": "Task (from Reformatizer Task List External)",
+                        "type": "array",
+                        "label": "Task (from Reformatizer Task List External)"
+                    },
+                    {
+                        "name": "Reformatizer Task List Internal",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Reformatizer Task List Internal"
+                    },
+                    {
+                        "name": "Type",
+                        "type": "text",
+                        "label": "Type"
+                    },
+                    {
+                        "name": "RFM Internal details (from Reformatizer Task List Internal)",
+                        "type": "array",
+                        "label": "RFM Internal details (from Reformatizer Task List Internal)"
+                    },
+                    {
+                        "name": "RFM External details",
+                        "type": "array",
+                        "label": "RFM External details"
+                    },
+                    {
+                        "name": "Link to other source base",
+                        "type": "text",
+                        "label": "Link to other source base"
+                    },
+                    {
+                        "name": "Trigger_Update User",
+                        "type": "text",
+                        "label": "Trigger_Update User"
+                    },
+                    {
+                        "name": "User_Scheduler",
+                        "type": "array",
+                        "label": "User_Scheduler"
+                    },
+                    {
+                        "name": "Users_Internal",
+                        "type": "array",
+                        "label": "Users_Internal"
+                    },
+                    {
+                        "name": "Record details_Lan",
+                        "type": "text",
+                        "label": "Record details_Lan"
+                    },
+                    {
+                        "name": "External Slack thread sent date and time",
+                        "time": true,
+                        "type": "date",
+                        "label": "External Slack thread sent date and time"
+                    },
+                    {
+                        "name": "Task Name RFM Internal Sync",
+                        "type": "array",
+                        "label": "Task Name RFM Internal Sync"
+                    },
+                    {
+                        "name": "RFM INTERNAL Ticket Number",
+                        "type": "array",
+                        "label": "RFM INTERNAL Ticket Number"
+                    },
+                    {
+                        "name": "RFM ID",
+                        "type": "array",
+                        "label": "RFM ID"
+                    },
+                    {
+                        "name": "TASK ID",
+                        "type": "text",
+                        "label": "TASK ID"
+                    },
+                    {
+                        "name": "Status (from Reformatizer Task List Internal)",
+                        "type": "array",
+                        "label": "Status (from Reformatizer Task List Internal)"
+                    },
+                    {
+                        "name": "Status from the source base",
+                        "type": "text",
+                        "label": "Status from the source base"
+                    },
+                    {
+                        "name": "Status remarks",
+                        "type": "text",
+                        "label": "Status remarks"
+                    },
+                    {
+                        "name": "Interface (from Project) (from Reformatizer Task List Internal)",
+                        "type": "array",
+                        "label": "Interface (from Project) (from Reformatizer Task List Internal)"
+                    },
+                    {
+                        "name": "Interfaces",
+                        "type": "text",
+                        "label": "Interfaces"
+                    },
+                    {
+                        "name": "External_Which Slack Channel",
+                        "type": "array",
+                        "label": "External_Which Slack Channel"
+                    },
+                    {
+                        "name": "Users tagged from other base",
+                        "type": "text",
+                        "label": "Users tagged from other base"
+                    },
+                    {
+                        "name": "Task Text",
+                        "type": "text",
+                        "label": "Task Text"
+                    },
+                    {
+                        "name": "Name (from User)",
+                        "type": "array",
+                        "label": "Name (from User)"
+                    },
+                    {
+                        "name": "RFMINT_attachment",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            },
+                            {
+                                "name": "filename",
+                                "type": "filename",
+                                "label": "File name"
+                            },
+                            {
+                                "name": "size",
+                                "type": "uinteger",
+                                "label": "Size"
+                            },
+                            {
+                                "name": "type",
+                                "type": "text",
+                                "label": "MIME type"
+                            },
+                            {
+                                "name": "thumbnails",
+                                "spec": [
+                                    {
+                                        "name": "small",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Small"
+                                    },
+                                    {
+                                        "name": "large",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Large"
+                                    },
+                                    {
+                                        "name": "full",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Full"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Thumbnails"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "RFMINT_attachment"
+                    },
+                    {
+                        "name": "Phase (from Reformatizer Task List Internal)",
+                        "type": "array",
+                        "label": "Phase (from Reformatizer Task List Internal)"
+                    },
+                    {
+                        "name": "Mark Comments",
+                        "type": "text",
+                        "label": "Mark Comments"
+                    },
+                    {
+                        "name": "Show in reformatizer interface (from Project) (from Reformatizer Task List Internal)",
+                        "type": "array",
+                        "label": "Show in reformatizer interface (from Project) (from Reformatizer Task List Internal)"
+                    },
+                    {
+                        "name": "INT description",
+                        "type": "array",
+                        "label": "INT description"
+                    },
+                    {
+                        "name": "INT RECORDID",
+                        "type": "array",
+                        "label": "INT RECORDID"
+                    },
+                    {
+                        "name": "Last Modified By",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "email",
+                                "type": "text",
+                                "label": "Email"
+                            },
+                            {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Last Modified By"
+                    },
+                    {
+                        "name": "Task details - Marks Interface",
+                        "type": "text",
+                        "label": "Task details - Marks Interface"
+                    },
+                    {
+                        "name": "trigger",
+                        "type": "text",
+                        "label": "trigger"
+                    },
+                    {
+                        "name": "Ticket Link - Internal Project Plan  (from Reformatizer Task List Internal)",
+                        "type": "array",
+                        "label": "Ticket Link - Internal Project Plan  (from Reformatizer Task List Internal)"
+                    },
+                    {
+                        "name": "sync to internal dev (from Reformatizer Task List Internal)",
+                        "type": "array",
+                        "label": "sync to internal dev (from Reformatizer Task List Internal)"
+                    },
+                    {
+                        "name": "Ticket Link - Internal Project Plan  (from Reformatizer Task List Internal) 2",
+                        "type": "array",
+                        "label": "Ticket Link - Internal Project Plan  (from Reformatizer Task List Internal) 2"
+                    },
+                    {
+                        "name": "Created (from Reformatizer Task List Internal)",
+                        "type": "array",
+                        "label": "Created (from Reformatizer Task List Internal)"
+                    },
+                    {
+                        "name": "Count (Reformatizer Task List Internal)",
+                        "type": "number",
+                        "label": "Count (Reformatizer Task List Internal)"
+                    },
+                    {
+                        "name": "Label 2",
+                        "type": "text",
+                        "label": "Label 2",
+                        "multiline": true
+                    },
+                    {
+                        "name": "Start Date How Long Ago Weeks",
+                        "type": "text",
+                        "label": "Start Date How Long Ago Weeks"
+                    },
+                    {
+                        "name": "Hours Budgetted",
+                        "type": "number",
+                        "label": "Hours Budgetted"
+                    },
+                    {
+                        "name": "Durations Days",
+                        "type": "text",
+                        "label": "Durations Days"
+                    },
+                    {
+                        "name": "Create Hubstaff Project",
+                        "spec": [
+                            {
+                                "name": "label",
+                                "type": "text",
+                                "label": "Label"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Create Hubstaff Project"
+                    },
+                    {
+                        "name": "Hubstaff Project ID",
+                        "type": "array",
+                        "label": "Hubstaff Project ID"
+                    },
+                    {
+                        "name": "RecordID",
+                        "type": "text",
+                        "label": "RecordID"
+                    },
+                    {
+                        "name": "Project's recordID",
+                        "type": "array",
+                        "label": "Project's recordID"
+                    },
+                    {
+                        "name": "Name (from Project)",
+                        "type": "array",
+                        "label": "Name (from Project)"
+                    },
+                    {
+                        "name": "Hubstaff Client ID (from Project)",
+                        "type": "array",
+                        "label": "Hubstaff Client ID (from Project)"
+                    },
+                    {
+                        "name": "Lan's comment",
+                        "type": "text",
+                        "label": "Lan's comment"
+                    },
+                    {
+                        "name": "Calculation 2",
+                        "type": "text",
+                        "label": "Calculation 2"
+                    },
+                    {
+                        "name": "Reviewer_assignee",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "email",
+                                "type": "email",
+                                "label": "Email"
+                            },
+                            {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Reviewer_assignee"
+                    },
+                    {
+                        "name": "Last Modified 2",
+                        "type": "date",
+                        "label": "Last Modified 2"
+                    },
+                    {
+                        "name": "Get Slack Link",
+                        "spec": [
+                            {
+                                "name": "label",
+                                "type": "text",
+                                "label": "Label"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Get Slack Link"
+                    },
+                    {
+                        "name": "Lan as",
+                        "type": "text",
+                        "label": "Lan as"
+                    },
+                    {
+                        "name": "Count (Tasks) (from Reformatizer Task List Internal)",
+                        "type": "array",
+                        "label": "Count (Tasks) (from Reformatizer Task List Internal)"
+                    },
+                    {
+                        "name": "Slack Member ID (from User)",
+                        "type": "array",
+                        "label": "Slack Member ID (from User)"
+                    },
+                    {
+                        "name": "Calculation 3",
+                        "type": "text",
+                        "label": "Calculation 3"
+                    },
+                    {
+                        "name": "Invoicing Status",
+                        "type": "text",
+                        "label": "Invoicing Status"
+                    },
+                    {
+                        "name": "Type (from Project)",
+                        "type": "array",
+                        "label": "Type (from Project)"
+                    },
+                    {
+                        "name": "slack thread message ID",
+                        "type": "text",
+                        "label": "slack thread message ID"
+                    },
+                    {
+                        "name": "slack channel ID",
+                        "type": "text",
+                        "label": "slack channel ID"
+                    },
+                    {
+                        "name": "slack channel ID_formatted",
+                        "type": "text",
+                        "label": "slack channel ID_formatted"
+                    },
+                    {
+                        "name": "slack thread message ID_formatted",
+                        "type": "text",
+                        "label": "slack thread message ID_formatted"
+                    },
+                    {
+                        "name": "Calculation 4",
+                        "type": "text",
+                        "label": "Calculation 4"
+                    },
+                    {
+                        "name": "Internal Slack Channel Link (For Project)",
+                        "type": "array",
+                        "label": "Internal Slack Channel Link (For Project)"
+                    },
+                    {
+                        "name": "REVIEWER Member ID",
+                        "type": "array",
+                        "label": "REVIEWER Member ID"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 5,
+            "module": "builtin:BasicRouter",
+            "version": 1,
+            "mapper": null,
+            "metadata": {
+                "designer": {
+                    "x": 300,
+                    "y": 150
+                }
+            },
+            "routes": [
+                {
+                    "flow": [
+                        {
+                            "id": 9,
+                            "module": "util:SetVariable2",
+                            "version": 1,
+                            "parameters": {},
+                            "mapper": {
+                                "name": "users",
+                                "scope": "roundtrip",
+                                "value": "{{emptystring}}"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 636,
+                                    "y": -36
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "scope": {
+                                            "label": "One cycle"
+                                        }
+                                    }
+                                },
+                                "expect": [
+                                    {
+                                        "name": "name",
+                                        "type": "text",
+                                        "label": "Variable name",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "scope",
+                                        "type": "select",
+                                        "label": "Variable lifetime",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                "roundtrip",
+                                                "execution"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "value",
+                                        "type": "any",
+                                        "label": "Variable value"
+                                    }
+                                ],
+                                "interface": [
+                                    {
+                                        "name": "users",
+                                        "type": "any",
+                                        "label": "users"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 7,
+                            "module": "builtin:BasicFeeder",
+                            "version": 1,
+                            "parameters": {},
+                            "mapper": {
+                                "array": "{{3.`REVIEWER Member ID`}}"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 950,
+                                    "y": -15
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "array": {
+                                            "mode": "edit"
+                                        }
+                                    }
+                                },
+                                "expect": [
+                                    {
+                                        "mode": "edit",
+                                        "name": "array",
+                                        "spec": [],
+                                        "type": "array",
+                                        "label": "Array"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 8,
+                            "module": "util:GetVariable2",
+                            "version": 1,
+                            "parameters": {},
+                            "mapper": {
+                                "name": "users"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 1170,
+                                    "y": -20
+                                },
+                                "restore": {},
+                                "expect": [
+                                    {
+                                        "name": "name",
+                                        "type": "text",
+                                        "label": "Variable name",
+                                        "required": true
+                                    }
+                                ],
+                                "interface": [
+                                    {
+                                        "name": "users",
+                                        "type": "any",
+                                        "label": "users"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 10,
+                            "module": "util:SetVariable2",
+                            "version": 1,
+                            "parameters": {},
+                            "mapper": {
+                                "name": "users",
+                                "scope": "roundtrip",
+                                "value": "{{if(8.users = emptystring; \"<@\" + 7.value + \">\"; 8.users + \" <@\" + 7.value + \">\")}}"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 1390,
+                                    "y": -23
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "scope": {
+                                            "label": "One cycle"
+                                        }
+                                    }
+                                },
+                                "expect": [
+                                    {
+                                        "name": "name",
+                                        "type": "text",
+                                        "label": "Variable name",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "scope",
+                                        "type": "select",
+                                        "label": "Variable lifetime",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                "roundtrip",
+                                                "execution"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "value",
+                                        "type": "any",
+                                        "label": "Variable value"
+                                    }
+                                ],
+                                "interface": [
+                                    {
+                                        "name": "users",
+                                        "type": "any",
+                                        "label": "users"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "flow": [
+                        {
+                            "id": 11,
+                            "module": "util:GetVariable2",
+                            "version": 1,
+                            "parameters": {},
+                            "mapper": {
+                                "name": "{{2.users}}"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 544,
+                                    "y": 309
+                                },
+                                "restore": {},
+                                "expect": [
+                                    {
+                                        "name": "name",
+                                        "type": "text",
+                                        "label": "Variable name",
+                                        "required": true
+                                    }
+                                ],
+                                "interface": [
+                                    {
+                                        "name": "<@U05N7DG6D62> ...",
+                                        "type": "any",
+                                        "label": "<@U05N7DG6D62> ..."
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 13,
+                            "module": "slack:CreateMessage",
+                            "version": 4,
+                            "parameters": {
+                                "__IMTCONN__": 1097207
+                            },
+                            "mapper": {
+                                "text": "This ticket has been set back to \"{{3.Status}}\" , Please check again, . {{2.users}} ",
+                                "parse": false,
+                                "mrkdwn": true,
+                                "channel": "{{3.`slack channel ID_formatted`}}",
+                                "thread_ts": "{{3.`slack thread message ID_formatted`}}",
+                                "channelWType": "manualy"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 849,
+                                    "y": 388
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "parse": {
+                                            "mode": "chose"
+                                        },
+                                        "mrkdwn": {
+                                            "mode": "chose"
+                                        },
+                                        "link_names": {
+                                            "mode": "chose"
+                                        },
+                                        "channelWType": {
+                                            "label": "Enter manually"
+                                        },
+                                        "unfurl_links": {
+                                            "mode": "chose"
+                                        },
+                                        "unfurl_media": {
+                                            "mode": "chose"
+                                        },
+                                        "reply_broadcast": {
+                                            "mode": "chose"
+                                        }
+                                    },
+                                    "parameters": {
+                                        "__IMTCONN__": {
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "slack3"
+                                            },
+                                            "label": "adgraber bot (integromat)"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "__IMTCONN__",
+                                        "type": "account:slack2,slack3",
+                                        "label": "Connection",
+                                        "required": true
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "name": "channelWType",
+                                        "type": "select",
+                                        "label": "Enter a channel ID or name",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                "manualy",
+                                                "list"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "text",
+                                        "type": "text",
+                                        "label": "Text"
+                                    },
+                                    {
+                                        "name": "blocks",
+                                        "type": "text",
+                                        "label": "Blocks"
+                                    },
+                                    {
+                                        "name": "thread_ts",
+                                        "type": "text",
+                                        "label": "Thread message ID (time stamp)"
+                                    },
+                                    {
+                                        "name": "reply_broadcast",
+                                        "type": "boolean",
+                                        "label": "Reply broadcast"
+                                    },
+                                    {
+                                        "name": "link_names",
+                                        "type": "boolean",
+                                        "label": "Link names"
+                                    },
+                                    {
+                                        "name": "parse",
+                                        "type": "boolean",
+                                        "label": "Parse message text"
+                                    },
+                                    {
+                                        "name": "mrkdwn",
+                                        "type": "boolean",
+                                        "label": "Use markdown"
+                                    },
+                                    {
+                                        "name": "unfurl_links",
+                                        "type": "boolean",
+                                        "label": "Unfurl primarily text-based content"
+                                    },
+                                    {
+                                        "name": "unfurl_media",
+                                        "type": "boolean",
+                                        "label": "Unfurl media content"
+                                    },
+                                    {
+                                        "name": "icon_emoji",
+                                        "type": "text",
+                                        "label": "Icon emoji"
+                                    },
+                                    {
+                                        "name": "icon_url",
+                                        "type": "url",
+                                        "label": "Icon url"
+                                    },
+                                    {
+                                        "name": "username",
+                                        "type": "text",
+                                        "label": "User name"
+                                    },
+                                    {
+                                        "name": "channel",
+                                        "type": "text",
+                                        "label": "Channel ID or name",
+                                        "required": true
+                                    }
+                                ],
+                                "advanced": true
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "metadata": {
+        "instant": true,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "autoCommitTriggerLast": true,
+            "sequential": false,
+            "slots": null,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false,
+            "freshVariables": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "eu2.make.com"
+    }
+}
