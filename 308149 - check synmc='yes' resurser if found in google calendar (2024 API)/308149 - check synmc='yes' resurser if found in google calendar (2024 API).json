@@ -1,0 +1,2525 @@
+{
+    "name": "308149 - check synmc='yes' resurser if found in google calendar (2024 API)",
+    "flow": [
+        {
+            "id": 1,
+            "module": "airtable:ActionSearchRecords",
+            "version": 3,
+            "parameters": {
+                "__IMTCONN__": 2311364
+            },
+            "mapper": {
+                "base": "appbFT84h3VCspXEX",
+                "table": "Resurser",
+                "formula": "{Sync Resource Calender Task} ='Yes'",
+                "maxRecords": "1000",
+                "useColumnId": false
+            },
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 150,
+                    "name": "Search for sync = 'yes' resurser"
+                },
+                "restore": {
+                    "expect": {
+                        "base": {
+                            "mode": "chose",
+                            "label": "Homestyling.se"
+                        },
+                        "sort": {
+                            "mode": "chose"
+                        },
+                        "view": {
+                            "mode": "chose"
+                        },
+                        "table": {
+                            "mode": "chose",
+                            "label": "Resurser"
+                        },
+                        "fields": {
+                            "mode": "chose"
+                        },
+                        "useColumnId": {
+                            "mode": "chose"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "airtable3"
+                            },
+                            "label": "homestyling OATH (User ID: usrqfoHur4casC5Tt)"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:airtable3,airtable2",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "base",
+                        "type": "select",
+                        "label": "Base",
+                        "required": true
+                    },
+                    {
+                        "name": "useColumnId",
+                        "type": "boolean",
+                        "label": "Use Column ID",
+                        "required": true
+                    },
+                    {
+                        "name": "table",
+                        "type": "select",
+                        "label": "Table",
+                        "required": true
+                    },
+                    {
+                        "name": "formula",
+                        "type": "text",
+                        "label": "Formula"
+                    },
+                    {
+                        "name": "maxRecords",
+                        "type": "integer",
+                        "label": "Limit"
+                    },
+                    {
+                        "name": "sort",
+                        "spec": [
+                            {
+                                "name": "field",
+                                "type": "select",
+                                "label": "Field",
+                                "dynamic": true,
+                                "options": []
+                            },
+                            {
+                                "name": "direction",
+                                "type": "select",
+                                "label": "Direction",
+                                "options": [
+                                    {
+                                        "label": "Descending",
+                                        "value": "desc"
+                                    },
+                                    {
+                                        "label": "Ascending",
+                                        "value": "asc"
+                                    }
+                                ]
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Sort"
+                    },
+                    {
+                        "name": "view",
+                        "type": "select",
+                        "label": "View"
+                    },
+                    {
+                        "name": "fields",
+                        "type": "select",
+                        "label": "Output Fields",
+                        "multiple": true
+                    },
+                    {
+                        "name": "base",
+                        "type": "select",
+                        "label": "Base",
+                        "required": true
+                    },
+                    {
+                        "name": "useColumnId",
+                        "type": "boolean",
+                        "label": "Use Column ID",
+                        "required": true
+                    },
+                    {
+                        "name": "table",
+                        "type": "select",
+                        "label": "Table",
+                        "required": true
+                    },
+                    {
+                        "name": "formula",
+                        "type": "text",
+                        "label": "Formula"
+                    },
+                    {
+                        "name": "maxRecords",
+                        "type": "integer",
+                        "label": "Limit"
+                    },
+                    {
+                        "name": "sort",
+                        "spec": [
+                            {
+                                "name": "field",
+                                "type": "select",
+                                "label": "Field",
+                                "dynamic": true,
+                                "options": []
+                            },
+                            {
+                                "name": "direction",
+                                "type": "select",
+                                "label": "Direction",
+                                "options": [
+                                    {
+                                        "label": "Descending",
+                                        "value": "desc"
+                                    },
+                                    {
+                                        "label": "Ascending",
+                                        "value": "asc"
+                                    }
+                                ]
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Sort"
+                    },
+                    {
+                        "name": "view",
+                        "type": "select",
+                        "label": "View"
+                    },
+                    {
+                        "name": "fields",
+                        "type": "select",
+                        "label": "Output Fields",
+                        "multiple": true
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "__IMTLENGTH__",
+                        "type": "uinteger",
+                        "label": "Total number of bundles"
+                    },
+                    {
+                        "name": "__IMTINDEX__",
+                        "type": "uinteger",
+                        "label": "Bundle order position"
+                    },
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "ID"
+                    },
+                    {
+                        "name": "createdTime",
+                        "type": "date",
+                        "label": "Created Time"
+                    },
+                    {
+                        "name": "Name",
+                        "type": "text",
+                        "label": "Name"
+                    },
+                    {
+                        "name": "Roll",
+                        "type": "array",
+                        "label": "Roll",
+                        "dynamic": true,
+                        "editable": true
+                    },
+                    {
+                        "name": "E-mail adress",
+                        "type": "text",
+                        "label": "E-mail adress"
+                    },
+                    {
+                        "name": "Telefonnummer",
+                        "type": "text",
+                        "label": "Telefonnummer"
+                    },
+                    {
+                        "name": "Börjat",
+                        "time": false,
+                        "type": "date",
+                        "label": "Börjat"
+                    },
+                    {
+                        "name": "Adress",
+                        "type": "text",
+                        "label": "Adress"
+                    },
+                    {
+                        "name": "Sync Resource Calender Task",
+                        "type": "text",
+                        "label": "Sync Resource Calender Task"
+                    },
+                    {
+                        "name": "faktura approved calender invite",
+                        "time": false,
+                        "type": "date",
+                        "label": "faktura approved calender invite"
+                    },
+                    {
+                        "name": "Google Calender Username",
+                        "type": "text",
+                        "label": "Google Calender Username"
+                    },
+                    {
+                        "name": "other",
+                        "type": "text",
+                        "label": "other"
+                    },
+                    {
+                        "name": "Check Calender Sync Status",
+                        "spec": [
+                            {
+                                "name": "label",
+                                "type": "text",
+                                "label": "Label"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Check Calender Sync Status"
+                    },
+                    {
+                        "name": "check calendar",
+                        "type": "text",
+                        "label": "check calendar"
+                    },
+                    {
+                        "name": "check calender listing",
+                        "type": "text",
+                        "label": "check calender listing"
+                    },
+                    {
+                        "name": "check calendar timestamp",
+                        "time": true,
+                        "type": "date",
+                        "label": "check calendar timestamp"
+                    },
+                    {
+                        "name": "Check Calender Listing Time",
+                        "time": true,
+                        "type": "date",
+                        "label": "Check Calender Listing Time"
+                    },
+                    {
+                        "name": "Kostnad",
+                        "type": "number",
+                        "label": "Kostnad"
+                    },
+                    {
+                        "name": "Slutat",
+                        "time": false,
+                        "type": "date",
+                        "label": "Slutat"
+                    },
+                    {
+                        "name": "Projekt",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Projekt"
+                    },
+                    {
+                        "name": "Projekt copy",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Projekt copy"
+                    },
+                    {
+                        "name": "Projekt 2",
+                        "type": "text",
+                        "label": "Projekt 2"
+                    },
+                    {
+                        "name": "Projekt 3",
+                        "type": "text",
+                        "label": "Projekt 3"
+                    },
+                    {
+                        "name": "Projekt 4",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Projekt 4"
+                    },
+                    {
+                        "name": "Projekt 5",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Projekt 5"
+                    },
+                    {
+                        "name": "Table 12",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Table 12"
+                    },
+                    {
+                        "name": "Projekt 5 copy",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Projekt 5 copy"
+                    },
+                    {
+                        "name": "Resurs Kalender",
+                        "type": "text",
+                        "label": "Resurs Kalender"
+                    },
+                    {
+                        "name": "Resurs Kalender 2",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Resurs Kalender 2"
+                    },
+                    {
+                        "name": "Google Calender Name",
+                        "type": "text",
+                        "label": "Google Calender Name"
+                    },
+                    {
+                        "name": "Google Calender Id",
+                        "type": "text",
+                        "label": "Google Calender Id"
+                    },
+                    {
+                        "name": "Projekt 6",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Projekt 6"
+                    },
+                    {
+                        "name": "Projekt 7",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Projekt 7"
+                    },
+                    {
+                        "name": "Mäklar Register",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Mäklar Register"
+                    },
+                    {
+                        "name": "Projekt 8",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Projekt 8"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 2,
+            "module": "google-calendar:getACalendar",
+            "version": 5,
+            "parameters": {
+                "__IMTCONN__": 290104
+            },
+            "mapper": {
+                "calendar": "{{1.`Google Calender Username`}}"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 300,
+                    "y": 150,
+                    "name": "check if username exist"
+                },
+                "restore": {
+                    "expect": {
+                        "calendar": {
+                            "mode": "edit"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "google"
+                            },
+                            "label": "My Google connection (faktura@homestyling.se)"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:google",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "mode": "edit",
+                        "name": "calendar",
+                        "type": "select",
+                        "label": "Calendar ID",
+                        "required": true
+                    }
+                ]
+            },
+            "onerror": [
+                {
+                    "id": 4,
+                    "module": "airtable:ActionUpdateRecords",
+                    "version": 3,
+                    "parameters": {
+                        "__IMTCONN__": 2311364
+                    },
+                    "mapper": {
+                        "id": "{{1.id}}",
+                        "base": "appbFT84h3VCspXEX",
+                        "table": "Resurser",
+                        "record": {
+                            "fldXoYhEGnfm8GNL2": "Not Found",
+                            "fldb5Tfg09xvGo2CP": "{{now}}"
+                        },
+                        "typecast": false,
+                        "useColumnId": false
+                    },
+                    "metadata": {
+                        "designer": {
+                            "x": 600,
+                            "y": 300,
+                            "name": "Update calendar status not found"
+                        },
+                        "restore": {
+                            "expect": {
+                                "base": {
+                                    "label": "Homestyling.se"
+                                },
+                                "table": {
+                                    "label": "Resurser"
+                                },
+                                "record": {
+                                    "nested": {
+                                        "fld1RE0MTk4s43LPP": {
+                                            "mode": "edit"
+                                        },
+                                        "fld6tcHgCRMqMTWSI": {
+                                            "mode": "edit"
+                                        },
+                                        "fldGrXmABgk50Asct": {
+                                            "mode": "chose"
+                                        },
+                                        "fldOz6Im7EC63QTsz": {
+                                            "mode": "chose"
+                                        },
+                                        "fldXoYhEGnfm8GNL2": {
+                                            "mode": "edit"
+                                        },
+                                        "fldYDMMLzbbo9Cn5A": {
+                                            "mode": "chose"
+                                        },
+                                        "fldZGzcNbDFtlZ3PW": {
+                                            "mode": "chose"
+                                        },
+                                        "fldZLwBuCjyT2lYxY": {
+                                            "mode": "chose"
+                                        },
+                                        "fldexhHlIH1VMCJKi": {
+                                            "mode": "chose"
+                                        },
+                                        "fldh4x1XQVyo5CfZY": {
+                                            "mode": "chose"
+                                        },
+                                        "fldj3pyRQPo4kdRGf": {
+                                            "mode": "chose"
+                                        },
+                                        "fldn6zuWgH7IcNM5G": {
+                                            "mode": "chose"
+                                        },
+                                        "fldtYNGD49SaBf3Dq": {
+                                            "mode": "chose"
+                                        },
+                                        "fldtwQ6zRoi3XHjvr": {
+                                            "mode": "chose"
+                                        },
+                                        "fldx9zBdUdEBlmDlk": {
+                                            "mode": "chose"
+                                        }
+                                    }
+                                },
+                                "typecast": {
+                                    "mode": "chose"
+                                },
+                                "useColumnId": {
+                                    "mode": "chose"
+                                }
+                            },
+                            "parameters": {
+                                "__IMTCONN__": {
+                                    "data": {
+                                        "scoped": "true",
+                                        "connection": "airtable3"
+                                    },
+                                    "label": "homestyling OATH (User ID: usrqfoHur4casC5Tt)"
+                                }
+                            }
+                        },
+                        "parameters": [
+                            {
+                                "name": "__IMTCONN__",
+                                "type": "account:airtable3,airtable2",
+                                "label": "Connection",
+                                "required": true
+                            }
+                        ],
+                        "expect": [
+                            {
+                                "name": "base",
+                                "type": "select",
+                                "label": "Base",
+                                "required": true
+                            },
+                            {
+                                "name": "typecast",
+                                "type": "boolean",
+                                "label": "Smart links",
+                                "required": true
+                            },
+                            {
+                                "name": "useColumnId",
+                                "type": "boolean",
+                                "label": "Use Column ID",
+                                "required": true
+                            },
+                            {
+                                "name": "table",
+                                "type": "select",
+                                "label": "Table",
+                                "required": true
+                            },
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "Record ID",
+                                "required": true
+                            },
+                            {
+                                "name": "record",
+                                "spec": [
+                                    {
+                                        "name": "fldyP48NFH2X0Linb",
+                                        "type": "text",
+                                        "label": "Name"
+                                    },
+                                    {
+                                        "name": "fldh4x1XQVyo5CfZY",
+                                        "spec": {
+                                            "mode": "edit",
+                                            "name": "value",
+                                            "type": "select",
+                                            "label": "Value",
+                                            "dynamic": true,
+                                            "options": [
+                                                {
+                                                    "label": "Stylist",
+                                                    "value": "Stylist"
+                                                },
+                                                {
+                                                    "label": "Flyttkille",
+                                                    "value": "Flyttkille"
+                                                },
+                                                {
+                                                    "label": "Kundansvarig",
+                                                    "value": "Kundansvarig"
+                                                },
+                                                {
+                                                    "label": "Koordinator",
+                                                    "value": "Koordinator"
+                                                },
+                                                {
+                                                    "label": "Fordon",
+                                                    "value": "Fordon"
+                                                },
+                                                {
+                                                    "label": "Externt",
+                                                    "value": "Externt"
+                                                },
+                                                {
+                                                    "label": "Lageransvarig",
+                                                    "value": "Lageransvarig"
+                                                },
+                                                {
+                                                    "label": "",
+                                                    "value": ""
+                                                },
+                                                {
+                                                    "label": "Säljare",
+                                                    "value": "Säljare"
+                                                }
+                                            ],
+                                            "validate": false
+                                        },
+                                        "type": "array",
+                                        "label": "Roll"
+                                    },
+                                    {
+                                        "name": "fldOr4sfeTQ7IvWyH",
+                                        "type": "text",
+                                        "label": "E-mail adress"
+                                    },
+                                    {
+                                        "name": "fldWfm73K5J3qipj0",
+                                        "type": "text",
+                                        "label": "Telefonnummer"
+                                    },
+                                    {
+                                        "name": "fldq6M6CjsaIhzqkj",
+                                        "time": false,
+                                        "type": "date",
+                                        "label": "Börjat"
+                                    },
+                                    {
+                                        "name": "fld9nK9JdeR8et00l",
+                                        "type": "text",
+                                        "label": "Adress"
+                                    },
+                                    {
+                                        "mode": "edit",
+                                        "name": "fld6tcHgCRMqMTWSI",
+                                        "type": "select",
+                                        "label": "Sync Resource Calender Task"
+                                    },
+                                    {
+                                        "name": "fldY4o34V8S06BmEU",
+                                        "time": false,
+                                        "type": "date",
+                                        "label": "faktura approved calender invite"
+                                    },
+                                    {
+                                        "name": "fldB2LDF99SrM17ma",
+                                        "type": "text",
+                                        "label": "Google Calender Username"
+                                    },
+                                    {
+                                        "name": "fld1ilisrlV3rPmoa",
+                                        "type": "text",
+                                        "label": "other"
+                                    },
+                                    {
+                                        "mode": "edit",
+                                        "name": "fldXoYhEGnfm8GNL2",
+                                        "type": "select",
+                                        "label": "check calendar"
+                                    },
+                                    {
+                                        "mode": "edit",
+                                        "name": "fld1RE0MTk4s43LPP",
+                                        "type": "select",
+                                        "label": "check calender listing"
+                                    },
+                                    {
+                                        "name": "fldb5Tfg09xvGo2CP",
+                                        "time": true,
+                                        "type": "date",
+                                        "label": "check calendar timestamp"
+                                    },
+                                    {
+                                        "name": "fldY3pNCpGOOCKwfb",
+                                        "time": true,
+                                        "type": "date",
+                                        "label": "Check Calender Listing Time"
+                                    },
+                                    {
+                                        "name": "fldM7cB9ysZl4Km6I",
+                                        "type": "number",
+                                        "label": "Kostnad"
+                                    },
+                                    {
+                                        "name": "fldEfqA1sQB8cbIoe",
+                                        "time": false,
+                                        "type": "date",
+                                        "label": "Slutat"
+                                    },
+                                    {
+                                        "name": "fldZGzcNbDFtlZ3PW",
+                                        "spec": {
+                                            "name": "value",
+                                            "label": "Record ID"
+                                        },
+                                        "type": "array",
+                                        "label": "Projekt"
+                                    },
+                                    {
+                                        "name": "fldx9zBdUdEBlmDlk",
+                                        "spec": {
+                                            "name": "value",
+                                            "label": "Record ID"
+                                        },
+                                        "type": "array",
+                                        "label": "Projekt copy"
+                                    },
+                                    {
+                                        "name": "fld53isdqHMVhE8AO",
+                                        "type": "text",
+                                        "label": "Projekt 2"
+                                    },
+                                    {
+                                        "name": "fldtXmRRS6V1mVJcZ",
+                                        "type": "text",
+                                        "label": "Projekt 3"
+                                    },
+                                    {
+                                        "name": "fldGrXmABgk50Asct",
+                                        "spec": {
+                                            "name": "value",
+                                            "label": "Record ID"
+                                        },
+                                        "type": "array",
+                                        "label": "Projekt 4"
+                                    },
+                                    {
+                                        "name": "fldtYNGD49SaBf3Dq",
+                                        "spec": {
+                                            "name": "value",
+                                            "label": "Record ID"
+                                        },
+                                        "type": "array",
+                                        "label": "Projekt 5"
+                                    },
+                                    {
+                                        "name": "fldj3pyRQPo4kdRGf",
+                                        "spec": {
+                                            "name": "value",
+                                            "label": "Record ID"
+                                        },
+                                        "type": "array",
+                                        "label": "Table 12"
+                                    },
+                                    {
+                                        "name": "fldtwQ6zRoi3XHjvr",
+                                        "spec": {
+                                            "name": "value",
+                                            "label": "Record ID"
+                                        },
+                                        "type": "array",
+                                        "label": "Projekt 5 copy"
+                                    },
+                                    {
+                                        "name": "fldGU8AGeH8OpbH0w",
+                                        "type": "text",
+                                        "label": "Resurs Kalender"
+                                    },
+                                    {
+                                        "name": "fldexhHlIH1VMCJKi",
+                                        "spec": {
+                                            "name": "value",
+                                            "label": "Record ID"
+                                        },
+                                        "type": "array",
+                                        "label": "Resurs Kalender 2"
+                                    },
+                                    {
+                                        "name": "fldFwC8n4ZLDqDA2y",
+                                        "type": "text",
+                                        "label": "Google Calender Name"
+                                    },
+                                    {
+                                        "name": "fldXjTpE40CTzqB3Z",
+                                        "type": "text",
+                                        "label": "Google Calender Id"
+                                    },
+                                    {
+                                        "name": "fldZLwBuCjyT2lYxY",
+                                        "spec": {
+                                            "name": "value",
+                                            "label": "Record ID"
+                                        },
+                                        "type": "array",
+                                        "label": "Projekt 6"
+                                    },
+                                    {
+                                        "name": "fldYDMMLzbbo9Cn5A",
+                                        "spec": {
+                                            "name": "value",
+                                            "label": "Record ID"
+                                        },
+                                        "type": "array",
+                                        "label": "Projekt 7"
+                                    },
+                                    {
+                                        "name": "fldOz6Im7EC63QTsz",
+                                        "spec": {
+                                            "name": "value",
+                                            "label": "Record ID"
+                                        },
+                                        "type": "array",
+                                        "label": "Mäklar Register"
+                                    },
+                                    {
+                                        "name": "fldn6zuWgH7IcNM5G",
+                                        "spec": {
+                                            "name": "value",
+                                            "label": "Record ID"
+                                        },
+                                        "type": "array",
+                                        "label": "Projekt 8"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Record"
+                            },
+                            {
+                                "name": "base",
+                                "type": "select",
+                                "label": "Base",
+                                "required": true
+                            },
+                            {
+                                "name": "typecast",
+                                "type": "boolean",
+                                "label": "Smart links",
+                                "required": true
+                            },
+                            {
+                                "name": "useColumnId",
+                                "type": "boolean",
+                                "label": "Use Column ID",
+                                "required": true
+                            },
+                            {
+                                "name": "table",
+                                "type": "select",
+                                "label": "Table",
+                                "required": true
+                            },
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "Record ID",
+                                "required": true
+                            },
+                            {
+                                "name": "record",
+                                "spec": [
+                                    {
+                                        "name": "fldyP48NFH2X0Linb",
+                                        "type": "text",
+                                        "label": "Name"
+                                    },
+                                    {
+                                        "name": "fldh4x1XQVyo5CfZY",
+                                        "spec": {
+                                            "mode": "edit",
+                                            "name": "value",
+                                            "type": "select",
+                                            "label": "Value",
+                                            "dynamic": true,
+                                            "options": [
+                                                {
+                                                    "label": "Stylist",
+                                                    "value": "Stylist"
+                                                },
+                                                {
+                                                    "label": "Flyttkille",
+                                                    "value": "Flyttkille"
+                                                },
+                                                {
+                                                    "label": "Kundansvarig",
+                                                    "value": "Kundansvarig"
+                                                },
+                                                {
+                                                    "label": "Koordinator",
+                                                    "value": "Koordinator"
+                                                },
+                                                {
+                                                    "label": "Fordon",
+                                                    "value": "Fordon"
+                                                },
+                                                {
+                                                    "label": "Externt",
+                                                    "value": "Externt"
+                                                },
+                                                {
+                                                    "label": "Lageransvarig",
+                                                    "value": "Lageransvarig"
+                                                },
+                                                {
+                                                    "label": "",
+                                                    "value": ""
+                                                },
+                                                {
+                                                    "label": "Säljare",
+                                                    "value": "Säljare"
+                                                }
+                                            ],
+                                            "validate": false
+                                        },
+                                        "type": "array",
+                                        "label": "Roll"
+                                    },
+                                    {
+                                        "name": "fldOr4sfeTQ7IvWyH",
+                                        "type": "text",
+                                        "label": "E-mail adress"
+                                    },
+                                    {
+                                        "name": "fldWfm73K5J3qipj0",
+                                        "type": "text",
+                                        "label": "Telefonnummer"
+                                    },
+                                    {
+                                        "name": "fldq6M6CjsaIhzqkj",
+                                        "time": false,
+                                        "type": "date",
+                                        "label": "Börjat"
+                                    },
+                                    {
+                                        "name": "fld9nK9JdeR8et00l",
+                                        "type": "text",
+                                        "label": "Adress"
+                                    },
+                                    {
+                                        "mode": "edit",
+                                        "name": "fld6tcHgCRMqMTWSI",
+                                        "type": "select",
+                                        "label": "Sync Resource Calender Task"
+                                    },
+                                    {
+                                        "name": "fldY4o34V8S06BmEU",
+                                        "time": false,
+                                        "type": "date",
+                                        "label": "faktura approved calender invite"
+                                    },
+                                    {
+                                        "name": "fldB2LDF99SrM17ma",
+                                        "type": "text",
+                                        "label": "Google Calender Username"
+                                    },
+                                    {
+                                        "name": "fld1ilisrlV3rPmoa",
+                                        "type": "text",
+                                        "label": "other"
+                                    },
+                                    {
+                                        "mode": "edit",
+                                        "name": "fldXoYhEGnfm8GNL2",
+                                        "type": "select",
+                                        "label": "check calendar"
+                                    },
+                                    {
+                                        "mode": "edit",
+                                        "name": "fld1RE0MTk4s43LPP",
+                                        "type": "select",
+                                        "label": "check calender listing"
+                                    },
+                                    {
+                                        "name": "fldb5Tfg09xvGo2CP",
+                                        "time": true,
+                                        "type": "date",
+                                        "label": "check calendar timestamp"
+                                    },
+                                    {
+                                        "name": "fldY3pNCpGOOCKwfb",
+                                        "time": true,
+                                        "type": "date",
+                                        "label": "Check Calender Listing Time"
+                                    },
+                                    {
+                                        "name": "fldM7cB9ysZl4Km6I",
+                                        "type": "number",
+                                        "label": "Kostnad"
+                                    },
+                                    {
+                                        "name": "fldEfqA1sQB8cbIoe",
+                                        "time": false,
+                                        "type": "date",
+                                        "label": "Slutat"
+                                    },
+                                    {
+                                        "name": "fldZGzcNbDFtlZ3PW",
+                                        "spec": {
+                                            "name": "value",
+                                            "label": "Record ID"
+                                        },
+                                        "type": "array",
+                                        "label": "Projekt"
+                                    },
+                                    {
+                                        "name": "fldx9zBdUdEBlmDlk",
+                                        "spec": {
+                                            "name": "value",
+                                            "label": "Record ID"
+                                        },
+                                        "type": "array",
+                                        "label": "Projekt copy"
+                                    },
+                                    {
+                                        "name": "fld53isdqHMVhE8AO",
+                                        "type": "text",
+                                        "label": "Projekt 2"
+                                    },
+                                    {
+                                        "name": "fldtXmRRS6V1mVJcZ",
+                                        "type": "text",
+                                        "label": "Projekt 3"
+                                    },
+                                    {
+                                        "name": "fldGrXmABgk50Asct",
+                                        "spec": {
+                                            "name": "value",
+                                            "label": "Record ID"
+                                        },
+                                        "type": "array",
+                                        "label": "Projekt 4"
+                                    },
+                                    {
+                                        "name": "fldtYNGD49SaBf3Dq",
+                                        "spec": {
+                                            "name": "value",
+                                            "label": "Record ID"
+                                        },
+                                        "type": "array",
+                                        "label": "Projekt 5"
+                                    },
+                                    {
+                                        "name": "fldj3pyRQPo4kdRGf",
+                                        "spec": {
+                                            "name": "value",
+                                            "label": "Record ID"
+                                        },
+                                        "type": "array",
+                                        "label": "Table 12"
+                                    },
+                                    {
+                                        "name": "fldtwQ6zRoi3XHjvr",
+                                        "spec": {
+                                            "name": "value",
+                                            "label": "Record ID"
+                                        },
+                                        "type": "array",
+                                        "label": "Projekt 5 copy"
+                                    },
+                                    {
+                                        "name": "fldGU8AGeH8OpbH0w",
+                                        "type": "text",
+                                        "label": "Resurs Kalender"
+                                    },
+                                    {
+                                        "name": "fldexhHlIH1VMCJKi",
+                                        "spec": {
+                                            "name": "value",
+                                            "label": "Record ID"
+                                        },
+                                        "type": "array",
+                                        "label": "Resurs Kalender 2"
+                                    },
+                                    {
+                                        "name": "fldFwC8n4ZLDqDA2y",
+                                        "type": "text",
+                                        "label": "Google Calender Name"
+                                    },
+                                    {
+                                        "name": "fldXjTpE40CTzqB3Z",
+                                        "type": "text",
+                                        "label": "Google Calender Id"
+                                    },
+                                    {
+                                        "name": "fldZLwBuCjyT2lYxY",
+                                        "spec": {
+                                            "name": "value",
+                                            "label": "Record ID"
+                                        },
+                                        "type": "array",
+                                        "label": "Projekt 6"
+                                    },
+                                    {
+                                        "name": "fldYDMMLzbbo9Cn5A",
+                                        "spec": {
+                                            "name": "value",
+                                            "label": "Record ID"
+                                        },
+                                        "type": "array",
+                                        "label": "Projekt 7"
+                                    },
+                                    {
+                                        "name": "fldOz6Im7EC63QTsz",
+                                        "spec": {
+                                            "name": "value",
+                                            "label": "Record ID"
+                                        },
+                                        "type": "array",
+                                        "label": "Mäklar Register"
+                                    },
+                                    {
+                                        "name": "fldn6zuWgH7IcNM5G",
+                                        "spec": {
+                                            "name": "value",
+                                            "label": "Record ID"
+                                        },
+                                        "type": "array",
+                                        "label": "Projekt 8"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Record"
+                            }
+                        ],
+                        "interface": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "createdTime",
+                                "type": "date",
+                                "label": "Created Time"
+                            },
+                            {
+                                "name": "Name",
+                                "type": "text",
+                                "label": "Name"
+                            },
+                            {
+                                "name": "Roll",
+                                "type": "array",
+                                "label": "Roll",
+                                "dynamic": true,
+                                "editable": true
+                            },
+                            {
+                                "name": "E-mail adress",
+                                "type": "text",
+                                "label": "E-mail adress"
+                            },
+                            {
+                                "name": "Telefonnummer",
+                                "type": "text",
+                                "label": "Telefonnummer"
+                            },
+                            {
+                                "name": "Börjat",
+                                "time": false,
+                                "type": "date",
+                                "label": "Börjat"
+                            },
+                            {
+                                "name": "Adress",
+                                "type": "text",
+                                "label": "Adress"
+                            },
+                            {
+                                "name": "Sync Resource Calender Task",
+                                "type": "text",
+                                "label": "Sync Resource Calender Task"
+                            },
+                            {
+                                "name": "faktura approved calender invite",
+                                "time": false,
+                                "type": "date",
+                                "label": "faktura approved calender invite"
+                            },
+                            {
+                                "name": "Google Calender Username",
+                                "type": "text",
+                                "label": "Google Calender Username"
+                            },
+                            {
+                                "name": "other",
+                                "type": "text",
+                                "label": "other"
+                            },
+                            {
+                                "name": "Check Calender Sync Status",
+                                "spec": [
+                                    {
+                                        "name": "label",
+                                        "type": "text",
+                                        "label": "Label"
+                                    },
+                                    {
+                                        "name": "url",
+                                        "type": "url",
+                                        "label": "URL"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Check Calender Sync Status"
+                            },
+                            {
+                                "name": "check calendar",
+                                "type": "text",
+                                "label": "check calendar"
+                            },
+                            {
+                                "name": "check calender listing",
+                                "type": "text",
+                                "label": "check calender listing"
+                            },
+                            {
+                                "name": "check calendar timestamp",
+                                "time": true,
+                                "type": "date",
+                                "label": "check calendar timestamp"
+                            },
+                            {
+                                "name": "Check Calender Listing Time",
+                                "time": true,
+                                "type": "date",
+                                "label": "Check Calender Listing Time"
+                            },
+                            {
+                                "name": "Kostnad",
+                                "type": "number",
+                                "label": "Kostnad"
+                            },
+                            {
+                                "name": "Slutat",
+                                "time": false,
+                                "type": "date",
+                                "label": "Slutat"
+                            },
+                            {
+                                "name": "Projekt",
+                                "spec": {
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "Projekt"
+                            },
+                            {
+                                "name": "Projekt copy",
+                                "spec": {
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "Projekt copy"
+                            },
+                            {
+                                "name": "Projekt 2",
+                                "type": "text",
+                                "label": "Projekt 2"
+                            },
+                            {
+                                "name": "Projekt 3",
+                                "type": "text",
+                                "label": "Projekt 3"
+                            },
+                            {
+                                "name": "Projekt 4",
+                                "spec": {
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "Projekt 4"
+                            },
+                            {
+                                "name": "Projekt 5",
+                                "spec": {
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "Projekt 5"
+                            },
+                            {
+                                "name": "Table 12",
+                                "spec": {
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "Table 12"
+                            },
+                            {
+                                "name": "Projekt 5 copy",
+                                "spec": {
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "Projekt 5 copy"
+                            },
+                            {
+                                "name": "Resurs Kalender",
+                                "type": "text",
+                                "label": "Resurs Kalender"
+                            },
+                            {
+                                "name": "Resurs Kalender 2",
+                                "spec": {
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "Resurs Kalender 2"
+                            },
+                            {
+                                "name": "Google Calender Name",
+                                "type": "text",
+                                "label": "Google Calender Name"
+                            },
+                            {
+                                "name": "Google Calender Id",
+                                "type": "text",
+                                "label": "Google Calender Id"
+                            },
+                            {
+                                "name": "Projekt 6",
+                                "spec": {
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "Projekt 6"
+                            },
+                            {
+                                "name": "Projekt 7",
+                                "spec": {
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "Projekt 7"
+                            },
+                            {
+                                "name": "Mäklar Register",
+                                "spec": {
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "Mäklar Register"
+                            },
+                            {
+                                "name": "Projekt 8",
+                                "spec": {
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "Projekt 8"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": 7,
+                    "module": "google-email:ActionSendEmail",
+                    "version": 2,
+                    "parameters": {
+                        "account": 36706
+                    },
+                    "mapper": {
+                        "cc": [],
+                        "to": [
+                            "RHGROUP.DEV@GMAIL.COM",
+                            "tomas@homestyling.se"
+                        ],
+                        "bcc": [],
+                        "from": "",
+                        "html": "username> {{4.`Google Calender Username`}}\nname> {{4.Name}}\nCould not be found.\n\nIf you want to turn of this notifcation for this user do the following:\n\ngo to https://airtable.com/appbFT84h3VCspXEX/tbltqR5zKlxq4ugDu/viwnkvB9FwMA2ZxOx?blocks=hide   (Table Resurser)\n\nfind the correct user,\nset the field Sync Resource Calender Task to NO\nThis will stop the system from checking this user.",
+                        "subject": "Calender Sync Error",
+                        "attachments": []
+                    },
+                    "metadata": {
+                        "designer": {
+                            "x": 854,
+                            "y": 334
+                        },
+                        "restore": {
+                            "expect": {
+                                "cc": {
+                                    "mode": "chose"
+                                },
+                                "to": {
+                                    "mode": "chose",
+                                    "items": [
+                                        null,
+                                        null
+                                    ]
+                                },
+                                "bcc": {
+                                    "mode": "chose"
+                                },
+                                "attachments": {
+                                    "mode": "chose"
+                                }
+                            },
+                            "parameters": {
+                                "account": {
+                                    "data": {
+                                        "scoped": "true",
+                                        "connection": "google-restricted"
+                                    },
+                                    "label": "Google Faktura Homestlyling (faktura@homestyling.se)"
+                                }
+                            }
+                        },
+                        "parameters": [
+                            {
+                                "name": "account",
+                                "type": "account:google-restricted",
+                                "label": "Connection",
+                                "required": true
+                            }
+                        ],
+                        "expect": [
+                            {
+                                "name": "from",
+                                "type": "text",
+                                "label": "From"
+                            },
+                            {
+                                "name": "to",
+                                "spec": {
+                                    "name": "value",
+                                    "type": "email",
+                                    "label": "Email address",
+                                    "required": true
+                                },
+                                "type": "array",
+                                "label": "To",
+                                "required": true
+                            },
+                            {
+                                "name": "subject",
+                                "type": "text",
+                                "label": "Subject"
+                            },
+                            {
+                                "name": "html",
+                                "type": "text",
+                                "label": "Content"
+                            },
+                            {
+                                "name": "attachments",
+                                "spec": [
+                                    {
+                                        "name": "fileName",
+                                        "type": "filename",
+                                        "label": "File name",
+                                        "required": true,
+                                        "semantic": "file:name"
+                                    },
+                                    {
+                                        "name": "data",
+                                        "type": "buffer",
+                                        "label": "Data",
+                                        "required": true,
+                                        "semantic": "file:data"
+                                    },
+                                    {
+                                        "name": "cid",
+                                        "type": "text",
+                                        "label": "Content-ID"
+                                    }
+                                ],
+                                "type": "array",
+                                "label": "Attachments"
+                            },
+                            {
+                                "name": "cc",
+                                "spec": {
+                                    "name": "value",
+                                    "type": "email",
+                                    "label": "Email address"
+                                },
+                                "type": "array",
+                                "label": "Copy recipient"
+                            },
+                            {
+                                "name": "bcc",
+                                "spec": {
+                                    "name": "value",
+                                    "type": "email",
+                                    "label": "Email address"
+                                },
+                                "type": "array",
+                                "label": "Blind copy recipient"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": 6,
+                    "module": "builtin:Ignore",
+                    "version": 1,
+                    "metadata": {
+                        "designer": {
+                            "x": 1083,
+                            "y": 336
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "module": "airtable:ActionUpdateRecords",
+            "version": 3,
+            "parameters": {
+                "__IMTCONN__": 2311364
+            },
+            "mapper": {
+                "id": "{{1.id}}",
+                "base": "appbFT84h3VCspXEX",
+                "table": "Resurser",
+                "record": {
+                    "fldXoYhEGnfm8GNL2": "Found",
+                    "fldb5Tfg09xvGo2CP": "{{now}}"
+                },
+                "typecast": false,
+                "useColumnId": false
+            },
+            "metadata": {
+                "designer": {
+                    "x": 600,
+                    "y": 0,
+                    "name": "update status calendar found"
+                },
+                "restore": {
+                    "expect": {
+                        "base": {
+                            "label": "Homestyling.se"
+                        },
+                        "table": {
+                            "label": "Resurser"
+                        },
+                        "record": {
+                            "nested": {
+                                "fld1RE0MTk4s43LPP": {
+                                    "mode": "edit"
+                                },
+                                "fld6tcHgCRMqMTWSI": {
+                                    "mode": "edit"
+                                },
+                                "fldGrXmABgk50Asct": {
+                                    "mode": "chose"
+                                },
+                                "fldOz6Im7EC63QTsz": {
+                                    "mode": "chose"
+                                },
+                                "fldXoYhEGnfm8GNL2": {
+                                    "mode": "edit"
+                                },
+                                "fldYDMMLzbbo9Cn5A": {
+                                    "mode": "chose"
+                                },
+                                "fldZGzcNbDFtlZ3PW": {
+                                    "mode": "chose"
+                                },
+                                "fldZLwBuCjyT2lYxY": {
+                                    "mode": "chose"
+                                },
+                                "fldexhHlIH1VMCJKi": {
+                                    "mode": "chose"
+                                },
+                                "fldh4x1XQVyo5CfZY": {
+                                    "mode": "chose"
+                                },
+                                "fldj3pyRQPo4kdRGf": {
+                                    "mode": "chose"
+                                },
+                                "fldn6zuWgH7IcNM5G": {
+                                    "mode": "chose"
+                                },
+                                "fldtYNGD49SaBf3Dq": {
+                                    "mode": "chose"
+                                },
+                                "fldtwQ6zRoi3XHjvr": {
+                                    "mode": "chose"
+                                },
+                                "fldx9zBdUdEBlmDlk": {
+                                    "mode": "chose"
+                                }
+                            }
+                        },
+                        "typecast": {
+                            "mode": "chose"
+                        },
+                        "useColumnId": {
+                            "mode": "chose"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "airtable3"
+                            },
+                            "label": "homestyling OATH (User ID: usrqfoHur4casC5Tt)"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:airtable3,airtable2",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "base",
+                        "type": "select",
+                        "label": "Base",
+                        "required": true
+                    },
+                    {
+                        "name": "typecast",
+                        "type": "boolean",
+                        "label": "Smart links",
+                        "required": true
+                    },
+                    {
+                        "name": "useColumnId",
+                        "type": "boolean",
+                        "label": "Use Column ID",
+                        "required": true
+                    },
+                    {
+                        "name": "table",
+                        "type": "select",
+                        "label": "Table",
+                        "required": true
+                    },
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "Record ID",
+                        "required": true
+                    },
+                    {
+                        "name": "record",
+                        "spec": [
+                            {
+                                "name": "fldyP48NFH2X0Linb",
+                                "type": "text",
+                                "label": "Name"
+                            },
+                            {
+                                "name": "fldh4x1XQVyo5CfZY",
+                                "spec": {
+                                    "mode": "edit",
+                                    "name": "value",
+                                    "type": "select",
+                                    "label": "Value",
+                                    "dynamic": true,
+                                    "options": [
+                                        {
+                                            "label": "Stylist",
+                                            "value": "Stylist"
+                                        },
+                                        {
+                                            "label": "Flyttkille",
+                                            "value": "Flyttkille"
+                                        },
+                                        {
+                                            "label": "Kundansvarig",
+                                            "value": "Kundansvarig"
+                                        },
+                                        {
+                                            "label": "Koordinator",
+                                            "value": "Koordinator"
+                                        },
+                                        {
+                                            "label": "Fordon",
+                                            "value": "Fordon"
+                                        },
+                                        {
+                                            "label": "Externt",
+                                            "value": "Externt"
+                                        },
+                                        {
+                                            "label": "Lageransvarig",
+                                            "value": "Lageransvarig"
+                                        },
+                                        {
+                                            "label": "",
+                                            "value": ""
+                                        },
+                                        {
+                                            "label": "Säljare",
+                                            "value": "Säljare"
+                                        }
+                                    ],
+                                    "validate": false
+                                },
+                                "type": "array",
+                                "label": "Roll"
+                            },
+                            {
+                                "name": "fldOr4sfeTQ7IvWyH",
+                                "type": "text",
+                                "label": "E-mail adress"
+                            },
+                            {
+                                "name": "fldWfm73K5J3qipj0",
+                                "type": "text",
+                                "label": "Telefonnummer"
+                            },
+                            {
+                                "name": "fldq6M6CjsaIhzqkj",
+                                "time": false,
+                                "type": "date",
+                                "label": "Börjat"
+                            },
+                            {
+                                "name": "fld9nK9JdeR8et00l",
+                                "type": "text",
+                                "label": "Adress"
+                            },
+                            {
+                                "mode": "edit",
+                                "name": "fld6tcHgCRMqMTWSI",
+                                "type": "select",
+                                "label": "Sync Resource Calender Task"
+                            },
+                            {
+                                "name": "fldY4o34V8S06BmEU",
+                                "time": false,
+                                "type": "date",
+                                "label": "faktura approved calender invite"
+                            },
+                            {
+                                "name": "fldB2LDF99SrM17ma",
+                                "type": "text",
+                                "label": "Google Calender Username"
+                            },
+                            {
+                                "name": "fld1ilisrlV3rPmoa",
+                                "type": "text",
+                                "label": "other"
+                            },
+                            {
+                                "mode": "edit",
+                                "name": "fldXoYhEGnfm8GNL2",
+                                "type": "select",
+                                "label": "check calendar"
+                            },
+                            {
+                                "mode": "edit",
+                                "name": "fld1RE0MTk4s43LPP",
+                                "type": "select",
+                                "label": "check calender listing"
+                            },
+                            {
+                                "name": "fldb5Tfg09xvGo2CP",
+                                "time": true,
+                                "type": "date",
+                                "label": "check calendar timestamp"
+                            },
+                            {
+                                "name": "fldY3pNCpGOOCKwfb",
+                                "time": true,
+                                "type": "date",
+                                "label": "Check Calender Listing Time"
+                            },
+                            {
+                                "name": "fldM7cB9ysZl4Km6I",
+                                "type": "number",
+                                "label": "Kostnad"
+                            },
+                            {
+                                "name": "fldEfqA1sQB8cbIoe",
+                                "time": false,
+                                "type": "date",
+                                "label": "Slutat"
+                            },
+                            {
+                                "name": "fldZGzcNbDFtlZ3PW",
+                                "spec": {
+                                    "name": "value",
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "Projekt"
+                            },
+                            {
+                                "name": "fldx9zBdUdEBlmDlk",
+                                "spec": {
+                                    "name": "value",
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "Projekt copy"
+                            },
+                            {
+                                "name": "fld53isdqHMVhE8AO",
+                                "type": "text",
+                                "label": "Projekt 2"
+                            },
+                            {
+                                "name": "fldtXmRRS6V1mVJcZ",
+                                "type": "text",
+                                "label": "Projekt 3"
+                            },
+                            {
+                                "name": "fldGrXmABgk50Asct",
+                                "spec": {
+                                    "name": "value",
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "Projekt 4"
+                            },
+                            {
+                                "name": "fldtYNGD49SaBf3Dq",
+                                "spec": {
+                                    "name": "value",
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "Projekt 5"
+                            },
+                            {
+                                "name": "fldj3pyRQPo4kdRGf",
+                                "spec": {
+                                    "name": "value",
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "Table 12"
+                            },
+                            {
+                                "name": "fldtwQ6zRoi3XHjvr",
+                                "spec": {
+                                    "name": "value",
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "Projekt 5 copy"
+                            },
+                            {
+                                "name": "fldGU8AGeH8OpbH0w",
+                                "type": "text",
+                                "label": "Resurs Kalender"
+                            },
+                            {
+                                "name": "fldexhHlIH1VMCJKi",
+                                "spec": {
+                                    "name": "value",
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "Resurs Kalender 2"
+                            },
+                            {
+                                "name": "fldFwC8n4ZLDqDA2y",
+                                "type": "text",
+                                "label": "Google Calender Name"
+                            },
+                            {
+                                "name": "fldXjTpE40CTzqB3Z",
+                                "type": "text",
+                                "label": "Google Calender Id"
+                            },
+                            {
+                                "name": "fldZLwBuCjyT2lYxY",
+                                "spec": {
+                                    "name": "value",
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "Projekt 6"
+                            },
+                            {
+                                "name": "fldYDMMLzbbo9Cn5A",
+                                "spec": {
+                                    "name": "value",
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "Projekt 7"
+                            },
+                            {
+                                "name": "fldOz6Im7EC63QTsz",
+                                "spec": {
+                                    "name": "value",
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "Mäklar Register"
+                            },
+                            {
+                                "name": "fldn6zuWgH7IcNM5G",
+                                "spec": {
+                                    "name": "value",
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "Projekt 8"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Record"
+                    },
+                    {
+                        "name": "base",
+                        "type": "select",
+                        "label": "Base",
+                        "required": true
+                    },
+                    {
+                        "name": "typecast",
+                        "type": "boolean",
+                        "label": "Smart links",
+                        "required": true
+                    },
+                    {
+                        "name": "useColumnId",
+                        "type": "boolean",
+                        "label": "Use Column ID",
+                        "required": true
+                    },
+                    {
+                        "name": "table",
+                        "type": "select",
+                        "label": "Table",
+                        "required": true
+                    },
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "Record ID",
+                        "required": true
+                    },
+                    {
+                        "name": "record",
+                        "spec": [
+                            {
+                                "name": "fldyP48NFH2X0Linb",
+                                "type": "text",
+                                "label": "Name"
+                            },
+                            {
+                                "name": "fldh4x1XQVyo5CfZY",
+                                "spec": {
+                                    "mode": "edit",
+                                    "name": "value",
+                                    "type": "select",
+                                    "label": "Value",
+                                    "dynamic": true,
+                                    "options": [
+                                        {
+                                            "label": "Stylist",
+                                            "value": "Stylist"
+                                        },
+                                        {
+                                            "label": "Flyttkille",
+                                            "value": "Flyttkille"
+                                        },
+                                        {
+                                            "label": "Kundansvarig",
+                                            "value": "Kundansvarig"
+                                        },
+                                        {
+                                            "label": "Koordinator",
+                                            "value": "Koordinator"
+                                        },
+                                        {
+                                            "label": "Fordon",
+                                            "value": "Fordon"
+                                        },
+                                        {
+                                            "label": "Externt",
+                                            "value": "Externt"
+                                        },
+                                        {
+                                            "label": "Lageransvarig",
+                                            "value": "Lageransvarig"
+                                        },
+                                        {
+                                            "label": "",
+                                            "value": ""
+                                        },
+                                        {
+                                            "label": "Säljare",
+                                            "value": "Säljare"
+                                        }
+                                    ],
+                                    "validate": false
+                                },
+                                "type": "array",
+                                "label": "Roll"
+                            },
+                            {
+                                "name": "fldOr4sfeTQ7IvWyH",
+                                "type": "text",
+                                "label": "E-mail adress"
+                            },
+                            {
+                                "name": "fldWfm73K5J3qipj0",
+                                "type": "text",
+                                "label": "Telefonnummer"
+                            },
+                            {
+                                "name": "fldq6M6CjsaIhzqkj",
+                                "time": false,
+                                "type": "date",
+                                "label": "Börjat"
+                            },
+                            {
+                                "name": "fld9nK9JdeR8et00l",
+                                "type": "text",
+                                "label": "Adress"
+                            },
+                            {
+                                "mode": "edit",
+                                "name": "fld6tcHgCRMqMTWSI",
+                                "type": "select",
+                                "label": "Sync Resource Calender Task"
+                            },
+                            {
+                                "name": "fldY4o34V8S06BmEU",
+                                "time": false,
+                                "type": "date",
+                                "label": "faktura approved calender invite"
+                            },
+                            {
+                                "name": "fldB2LDF99SrM17ma",
+                                "type": "text",
+                                "label": "Google Calender Username"
+                            },
+                            {
+                                "name": "fld1ilisrlV3rPmoa",
+                                "type": "text",
+                                "label": "other"
+                            },
+                            {
+                                "mode": "edit",
+                                "name": "fldXoYhEGnfm8GNL2",
+                                "type": "select",
+                                "label": "check calendar"
+                            },
+                            {
+                                "mode": "edit",
+                                "name": "fld1RE0MTk4s43LPP",
+                                "type": "select",
+                                "label": "check calender listing"
+                            },
+                            {
+                                "name": "fldb5Tfg09xvGo2CP",
+                                "time": true,
+                                "type": "date",
+                                "label": "check calendar timestamp"
+                            },
+                            {
+                                "name": "fldY3pNCpGOOCKwfb",
+                                "time": true,
+                                "type": "date",
+                                "label": "Check Calender Listing Time"
+                            },
+                            {
+                                "name": "fldM7cB9ysZl4Km6I",
+                                "type": "number",
+                                "label": "Kostnad"
+                            },
+                            {
+                                "name": "fldEfqA1sQB8cbIoe",
+                                "time": false,
+                                "type": "date",
+                                "label": "Slutat"
+                            },
+                            {
+                                "name": "fldZGzcNbDFtlZ3PW",
+                                "spec": {
+                                    "name": "value",
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "Projekt"
+                            },
+                            {
+                                "name": "fldx9zBdUdEBlmDlk",
+                                "spec": {
+                                    "name": "value",
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "Projekt copy"
+                            },
+                            {
+                                "name": "fld53isdqHMVhE8AO",
+                                "type": "text",
+                                "label": "Projekt 2"
+                            },
+                            {
+                                "name": "fldtXmRRS6V1mVJcZ",
+                                "type": "text",
+                                "label": "Projekt 3"
+                            },
+                            {
+                                "name": "fldGrXmABgk50Asct",
+                                "spec": {
+                                    "name": "value",
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "Projekt 4"
+                            },
+                            {
+                                "name": "fldtYNGD49SaBf3Dq",
+                                "spec": {
+                                    "name": "value",
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "Projekt 5"
+                            },
+                            {
+                                "name": "fldj3pyRQPo4kdRGf",
+                                "spec": {
+                                    "name": "value",
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "Table 12"
+                            },
+                            {
+                                "name": "fldtwQ6zRoi3XHjvr",
+                                "spec": {
+                                    "name": "value",
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "Projekt 5 copy"
+                            },
+                            {
+                                "name": "fldGU8AGeH8OpbH0w",
+                                "type": "text",
+                                "label": "Resurs Kalender"
+                            },
+                            {
+                                "name": "fldexhHlIH1VMCJKi",
+                                "spec": {
+                                    "name": "value",
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "Resurs Kalender 2"
+                            },
+                            {
+                                "name": "fldFwC8n4ZLDqDA2y",
+                                "type": "text",
+                                "label": "Google Calender Name"
+                            },
+                            {
+                                "name": "fldXjTpE40CTzqB3Z",
+                                "type": "text",
+                                "label": "Google Calender Id"
+                            },
+                            {
+                                "name": "fldZLwBuCjyT2lYxY",
+                                "spec": {
+                                    "name": "value",
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "Projekt 6"
+                            },
+                            {
+                                "name": "fldYDMMLzbbo9Cn5A",
+                                "spec": {
+                                    "name": "value",
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "Projekt 7"
+                            },
+                            {
+                                "name": "fldOz6Im7EC63QTsz",
+                                "spec": {
+                                    "name": "value",
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "Mäklar Register"
+                            },
+                            {
+                                "name": "fldn6zuWgH7IcNM5G",
+                                "spec": {
+                                    "name": "value",
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "Projekt 8"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Record"
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "ID"
+                    },
+                    {
+                        "name": "createdTime",
+                        "type": "date",
+                        "label": "Created Time"
+                    },
+                    {
+                        "name": "Name",
+                        "type": "text",
+                        "label": "Name"
+                    },
+                    {
+                        "name": "Roll",
+                        "type": "array",
+                        "label": "Roll",
+                        "dynamic": true,
+                        "editable": true
+                    },
+                    {
+                        "name": "E-mail adress",
+                        "type": "text",
+                        "label": "E-mail adress"
+                    },
+                    {
+                        "name": "Telefonnummer",
+                        "type": "text",
+                        "label": "Telefonnummer"
+                    },
+                    {
+                        "name": "Börjat",
+                        "time": false,
+                        "type": "date",
+                        "label": "Börjat"
+                    },
+                    {
+                        "name": "Adress",
+                        "type": "text",
+                        "label": "Adress"
+                    },
+                    {
+                        "name": "Sync Resource Calender Task",
+                        "type": "text",
+                        "label": "Sync Resource Calender Task"
+                    },
+                    {
+                        "name": "faktura approved calender invite",
+                        "time": false,
+                        "type": "date",
+                        "label": "faktura approved calender invite"
+                    },
+                    {
+                        "name": "Google Calender Username",
+                        "type": "text",
+                        "label": "Google Calender Username"
+                    },
+                    {
+                        "name": "other",
+                        "type": "text",
+                        "label": "other"
+                    },
+                    {
+                        "name": "Check Calender Sync Status",
+                        "spec": [
+                            {
+                                "name": "label",
+                                "type": "text",
+                                "label": "Label"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Check Calender Sync Status"
+                    },
+                    {
+                        "name": "check calendar",
+                        "type": "text",
+                        "label": "check calendar"
+                    },
+                    {
+                        "name": "check calender listing",
+                        "type": "text",
+                        "label": "check calender listing"
+                    },
+                    {
+                        "name": "check calendar timestamp",
+                        "time": true,
+                        "type": "date",
+                        "label": "check calendar timestamp"
+                    },
+                    {
+                        "name": "Check Calender Listing Time",
+                        "time": true,
+                        "type": "date",
+                        "label": "Check Calender Listing Time"
+                    },
+                    {
+                        "name": "Kostnad",
+                        "type": "number",
+                        "label": "Kostnad"
+                    },
+                    {
+                        "name": "Slutat",
+                        "time": false,
+                        "type": "date",
+                        "label": "Slutat"
+                    },
+                    {
+                        "name": "Projekt",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Projekt"
+                    },
+                    {
+                        "name": "Projekt copy",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Projekt copy"
+                    },
+                    {
+                        "name": "Projekt 2",
+                        "type": "text",
+                        "label": "Projekt 2"
+                    },
+                    {
+                        "name": "Projekt 3",
+                        "type": "text",
+                        "label": "Projekt 3"
+                    },
+                    {
+                        "name": "Projekt 4",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Projekt 4"
+                    },
+                    {
+                        "name": "Projekt 5",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Projekt 5"
+                    },
+                    {
+                        "name": "Table 12",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Table 12"
+                    },
+                    {
+                        "name": "Projekt 5 copy",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Projekt 5 copy"
+                    },
+                    {
+                        "name": "Resurs Kalender",
+                        "type": "text",
+                        "label": "Resurs Kalender"
+                    },
+                    {
+                        "name": "Resurs Kalender 2",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Resurs Kalender 2"
+                    },
+                    {
+                        "name": "Google Calender Name",
+                        "type": "text",
+                        "label": "Google Calender Name"
+                    },
+                    {
+                        "name": "Google Calender Id",
+                        "type": "text",
+                        "label": "Google Calender Id"
+                    },
+                    {
+                        "name": "Projekt 6",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Projekt 6"
+                    },
+                    {
+                        "name": "Projekt 7",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Projekt 7"
+                    },
+                    {
+                        "name": "Mäklar Register",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Mäklar Register"
+                    },
+                    {
+                        "name": "Projekt 8",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Projekt 8"
+                    }
+                ]
+            }
+        }
+    ],
+    "metadata": {
+        "instant": false,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "autoCommitTriggerLast": true,
+            "sequential": false,
+            "slots": null,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false,
+            "freshVariables": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "eu1.make.com"
+    }
+}
