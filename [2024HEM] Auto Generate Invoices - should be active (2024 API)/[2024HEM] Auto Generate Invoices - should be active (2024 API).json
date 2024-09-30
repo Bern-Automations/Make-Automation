@@ -1,0 +1,3763 @@
+{
+    "name": "[2024HEM] Auto Generate Invoices - should be active (2024 API)",
+    "flow": [
+        {
+            "id": 3,
+            "module": "airtable:ActionSearchRecords",
+            "version": 3,
+            "parameters": {
+                "__IMTCONN__": 2311364
+            },
+            "mapper": {
+                "base": "appbFT84h3VCspXEX",
+                "table": "Settings",
+                "maxRecords": "1",
+                "useColumnId": false
+            },
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 150,
+                    "name": "Search Setting"
+                },
+                "restore": {
+                    "expect": {
+                        "base": {
+                            "mode": "chose",
+                            "label": "Homestyling.se"
+                        },
+                        "sort": {
+                            "mode": "chose"
+                        },
+                        "view": {
+                            "mode": "chose"
+                        },
+                        "table": {
+                            "mode": "chose",
+                            "label": "Settings"
+                        },
+                        "fields": {
+                            "mode": "chose"
+                        },
+                        "useColumnId": {
+                            "mode": "chose"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "airtable3"
+                            },
+                            "label": "homestyling OATH (User ID: usrqfoHur4casC5Tt)"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:airtable3,airtable2",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "base",
+                        "type": "select",
+                        "label": "Base",
+                        "required": true
+                    },
+                    {
+                        "name": "useColumnId",
+                        "type": "boolean",
+                        "label": "Use Column ID",
+                        "required": true
+                    },
+                    {
+                        "name": "table",
+                        "type": "select",
+                        "label": "Table",
+                        "required": true
+                    },
+                    {
+                        "name": "formula",
+                        "type": "text",
+                        "label": "Formula"
+                    },
+                    {
+                        "name": "maxRecords",
+                        "type": "integer",
+                        "label": "Limit"
+                    },
+                    {
+                        "name": "sort",
+                        "spec": [
+                            {
+                                "name": "field",
+                                "type": "select",
+                                "label": "Field",
+                                "dynamic": true,
+                                "options": []
+                            },
+                            {
+                                "name": "direction",
+                                "type": "select",
+                                "label": "Direction",
+                                "options": [
+                                    {
+                                        "label": "Descending",
+                                        "value": "desc"
+                                    },
+                                    {
+                                        "label": "Ascending",
+                                        "value": "asc"
+                                    }
+                                ]
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Sort"
+                    },
+                    {
+                        "name": "view",
+                        "type": "select",
+                        "label": "View"
+                    },
+                    {
+                        "name": "fields",
+                        "type": "select",
+                        "label": "Output Fields",
+                        "multiple": true
+                    },
+                    {
+                        "name": "base",
+                        "type": "select",
+                        "label": "Base",
+                        "required": true
+                    },
+                    {
+                        "name": "useColumnId",
+                        "type": "boolean",
+                        "label": "Use Column ID",
+                        "required": true
+                    },
+                    {
+                        "name": "table",
+                        "type": "select",
+                        "label": "Table",
+                        "required": true
+                    },
+                    {
+                        "name": "formula",
+                        "type": "text",
+                        "label": "Formula"
+                    },
+                    {
+                        "name": "maxRecords",
+                        "type": "integer",
+                        "label": "Limit"
+                    },
+                    {
+                        "name": "sort",
+                        "spec": [
+                            {
+                                "name": "field",
+                                "type": "select",
+                                "label": "Field",
+                                "dynamic": true,
+                                "options": []
+                            },
+                            {
+                                "name": "direction",
+                                "type": "select",
+                                "label": "Direction",
+                                "options": [
+                                    {
+                                        "label": "Descending",
+                                        "value": "desc"
+                                    },
+                                    {
+                                        "label": "Ascending",
+                                        "value": "asc"
+                                    }
+                                ]
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Sort"
+                    },
+                    {
+                        "name": "view",
+                        "type": "select",
+                        "label": "View"
+                    },
+                    {
+                        "name": "fields",
+                        "type": "select",
+                        "label": "Output Fields",
+                        "multiple": true
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "__IMTLENGTH__",
+                        "type": "uinteger",
+                        "label": "Total number of bundles"
+                    },
+                    {
+                        "name": "__IMTINDEX__",
+                        "type": "uinteger",
+                        "label": "Bundle order position"
+                    },
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "ID"
+                    },
+                    {
+                        "name": "createdTime",
+                        "type": "date",
+                        "label": "Created Time"
+                    },
+                    {
+                        "name": "Number",
+                        "type": "number",
+                        "label": "Number"
+                    },
+                    {
+                        "name": "Email Invoice",
+                        "type": "boolean",
+                        "label": "Email Invoice"
+                    },
+                    {
+                        "name": "Bokför Invoice",
+                        "type": "boolean",
+                        "label": "Bokför Invoice"
+                    },
+                    {
+                        "name": "Auto Invoice Setting",
+                        "type": "boolean",
+                        "label": "Auto Invoice Setting"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 9,
+            "module": "util:SetVariable2",
+            "version": 1,
+            "parameters": {},
+            "mapper": {
+                "name": "invoices",
+                "scope": "roundtrip",
+                "value": "{{emptystring}}"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 300,
+                    "y": 150
+                },
+                "restore": {
+                    "expect": {
+                        "scope": {
+                            "label": "One cycle"
+                        }
+                    }
+                },
+                "expect": [
+                    {
+                        "name": "name",
+                        "type": "text",
+                        "label": "Variable name",
+                        "required": true
+                    },
+                    {
+                        "name": "scope",
+                        "type": "select",
+                        "label": "Variable lifetime",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "roundtrip",
+                                "execution"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "value",
+                        "type": "any",
+                        "label": "Variable value"
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "invoices",
+                        "type": "any",
+                        "label": "invoices"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 1,
+            "module": "airtable:ActionSearchRecords",
+            "version": 3,
+            "parameters": {
+                "__IMTCONN__": 2311364
+            },
+            "filter": {
+                "name": "Auto Invoice Setting is Enabled?",
+                "conditions": [
+                    [
+                        {
+                            "a": "{{3.`__IMTLENGTH__`}}",
+                            "b": "1",
+                            "o": "number:equal"
+                        },
+                        {
+                            "a": "{{3.`Auto Invoice Setting`}}",
+                            "b": "true",
+                            "o": "boolean:equal"
+                        }
+                    ]
+                ]
+            },
+            "mapper": {
+                "base": "appbFT84h3VCspXEX",
+                "table": "Projekt",
+                "formula": "AND(AND(AND(  {Auto Invoice} = TRUE(),FIND(\"https://hook.eu1.make.com\",{Generate Invoice})),\n{Factoring} !='yes'),{Factoring}!='Kandidat')",
+                "maxRecords": "1000",
+                "useColumnId": false
+            },
+            "metadata": {
+                "designer": {
+                    "x": 600,
+                    "y": 150,
+                    "name": "Search Projects"
+                },
+                "restore": {
+                    "expect": {
+                        "base": {
+                            "mode": "chose",
+                            "label": "Homestyling.se"
+                        },
+                        "sort": {
+                            "mode": "chose"
+                        },
+                        "view": {
+                            "mode": "chose"
+                        },
+                        "table": {
+                            "mode": "chose",
+                            "label": "Projekt"
+                        },
+                        "fields": {
+                            "mode": "edit"
+                        },
+                        "useColumnId": {
+                            "mode": "chose"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "airtable3"
+                            },
+                            "label": "homestyling OATH (User ID: usrqfoHur4casC5Tt)"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:airtable3,airtable2",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "base",
+                        "type": "select",
+                        "label": "Base",
+                        "required": true
+                    },
+                    {
+                        "name": "useColumnId",
+                        "type": "boolean",
+                        "label": "Use Column ID",
+                        "required": true
+                    },
+                    {
+                        "name": "table",
+                        "type": "select",
+                        "label": "Table",
+                        "required": true
+                    },
+                    {
+                        "name": "formula",
+                        "type": "text",
+                        "label": "Formula"
+                    },
+                    {
+                        "name": "maxRecords",
+                        "type": "integer",
+                        "label": "Limit"
+                    },
+                    {
+                        "name": "sort",
+                        "spec": [
+                            {
+                                "name": "field",
+                                "type": "select",
+                                "label": "Field",
+                                "dynamic": true,
+                                "options": []
+                            },
+                            {
+                                "name": "direction",
+                                "type": "select",
+                                "label": "Direction",
+                                "options": [
+                                    {
+                                        "label": "Descending",
+                                        "value": "desc"
+                                    },
+                                    {
+                                        "label": "Ascending",
+                                        "value": "asc"
+                                    }
+                                ]
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Sort"
+                    },
+                    {
+                        "name": "view",
+                        "type": "select",
+                        "label": "View"
+                    },
+                    {
+                        "name": "fields",
+                        "type": "select",
+                        "label": "Output Fields",
+                        "multiple": true
+                    },
+                    {
+                        "name": "base",
+                        "type": "select",
+                        "label": "Base",
+                        "required": true
+                    },
+                    {
+                        "name": "useColumnId",
+                        "type": "boolean",
+                        "label": "Use Column ID",
+                        "required": true
+                    },
+                    {
+                        "name": "table",
+                        "type": "select",
+                        "label": "Table",
+                        "required": true
+                    },
+                    {
+                        "name": "formula",
+                        "type": "text",
+                        "label": "Formula"
+                    },
+                    {
+                        "name": "maxRecords",
+                        "type": "integer",
+                        "label": "Limit"
+                    },
+                    {
+                        "name": "sort",
+                        "spec": [
+                            {
+                                "name": "field",
+                                "type": "select",
+                                "label": "Field",
+                                "dynamic": true,
+                                "options": []
+                            },
+                            {
+                                "name": "direction",
+                                "type": "select",
+                                "label": "Direction",
+                                "options": [
+                                    {
+                                        "label": "Descending",
+                                        "value": "desc"
+                                    },
+                                    {
+                                        "label": "Ascending",
+                                        "value": "asc"
+                                    }
+                                ]
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Sort"
+                    },
+                    {
+                        "name": "view",
+                        "type": "select",
+                        "label": "View"
+                    },
+                    {
+                        "name": "fields",
+                        "type": "select",
+                        "label": "Output Fields",
+                        "multiple": true
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "__IMTLENGTH__",
+                        "type": "uinteger",
+                        "label": "Total number of bundles"
+                    },
+                    {
+                        "name": "__IMTINDEX__",
+                        "type": "uinteger",
+                        "label": "Bundle order position"
+                    },
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "ID"
+                    },
+                    {
+                        "name": "createdTime",
+                        "type": "date",
+                        "label": "Created Time"
+                    },
+                    {
+                        "name": "Unikt ID",
+                        "type": "text",
+                        "label": "Unikt ID"
+                    },
+                    {
+                        "name": "Anteckningar Fakturering",
+                        "type": "text",
+                        "label": "Anteckningar Fakturering"
+                    },
+                    {
+                        "name": "Factoring",
+                        "type": "text",
+                        "label": "Factoring"
+                    },
+                    {
+                        "name": "Trygghetsmärkt styling",
+                        "type": "boolean",
+                        "label": "Trygghetsmärkt styling"
+                    },
+                    {
+                        "name": "Faktura Namn",
+                        "type": "text",
+                        "label": "Faktura Namn"
+                    },
+                    {
+                        "name": "Betalningstid",
+                        "type": "number",
+                        "label": "Betalningstid"
+                    },
+                    {
+                        "name": "Förfallodag Faktura",
+                        "type": "text",
+                        "label": "Förfallodag Faktura"
+                    },
+                    {
+                        "name": "Fakturering Veckohyror Url",
+                        "type": "array",
+                        "label": "Fakturering Veckohyror Url"
+                    },
+                    {
+                        "name": "Factoring Invoice Url",
+                        "type": "array",
+                        "label": "Factoring Invoice Url"
+                    },
+                    {
+                        "name": "Google drive link Normal Faktura",
+                        "type": "array",
+                        "label": "Google drive link Normal Faktura"
+                    },
+                    {
+                        "name": "Betal Status",
+                        "type": "text",
+                        "label": "Betal Status"
+                    },
+                    {
+                        "name": "Finans Status",
+                        "type": "text",
+                        "label": "Finans Status"
+                    },
+                    {
+                        "name": "Invoice File",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            },
+                            {
+                                "name": "filename",
+                                "type": "filename",
+                                "label": "File name"
+                            },
+                            {
+                                "name": "size",
+                                "type": "uinteger",
+                                "label": "Size"
+                            },
+                            {
+                                "name": "type",
+                                "type": "text",
+                                "label": "MIME type"
+                            },
+                            {
+                                "name": "thumbnails",
+                                "spec": [
+                                    {
+                                        "name": "small",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Small"
+                                    },
+                                    {
+                                        "name": "large",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Large"
+                                    },
+                                    {
+                                        "name": "full",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Full"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Thumbnails"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Invoice File"
+                    },
+                    {
+                        "name": "Factoring Faktura Datum",
+                        "type": "array",
+                        "label": "Factoring Faktura Datum"
+                    },
+                    {
+                        "name": "Faktura Datum",
+                        "time": false,
+                        "type": "date",
+                        "label": "Faktura Datum"
+                    },
+                    {
+                        "name": "Projekt Status",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Projekt Status"
+                    },
+                    {
+                        "name": "Faktura nummer (factoring / normal)",
+                        "type": "text",
+                        "label": "Faktura nummer (factoring / normal)"
+                    },
+                    {
+                        "name": "Faktura Nummer Factoring",
+                        "type": "array",
+                        "label": "Faktura Nummer Factoring"
+                    },
+                    {
+                        "name": "Generate Calendar Resource",
+                        "type": "text",
+                        "label": "Generate Calendar Resource"
+                    },
+                    {
+                        "name": "Säljare",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Säljare"
+                    },
+                    {
+                        "name": "Mäklarbyrå / Mäklare",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Mäklarbyrå / Mäklare"
+                    },
+                    {
+                        "name": "Veckor sedan Styling/Töm",
+                        "type": "text",
+                        "label": "Veckor sedan Styling/Töm"
+                    },
+                    {
+                        "name": "Veckohyra start efter",
+                        "type": "number",
+                        "label": "Veckohyra start efter"
+                    },
+                    {
+                        "name": "Faktura belopp",
+                        "type": "text",
+                        "label": "Faktura belopp"
+                    },
+                    {
+                        "name": "Styling pris",
+                        "type": "number",
+                        "label": "Styling pris"
+                    },
+                    {
+                        "name": "Rabatt",
+                        "type": "number",
+                        "label": "Rabatt"
+                    },
+                    {
+                        "name": "Factoring Invoice",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Factoring Invoice"
+                    },
+                    {
+                        "name": "Create Factoring Invoice",
+                        "type": "text",
+                        "label": "Create Factoring Invoice"
+                    },
+                    {
+                        "name": "Offert word doc",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            },
+                            {
+                                "name": "filename",
+                                "type": "filename",
+                                "label": "File name"
+                            },
+                            {
+                                "name": "size",
+                                "type": "uinteger",
+                                "label": "Size"
+                            },
+                            {
+                                "name": "type",
+                                "type": "text",
+                                "label": "MIME type"
+                            },
+                            {
+                                "name": "thumbnails",
+                                "spec": [
+                                    {
+                                        "name": "small",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Small"
+                                    },
+                                    {
+                                        "name": "large",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Large"
+                                    },
+                                    {
+                                        "name": "full",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Full"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Thumbnails"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Offert word doc"
+                    },
+                    {
+                        "name": "Fortnox Recieved Email PDF link",
+                        "type": "array",
+                        "label": "Fortnox Recieved Email PDF link"
+                    },
+                    {
+                        "name": "Fortnox - Status",
+                        "type": "array",
+                        "label": "Fortnox - Status"
+                    },
+                    {
+                        "name": "Faktura typ",
+                        "type": "text",
+                        "label": "Faktura typ"
+                    },
+                    {
+                        "name": "Flytta till Pågående",
+                        "type": "text",
+                        "label": "Flytta till Pågående"
+                    },
+                    {
+                        "name": "Styla Status",
+                        "type": "text",
+                        "label": "Styla Status"
+                    },
+                    {
+                        "name": "Styling Start Tid",
+                        "time": true,
+                        "type": "date",
+                        "label": "Styling Start Tid"
+                    },
+                    {
+                        "name": "Styling Slut Tid",
+                        "time": true,
+                        "type": "date",
+                        "label": "Styling Slut Tid"
+                    },
+                    {
+                        "name": "Styling Personal",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Styling Personal"
+                    },
+                    {
+                        "name": "Plocka status",
+                        "type": "text",
+                        "label": "Plocka status"
+                    },
+                    {
+                        "name": "Plocka Start",
+                        "time": true,
+                        "type": "date",
+                        "label": "Plocka Start"
+                    },
+                    {
+                        "name": "Plocka Slut",
+                        "time": true,
+                        "type": "date",
+                        "label": "Plocka Slut"
+                    },
+                    {
+                        "name": "Plock Personal",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Plock Personal"
+                    },
+                    {
+                        "name": "Bostads Typ",
+                        "type": "array",
+                        "label": "Bostads Typ",
+                        "dynamic": true,
+                        "editable": true
+                    },
+                    {
+                        "name": "Antal Rum",
+                        "type": "text",
+                        "label": "Antal Rum"
+                    },
+                    {
+                        "name": "Styling Tjänst",
+                        "type": "text",
+                        "label": "Styling Tjänst"
+                    },
+                    {
+                        "name": "Styling Nivå",
+                        "type": "text",
+                        "label": "Styling Nivå"
+                    },
+                    {
+                        "name": "Utkörning Status",
+                        "type": "text",
+                        "label": "Utkörning Status"
+                    },
+                    {
+                        "name": "Utkörnings start tid",
+                        "time": true,
+                        "type": "date",
+                        "label": "Utkörnings start tid"
+                    },
+                    {
+                        "name": "Utkörnings slut tid",
+                        "time": true,
+                        "type": "date",
+                        "label": "Utkörnings slut tid"
+                    },
+                    {
+                        "name": "Utkörning Resurser",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Utkörning Resurser"
+                    },
+                    {
+                        "name": "Datum Tömning Start",
+                        "time": true,
+                        "type": "date",
+                        "label": "Datum Tömning Start"
+                    },
+                    {
+                        "name": "Datum Tömning Slut",
+                        "time": true,
+                        "type": "date",
+                        "label": "Datum Tömning Slut"
+                    },
+                    {
+                        "name": "Tömning Resurser",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Tömning Resurser"
+                    },
+                    {
+                        "name": "Anteckning till Flyttpersonal",
+                        "type": "text",
+                        "label": "Anteckning till Flyttpersonal"
+                    },
+                    {
+                        "name": "Antal Trappor",
+                        "type": "text",
+                        "label": "Antal Trappor"
+                    },
+                    {
+                        "name": "Kundtyp",
+                        "type": "text",
+                        "label": "Kundtyp"
+                    },
+                    {
+                        "name": "Kopiera från kundinfo",
+                        "spec": [
+                            {
+                                "name": "label",
+                                "type": "text",
+                                "label": "Label"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Kopiera från kundinfo"
+                    },
+                    {
+                        "name": "Faktura Personnummer / Orgnummer",
+                        "type": "text",
+                        "label": "Faktura Personnummer / Orgnummer"
+                    },
+                    {
+                        "name": "Faktura Adress",
+                        "type": "text",
+                        "label": "Faktura Adress"
+                    },
+                    {
+                        "name": "Faktura Postnummer",
+                        "type": "text",
+                        "label": "Faktura Postnummer"
+                    },
+                    {
+                        "name": "Faktura Ort",
+                        "type": "text",
+                        "label": "Faktura Ort"
+                    },
+                    {
+                        "name": "Faktura Landskod",
+                        "type": "text",
+                        "label": "Faktura Landskod"
+                    },
+                    {
+                        "name": "Faktura nummer",
+                        "type": "text",
+                        "label": "Faktura nummer"
+                    },
+                    {
+                        "name": "Auto Invoice",
+                        "type": "boolean",
+                        "label": "Auto Invoice"
+                    },
+                    {
+                        "name": "Kund Namn",
+                        "type": "text",
+                        "label": "Kund Namn"
+                    },
+                    {
+                        "name": "Namn på dörren",
+                        "type": "text",
+                        "label": "Namn på dörren"
+                    },
+                    {
+                        "name": "Kund telefon ",
+                        "type": "text",
+                        "label": "Kund telefon "
+                    },
+                    {
+                        "name": "Kund telefon 2",
+                        "type": "text",
+                        "label": "Kund telefon 2"
+                    },
+                    {
+                        "name": "Kund E-mail",
+                        "type": "text",
+                        "label": "Kund E-mail"
+                    },
+                    {
+                        "name": "Kund E-mail2",
+                        "type": "text",
+                        "label": "Kund E-mail2"
+                    },
+                    {
+                        "name": "Magasinera pris",
+                        "type": "number",
+                        "label": "Magasinera pris"
+                    },
+                    {
+                        "name": "Magasinera lista",
+                        "type": "text",
+                        "label": "Magasinera lista",
+                        "multiline": true
+                    },
+                    {
+                        "name": "Transport pris",
+                        "type": "number",
+                        "label": "Transport pris"
+                    },
+                    {
+                        "name": "Återvinningsavgift Pris",
+                        "type": "number",
+                        "label": "Återvinningsavgift Pris"
+                    },
+                    {
+                        "name": "Open Google Maps",
+                        "spec": [
+                            {
+                                "name": "label",
+                                "type": "text",
+                                "label": "Label"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Open Google Maps"
+                    },
+                    {
+                        "name": "Anteckningar Koordinator",
+                        "type": "text",
+                        "label": "Anteckningar Koordinator"
+                    },
+                    {
+                        "name": "Anteckningar Säljare",
+                        "type": "text",
+                        "label": "Anteckningar Säljare",
+                        "multiline": true
+                    },
+                    {
+                        "name": "Presentkort",
+                        "type": "boolean",
+                        "label": "Presentkort"
+                    },
+                    {
+                        "name": "Fakturerat tid",
+                        "time": true,
+                        "type": "date",
+                        "label": "Fakturerat tid"
+                    },
+                    {
+                        "name": "Fortnox Invoice Status",
+                        "type": "array",
+                        "label": "Fortnox Invoice Status"
+                    },
+                    {
+                        "name": "Tömning Status",
+                        "type": "text",
+                        "label": "Tömning Status"
+                    },
+                    {
+                        "name": "Styling Adress",
+                        "type": "text",
+                        "label": "Styling Adress"
+                    },
+                    {
+                        "name": "Anteckning till Stylist",
+                        "type": "text",
+                        "label": "Anteckning till Stylist"
+                    },
+                    {
+                        "name": "Nya El uttag",
+                        "type": "text",
+                        "label": "Nya El uttag"
+                    },
+                    {
+                        "name": "Hiss",
+                        "type": "text",
+                        "label": "Hiss"
+                    },
+                    {
+                        "name": "Portkod",
+                        "type": "text",
+                        "label": "Portkod"
+                    },
+                    {
+                        "name": "Skapad av",
+                        "type": "text",
+                        "label": "Skapad av"
+                    },
+                    {
+                        "name": "Senast Redigerad av",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "email",
+                                "type": "text",
+                                "label": "Email"
+                            },
+                            {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Senast Redigerad av"
+                    },
+                    {
+                        "name": "Första mötet Start",
+                        "time": true,
+                        "type": "date",
+                        "label": "Första mötet Start"
+                    },
+                    {
+                        "name": "Första mötet Slut",
+                        "time": true,
+                        "type": "date",
+                        "label": "Första mötet Slut"
+                    },
+                    {
+                        "name": "Kund Postnummer",
+                        "type": "text",
+                        "label": "Kund Postnummer"
+                    },
+                    {
+                        "name": "Styling Ort",
+                        "type": "text",
+                        "label": "Styling Ort"
+                    },
+                    {
+                        "name": "Flytta till Godkänd Offert",
+                        "type": "text",
+                        "label": "Flytta till Godkänd Offert"
+                    },
+                    {
+                        "name": "Tackat Nej",
+                        "spec": [
+                            {
+                                "name": "label",
+                                "type": "text",
+                                "label": "Label"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Tackat Nej"
+                    },
+                    {
+                        "name": "Veckohyra Belopp",
+                        "type": "text",
+                        "label": "Veckohyra Belopp"
+                    },
+                    {
+                        "name": "Resize & Reorder",
+                        "spec": [
+                            {
+                                "name": "label",
+                                "type": "text",
+                                "label": "Label"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Resize & Reorder"
+                    },
+                    {
+                        "name": "Bilder första möte",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            },
+                            {
+                                "name": "filename",
+                                "type": "filename",
+                                "label": "File name"
+                            },
+                            {
+                                "name": "size",
+                                "type": "uinteger",
+                                "label": "Size"
+                            },
+                            {
+                                "name": "type",
+                                "type": "text",
+                                "label": "MIME type"
+                            },
+                            {
+                                "name": "thumbnails",
+                                "spec": [
+                                    {
+                                        "name": "small",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Small"
+                                    },
+                                    {
+                                        "name": "large",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Large"
+                                    },
+                                    {
+                                        "name": "full",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Full"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Thumbnails"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Bilder första möte"
+                    },
+                    {
+                        "name": "Foto Datum Tid",
+                        "time": true,
+                        "type": "date",
+                        "label": "Foto Datum Tid"
+                    },
+                    {
+                        "name": "Hämta Nyckel Start",
+                        "type": "text",
+                        "label": "Hämta Nyckel Start"
+                    },
+                    {
+                        "name": "Nyckel vid Tömmning",
+                        "type": "text",
+                        "label": "Nyckel vid Tömmning"
+                    },
+                    {
+                        "name": "Förfallodagar",
+                        "type": "number",
+                        "label": "Förfallodagar"
+                    },
+                    {
+                        "name": "Extra debitering text",
+                        "type": "text",
+                        "label": "Extra debitering text"
+                    },
+                    {
+                        "name": "Extra debitering belopp",
+                        "type": "number",
+                        "label": "Extra debitering belopp"
+                    },
+                    {
+                        "name": "Datum veckohyran startar",
+                        "time": true,
+                        "type": "date",
+                        "label": "Datum veckohyran startar"
+                    },
+                    {
+                        "name": "Veckor ute",
+                        "type": "number",
+                        "label": "Veckor ute"
+                    },
+                    {
+                        "name": "Dagar ute",
+                        "type": "number",
+                        "label": "Dagar ute"
+                    },
+                    {
+                        "name": "Hemnet länk",
+                        "type": "text",
+                        "label": "Hemnet länk"
+                    },
+                    {
+                        "name": "Mäklare Provision",
+                        "type": "array",
+                        "label": "Mäklare Provision",
+                        "dynamic": true,
+                        "editable": true
+                    },
+                    {
+                        "name": "Faktura / Säljare",
+                        "type": "text",
+                        "label": "Faktura / Säljare"
+                    },
+                    {
+                        "name": "ProjectAutoNumber",
+                        "type": "number",
+                        "label": "ProjectAutoNumber"
+                    },
+                    {
+                        "name": "Temp Images Field",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            },
+                            {
+                                "name": "filename",
+                                "type": "filename",
+                                "label": "File name"
+                            },
+                            {
+                                "name": "size",
+                                "type": "uinteger",
+                                "label": "Size"
+                            },
+                            {
+                                "name": "type",
+                                "type": "text",
+                                "label": "MIME type"
+                            },
+                            {
+                                "name": "thumbnails",
+                                "spec": [
+                                    {
+                                        "name": "small",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Small"
+                                    },
+                                    {
+                                        "name": "large",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Large"
+                                    },
+                                    {
+                                        "name": "full",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Full"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Thumbnails"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Temp Images Field"
+                    },
+                    {
+                        "name": "Lookup image copy",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Lookup image copy"
+                    },
+                    {
+                        "name": "Ring Kund",
+                        "type": "text",
+                        "label": "Ring Kund"
+                    },
+                    {
+                        "name": "Ring",
+                        "spec": [
+                            {
+                                "name": "label",
+                                "type": "text",
+                                "label": "Label"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Ring"
+                    },
+                    {
+                        "name": "Calendar Resource",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Calendar Resource"
+                    },
+                    {
+                        "name": "Calendar Resource Status",
+                        "type": "text",
+                        "label": "Calendar Resource Status"
+                    },
+                    {
+                        "name": "Updated ",
+                        "type": "date",
+                        "label": "Updated "
+                    },
+                    {
+                        "name": "Generate Invoice",
+                        "type": "text",
+                        "label": "Generate Invoice"
+                    },
+                    {
+                        "name": "Creator",
+                        "type": "text",
+                        "label": "Creator"
+                    },
+                    {
+                        "name": "Generate Invoice Notes",
+                        "type": "text",
+                        "label": "Generate Invoice Notes",
+                        "multiline": true
+                    },
+                    {
+                        "name": "Projekt Status Number",
+                        "type": "array",
+                        "label": "Projekt Status Number"
+                    },
+                    {
+                        "name": "Google Maps Search",
+                        "type": "text",
+                        "label": "Google Maps Search"
+                    },
+                    {
+                        "name": "Google Cache",
+                        "type": "text",
+                        "label": "Google Cache",
+                        "multiline": true
+                    },
+                    {
+                        "name": "Do not use: Generate Invoice",
+                        "type": "text",
+                        "label": "Do not use: Generate Invoice"
+                    },
+                    {
+                        "name": "Tömmning Video",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            },
+                            {
+                                "name": "filename",
+                                "type": "filename",
+                                "label": "File name"
+                            },
+                            {
+                                "name": "size",
+                                "type": "uinteger",
+                                "label": "Size"
+                            },
+                            {
+                                "name": "type",
+                                "type": "text",
+                                "label": "MIME type"
+                            },
+                            {
+                                "name": "thumbnails",
+                                "spec": [
+                                    {
+                                        "name": "small",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Small"
+                                    },
+                                    {
+                                        "name": "large",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Large"
+                                    },
+                                    {
+                                        "name": "full",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Full"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Thumbnails"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Tömmning Video"
+                    },
+                    {
+                        "name": "Varför tackade kund Nej Anteckning ",
+                        "type": "text",
+                        "label": "Varför tackade kund Nej Anteckning ",
+                        "multiline": true
+                    },
+                    {
+                        "name": "Efter bilder",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            },
+                            {
+                                "name": "filename",
+                                "type": "filename",
+                                "label": "File name"
+                            },
+                            {
+                                "name": "size",
+                                "type": "uinteger",
+                                "label": "Size"
+                            },
+                            {
+                                "name": "type",
+                                "type": "text",
+                                "label": "MIME type"
+                            },
+                            {
+                                "name": "thumbnails",
+                                "spec": [
+                                    {
+                                        "name": "small",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Small"
+                                    },
+                                    {
+                                        "name": "large",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Large"
+                                    },
+                                    {
+                                        "name": "full",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Full"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Thumbnails"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Efter bilder"
+                    },
+                    {
+                        "name": "Personlig Kalender",
+                        "type": "text",
+                        "label": "Personlig Kalender"
+                    },
+                    {
+                        "name": "Resize Status",
+                        "type": "text",
+                        "label": "Resize Status"
+                    },
+                    {
+                        "name": "Personlig Kalender 2",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Personlig Kalender 2"
+                    },
+                    {
+                        "name": "Table 13",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Table 13"
+                    },
+                    {
+                        "name": "Imagesync v2",
+                        "spec": [
+                            {
+                                "name": "label",
+                                "type": "text",
+                                "label": "Label"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Imagesync v2"
+                    },
+                    {
+                        "name": "Resize Status v2",
+                        "type": "text",
+                        "label": "Resize Status v2"
+                    },
+                    {
+                        "name": "GD to airtable Date Upload",
+                        "time": true,
+                        "type": "date",
+                        "label": "GD to airtable Date Upload"
+                    },
+                    {
+                        "name": "No. of Image Upload from GD",
+                        "type": "number",
+                        "label": "No. of Image Upload from GD"
+                    },
+                    {
+                        "name": "No. of Video Uploaded From GD",
+                        "type": "number",
+                        "label": "No. of Video Uploaded From GD"
+                    },
+                    {
+                        "name": "Archive - Airtable to GD Upload Status",
+                        "type": "text",
+                        "label": "Archive - Airtable to GD Upload Status"
+                    },
+                    {
+                        "name": "Airtable RecordID",
+                        "type": "text",
+                        "label": "Airtable RecordID"
+                    },
+                    {
+                        "name": "BD Link Before",
+                        "type": "text",
+                        "label": "BD Link Before"
+                    },
+                    {
+                        "name": "Google Drive Folder URL",
+                        "type": "text",
+                        "label": "Google Drive Folder URL"
+                    },
+                    {
+                        "name": "Start Time Archive Scenario",
+                        "time": true,
+                        "type": "date",
+                        "label": "Start Time Archive Scenario"
+                    },
+                    {
+                        "name": "No of Attachment",
+                        "type": "text",
+                        "label": "No of Attachment"
+                    },
+                    {
+                        "name": "Före Bilder",
+                        "type": "text",
+                        "label": "Före Bilder"
+                    },
+                    {
+                        "name": "Tömmnings Video",
+                        "type": "text",
+                        "label": "Tömmnings Video"
+                    },
+                    {
+                        "name": "Hemnet Bilder",
+                        "type": "text",
+                        "label": "Hemnet Bilder"
+                    },
+                    {
+                        "name": "Stylist Bilder",
+                        "type": "text",
+                        "label": "Stylist Bilder"
+                    },
+                    {
+                        "name": "GD to airtable start timestamp",
+                        "time": true,
+                        "type": "date",
+                        "label": "GD to airtable start timestamp"
+                    },
+                    {
+                        "name": "Modified field",
+                        "type": "date",
+                        "label": "Modified field"
+                    },
+                    {
+                        "name": "GD Folder Create Status",
+                        "type": "text",
+                        "label": "GD Folder Create Status"
+                    },
+                    {
+                        "name": "Copy to GD",
+                        "spec": [
+                            {
+                                "name": "label",
+                                "type": "text",
+                                "label": "Label"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Copy to GD"
+                    },
+                    {
+                        "name": "Before - Copy to GD Status",
+                        "type": "text",
+                        "label": "Before - Copy to GD Status"
+                    },
+                    {
+                        "name": "Lookup Projekt Status Name",
+                        "type": "array",
+                        "label": "Lookup Projekt Status Name"
+                    },
+                    {
+                        "name": "Recordid",
+                        "type": "array",
+                        "label": "Recordid"
+                    },
+                    {
+                        "name": "Create a Table",
+                        "spec": [
+                            {
+                                "name": "label",
+                                "type": "text",
+                                "label": "Label"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Create a Table"
+                    },
+                    {
+                        "name": "Link to Table",
+                        "type": "text",
+                        "label": "Link to Table"
+                    },
+                    {
+                        "name": "Validate Personnummer",
+                        "spec": [
+                            {
+                                "name": "label",
+                                "type": "text",
+                                "label": "Label"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Validate Personnummer"
+                    },
+                    {
+                        "name": "Personnummer Status",
+                        "type": "text",
+                        "label": "Personnummer Status"
+                    },
+                    {
+                        "name": "Field 132",
+                        "type": "text",
+                        "label": "Field 132"
+                    },
+                    {
+                        "name": "Antal filer Archive Drive",
+                        "type": "number",
+                        "label": "Antal filer Archive Drive"
+                    },
+                    {
+                        "name": "Antal filer Before Drive",
+                        "type": "number",
+                        "label": "Antal filer Before Drive"
+                    },
+                    {
+                        "name": "Antal filer Hemnet Drive",
+                        "type": "number",
+                        "label": "Antal filer Hemnet Drive"
+                    },
+                    {
+                        "name": "Antal filer Stylist Drive",
+                        "type": "number",
+                        "label": "Antal filer Stylist Drive"
+                    },
+                    {
+                        "name": "Antal bilder före mötet Airtable",
+                        "type": "text",
+                        "label": "Antal bilder före mötet Airtable"
+                    },
+                    {
+                        "name": "Compare Airtable Med Drive",
+                        "type": "text",
+                        "label": "Compare Airtable Med Drive"
+                    },
+                    {
+                        "name": "Antal bilder före mötet Airtable (from automation)",
+                        "type": "number",
+                        "label": "Antal bilder före mötet Airtable (from automation)"
+                    },
+                    {
+                        "name": "Image Updated Time",
+                        "type": "date",
+                        "label": "Image Updated Time"
+                    },
+                    {
+                        "name": "Extra Resurser",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Extra Resurser"
+                    },
+                    {
+                        "name": "Extra Task text",
+                        "type": "text",
+                        "label": "Extra Task text",
+                        "multiline": true
+                    },
+                    {
+                        "name": "Datum Extra Start",
+                        "time": true,
+                        "type": "date",
+                        "label": "Datum Extra Start"
+                    },
+                    {
+                        "name": "Datum Extra Slut",
+                        "time": true,
+                        "type": "date",
+                        "label": "Datum Extra Slut"
+                    },
+                    {
+                        "name": "Plock Övrigt Task text",
+                        "type": "text",
+                        "label": "Plock Övrigt Task text",
+                        "multiline": true
+                    },
+                    {
+                        "name": "Styling Övrigt Task text",
+                        "type": "text",
+                        "label": "Styling Övrigt Task text",
+                        "multiline": true
+                    },
+                    {
+                        "name": "Tömning Övrigt Task text",
+                        "type": "text",
+                        "label": "Tömning Övrigt Task text",
+                        "multiline": true
+                    },
+                    {
+                        "name": "Utkörning Övrigt Task text",
+                        "type": "text",
+                        "label": "Utkörning Övrigt Task text",
+                        "multiline": true
+                    },
+                    {
+                        "name": "Resurser copy",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Resurser copy"
+                    },
+                    {
+                        "name": "Resurser copy 2",
+                        "type": "text",
+                        "label": "Resurser copy 2"
+                    },
+                    {
+                        "name": "CalPlock",
+                        "type": "text",
+                        "label": "CalPlock"
+                    },
+                    {
+                        "name": "CalUtk",
+                        "type": "text",
+                        "label": "CalUtk"
+                    },
+                    {
+                        "name": "CalStyl",
+                        "type": "text",
+                        "label": "CalStyl"
+                    },
+                    {
+                        "name": "Faktura Månad",
+                        "type": "text",
+                        "label": "Faktura Månad"
+                    },
+                    {
+                        "name": "Status bokning",
+                        "type": "array",
+                        "label": "Status bokning",
+                        "dynamic": true,
+                        "editable": true
+                    },
+                    {
+                        "name": "Kommentar",
+                        "type": "text",
+                        "label": "Kommentar"
+                    },
+                    {
+                        "name": "Säljare Temp",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Säljare Temp"
+                    },
+                    {
+                        "name": "Styling Tjänst Text",
+                        "type": "text",
+                        "label": "Styling Tjänst Text"
+                    },
+                    {
+                        "name": "Mäklare Kontor",
+                        "type": "array",
+                        "label": "Mäklare Kontor"
+                    },
+                    {
+                        "name": "Mäklare Mobilnummer",
+                        "type": "array",
+                        "label": "Mäklare Mobilnummer"
+                    },
+                    {
+                        "name": "Mäklare namn",
+                        "type": "array",
+                        "label": "Mäklare namn"
+                    },
+                    {
+                        "name": "Mäklarkontor",
+                        "type": "array",
+                        "label": "Mäklarkontor"
+                    },
+                    {
+                        "name": "Utkörning Resurser Text",
+                        "type": "text",
+                        "label": "Utkörning Resurser Text"
+                    },
+                    {
+                        "name": "Styling Personal Text",
+                        "type": "text",
+                        "label": "Styling Personal Text"
+                    },
+                    {
+                        "name": "Styling Nivå Text",
+                        "type": "text",
+                        "label": "Styling Nivå Text"
+                    },
+                    {
+                        "name": "Säljare Text",
+                        "type": "text",
+                        "label": "Säljare Text"
+                    },
+                    {
+                        "name": "logs",
+                        "type": "text",
+                        "label": "logs",
+                        "multiline": true
+                    },
+                    {
+                        "name": "Plocka Resurs Kalender Starttid",
+                        "type": "array",
+                        "label": "Plocka Resurs Kalender Starttid"
+                    },
+                    {
+                        "name": "Generate Invoice copy",
+                        "type": "text",
+                        "label": "Generate Invoice copy"
+                    },
+                    {
+                        "name": "År-Vecka",
+                        "type": "text",
+                        "label": "År-Vecka"
+                    },
+                    {
+                        "name": "Invoice Url",
+                        "type": "text",
+                        "label": "Invoice Url"
+                    },
+                    {
+                        "name": "Invoice Name",
+                        "type": "text",
+                        "label": "Invoice Name"
+                    },
+                    {
+                        "name": "Tax reduction status",
+                        "type": "text",
+                        "label": "Tax reduction status"
+                    },
+                    {
+                        "name": "Tax reduction asked amount",
+                        "type": "text",
+                        "label": "Tax reduction asked amount"
+                    },
+                    {
+                        "name": "Field 188",
+                        "type": "text",
+                        "label": "Field 188"
+                    },
+                    {
+                        "name": "Tax Reduction Answer Text",
+                        "type": "text",
+                        "label": "Tax Reduction Answer Text",
+                        "multiline": true
+                    },
+                    {
+                        "name": "Veckor att fakturera",
+                        "type": "text",
+                        "label": "Veckor att fakturera"
+                    },
+                    {
+                        "name": "Veckohyror att fakturera",
+                        "type": "text",
+                        "label": "Veckohyror att fakturera"
+                    },
+                    {
+                        "name": "Styling Pris Ex Moms",
+                        "type": "text",
+                        "label": "Styling Pris Ex Moms"
+                    },
+                    {
+                        "name": "DEV GenerateInvoice ",
+                        "type": "text",
+                        "label": "DEV GenerateInvoice "
+                    },
+                    {
+                        "name": "Field 194",
+                        "type": "text",
+                        "label": "Field 194"
+                    },
+                    {
+                        "name": "Google Drive Folder URL backup",
+                        "type": "text",
+                        "label": "Google Drive Folder URL backup"
+                    },
+                    {
+                        "name": "Hemnet Bilder backup",
+                        "type": "text",
+                        "label": "Hemnet Bilder backup"
+                    },
+                    {
+                        "name": "Stylist Bilder backup",
+                        "type": "text",
+                        "label": "Stylist Bilder backup"
+                    },
+                    {
+                        "name": "Före Bilder backup",
+                        "type": "text",
+                        "label": "Före Bilder backup"
+                    },
+                    {
+                        "name": "Veckohyra skall faktureras",
+                        "type": "text",
+                        "label": "Veckohyra skall faktureras"
+                    },
+                    {
+                        "name": "Veckor mellan styling och Tömming",
+                        "type": "text",
+                        "label": "Veckor mellan styling och Tömming"
+                    },
+                    {
+                        "name": "Veckor att fakturera Klart",
+                        "type": "text",
+                        "label": "Veckor att fakturera Klart"
+                    },
+                    {
+                        "name": "Veckohyra att fakturera Klart",
+                        "type": "text",
+                        "label": "Veckohyra att fakturera Klart"
+                    },
+                    {
+                        "name": "Fakturor Veckohyra",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            },
+                            {
+                                "name": "filename",
+                                "type": "filename",
+                                "label": "File name"
+                            },
+                            {
+                                "name": "size",
+                                "type": "uinteger",
+                                "label": "Size"
+                            },
+                            {
+                                "name": "type",
+                                "type": "text",
+                                "label": "MIME type"
+                            },
+                            {
+                                "name": "thumbnails",
+                                "spec": [
+                                    {
+                                        "name": "small",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Small"
+                                    },
+                                    {
+                                        "name": "large",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Large"
+                                    },
+                                    {
+                                        "name": "full",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Full"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Thumbnails"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Fakturor Veckohyra"
+                    },
+                    {
+                        "name": "invoices",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "invoices"
+                    },
+                    {
+                        "name": "Roll (from Säljare)",
+                        "type": "array",
+                        "label": "Roll (from Säljare)"
+                    },
+                    {
+                        "name": "Fortnox Invoice Download",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Fortnox Invoice Download"
+                    },
+                    {
+                        "name": "Skapad tid",
+                        "type": "date",
+                        "label": "Skapad tid"
+                    },
+                    {
+                        "name": "Fortnox -  Invoice PDF",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            },
+                            {
+                                "name": "filename",
+                                "type": "filename",
+                                "label": "File name"
+                            },
+                            {
+                                "name": "size",
+                                "type": "uinteger",
+                                "label": "Size"
+                            },
+                            {
+                                "name": "type",
+                                "type": "text",
+                                "label": "MIME type"
+                            },
+                            {
+                                "name": "thumbnails",
+                                "spec": [
+                                    {
+                                        "name": "small",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Small"
+                                    },
+                                    {
+                                        "name": "large",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Large"
+                                    },
+                                    {
+                                        "name": "full",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Full"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Thumbnails"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Fortnox -  Invoice PDF"
+                    },
+                    {
+                        "name": "Hemnet",
+                        "type": "boolean",
+                        "label": "Hemnet"
+                    },
+                    {
+                        "name": "factoring days",
+                        "type": "number",
+                        "label": "factoring days"
+                    },
+                    {
+                        "name": "Sålda",
+                        "type": "boolean",
+                        "label": "Sålda"
+                    },
+                    {
+                        "name": "Kolla dessa",
+                        "type": "text",
+                        "label": "Kolla dessa"
+                    },
+                    {
+                        "name": "Faktura Personnummer Without Dash",
+                        "type": "text",
+                        "label": "Faktura Personnummer Without Dash"
+                    },
+                    {
+                        "name": "Factoring Invoice Status",
+                        "type": "array",
+                        "label": "Factoring Invoice Status"
+                    },
+                    {
+                        "name": "Factoring Number New and Old",
+                        "type": "text",
+                        "label": "Factoring Number New and Old"
+                    },
+                    {
+                        "name": "M comment",
+                        "type": "text",
+                        "label": "M comment"
+                    },
+                    {
+                        "name": "Fakturering Veckohyror table",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Fakturering Veckohyror table"
+                    },
+                    {
+                        "name": "Fakturering Veckohyror LEGACY (not fortnox)",
+                        "spec": [
+                            {
+                                "name": "label",
+                                "type": "text",
+                                "label": "Label"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Fakturering Veckohyror LEGACY (not fortnox)"
+                    },
+                    {
+                        "name": "Förfallodatum faktura",
+                        "time": false,
+                        "type": "date",
+                        "label": "Förfallodatum faktura"
+                    },
+                    {
+                        "name": "Bestriden",
+                        "type": "text",
+                        "label": "Bestriden"
+                    },
+                    {
+                        "name": "Prioritet",
+                        "type": "text",
+                        "label": "Prioritet"
+                    },
+                    {
+                        "name": "Factoring Faktura Datum Plus Info",
+                        "type": "array",
+                        "label": "Factoring Faktura Datum Plus Info"
+                    },
+                    {
+                        "name": "Dedline Prioritet",
+                        "type": "text",
+                        "label": "Dedline Prioritet"
+                    },
+                    {
+                        "name": "Veckohyror Som har Fakturerats",
+                        "type": "number",
+                        "label": "Veckohyror Som har Fakturerats"
+                    },
+                    {
+                        "name": "Veckohyror Som Har Fakturerat (ej cancelled)",
+                        "type": "array",
+                        "label": "Veckohyror Som Har Fakturerat (ej cancelled)"
+                    },
+                    {
+                        "name": "Antal Fakturor Veckohyror(ej cancelled)",
+                        "type": "array",
+                        "label": "Antal Fakturor Veckohyror(ej cancelled)"
+                    },
+                    {
+                        "name": "Betal Admin Ansvarig",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Betal Admin Ansvarig"
+                    },
+                    {
+                        "name": "Antal Veckohyror Att Fakturera",
+                        "type": "number",
+                        "label": "Antal Veckohyror Att Fakturera"
+                    },
+                    {
+                        "name": "Url to interface project details",
+                        "type": "text",
+                        "label": "Url to interface project details"
+                    },
+                    {
+                        "name": "Invoice Schedule",
+                        "type": "text",
+                        "label": "Invoice Schedule"
+                    },
+                    {
+                        "name": "Create Invoice",
+                        "type": "text",
+                        "label": "Create Invoice"
+                    },
+                    {
+                        "name": "Veckor Sedan Styling/Töm Förklarings",
+                        "type": "text",
+                        "label": "Veckor Sedan Styling/Töm Förklarings"
+                    },
+                    {
+                        "name": "Manuellt Veckohyra Belopp",
+                        "type": "number",
+                        "label": "Manuellt Veckohyra Belopp"
+                    },
+                    {
+                        "name": "År-Månad",
+                        "type": "text",
+                        "label": "År-Månad"
+                    },
+                    {
+                        "name": "Dev Manuelt veckohyra timer",
+                        "type": "date",
+                        "label": "Dev Manuelt veckohyra timer"
+                    },
+                    {
+                        "name": "Dev Manuelt Diff",
+                        "type": "text",
+                        "label": "Dev Manuelt Diff"
+                    },
+                    {
+                        "name": "Sent an veckhyror email?",
+                        "type": "text",
+                        "label": "Sent an veckhyror email?"
+                    },
+                    {
+                        "name": "Automation Email",
+                        "type": "text",
+                        "label": "Automation Email"
+                    },
+                    {
+                        "name": "Email | Styling Slut + Antal Veckor - 2 Weeks",
+                        "type": "text",
+                        "label": "Email | Styling Slut + Antal Veckor - 2 Weeks"
+                    },
+                    {
+                        "name": "Styling Månad",
+                        "type": "text",
+                        "label": "Styling Månad"
+                    },
+                    {
+                        "name": "Fakturingsfiler",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            },
+                            {
+                                "name": "filename",
+                                "type": "filename",
+                                "label": "File name"
+                            },
+                            {
+                                "name": "size",
+                                "type": "uinteger",
+                                "label": "Size"
+                            },
+                            {
+                                "name": "type",
+                                "type": "text",
+                                "label": "MIME type"
+                            },
+                            {
+                                "name": "thumbnails",
+                                "spec": [
+                                    {
+                                        "name": "small",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Small"
+                                    },
+                                    {
+                                        "name": "large",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Large"
+                                    },
+                                    {
+                                        "name": "full",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Full"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Thumbnails"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Fakturingsfiler"
+                    },
+                    {
+                        "name": "Styling Slut Tid Count Down",
+                        "type": "text",
+                        "label": "Styling Slut Tid Count Down"
+                    },
+                    {
+                        "name": "Fina bilder",
+                        "type": "boolean",
+                        "label": "Fina bilder"
+                    },
+                    {
+                        "name": "Last Modified",
+                        "type": "date",
+                        "label": "Last Modified"
+                    },
+                    {
+                        "name": "Faktoring Betalningstid Special",
+                        "type": "number",
+                        "label": "Faktoring Betalningstid Special"
+                    },
+                    {
+                        "name": "Faktoring Betalningstid",
+                        "type": "text",
+                        "label": "Faktoring Betalningstid"
+                    },
+                    {
+                        "name": "Veckohyror Betalningstid Special",
+                        "type": "number",
+                        "label": "Veckohyror Betalningstid Special"
+                    },
+                    {
+                        "name": "Veckohyror Betalningstid",
+                        "type": "text",
+                        "label": "Veckohyror Betalningstid"
+                    },
+                    {
+                        "name": "Last Modified 2",
+                        "type": "date",
+                        "label": "Last Modified 2"
+                    },
+                    {
+                        "name": "Calculation",
+                        "type": "text",
+                        "label": "Calculation"
+                    },
+                    {
+                        "name": "Date sending Veckohyra email",
+                        "type": "text",
+                        "label": "Date sending Veckohyra email"
+                    },
+                    {
+                        "name": "days left before sending email",
+                        "type": "text",
+                        "label": "days left before sending email"
+                    },
+                    {
+                        "name": "Fakturering Veckohyror (Via Fortnox)",
+                        "spec": [
+                            {
+                                "name": "label",
+                                "type": "text",
+                                "label": "Label"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Fakturering Veckohyror (Via Fortnox)"
+                    },
+                    {
+                        "name": "Last Modified 3",
+                        "type": "date",
+                        "label": "Last Modified 3"
+                    },
+                    {
+                        "name": "days left before sending email copy",
+                        "type": "text",
+                        "label": "days left before sending email copy"
+                    },
+                    {
+                        "name": "Count of veckohyra invoiced",
+                        "type": "array",
+                        "label": "Count of veckohyra invoiced"
+                    },
+                    {
+                        "name": "Veckohyror Period Text",
+                        "type": "text",
+                        "label": "Veckohyror Period Text"
+                    },
+                    {
+                        "name": "Date that veckohyror is starting",
+                        "type": "text",
+                        "label": "Date that veckohyror is starting"
+                    },
+                    {
+                        "name": "Veckohyror Period on the last invoice",
+                        "time": false,
+                        "type": "date",
+                        "label": "Veckohyror Period on the last invoice"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 6,
+            "module": "builtin:BasicRouter",
+            "version": 1,
+            "mapper": null,
+            "metadata": {
+                "designer": {
+                    "x": 900,
+                    "y": 150
+                }
+            },
+            "routes": [
+                {
+                    "flow": [
+                        {
+                            "id": 4,
+                            "module": "http:ActionSendData",
+                            "version": 3,
+                            "parameters": {
+                                "handleErrors": false,
+                                "useNewZLibDeCompress": true
+                            },
+                            "filter": {
+                                "name": "Exists?",
+                                "conditions": [
+                                    [
+                                        {
+                                            "a": "{{1.`__IMTLENGTH__`}}",
+                                            "b": "0",
+                                            "o": "number:greater"
+                                        }
+                                    ]
+                                ]
+                            },
+                            "mapper": {
+                                "ca": "",
+                                "qs": [],
+                                "url": "{{1.`Generate Invoice`}}",
+                                "gzip": true,
+                                "method": "get",
+                                "headers": [],
+                                "timeout": "",
+                                "useMtls": false,
+                                "authPass": "",
+                                "authUser": "",
+                                "bodyType": "",
+                                "serializeUrl": false,
+                                "shareCookies": false,
+                                "parseResponse": false,
+                                "followRedirect": true,
+                                "useQuerystring": false,
+                                "followAllRedirects": false,
+                                "rejectUnauthorized": true
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 1200,
+                                    "y": 0,
+                                    "name": "Send Webhook to another Scenario"
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "qs": {
+                                            "mode": "chose"
+                                        },
+                                        "method": {
+                                            "mode": "chose",
+                                            "label": "GET"
+                                        },
+                                        "headers": {
+                                            "mode": "chose"
+                                        },
+                                        "bodyType": {
+                                            "label": "Empty"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "handleErrors",
+                                        "type": "boolean",
+                                        "label": "Evaluate all states as errors (except for 2xx and 3xx )",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "useNewZLibDeCompress",
+                                        "type": "hidden"
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "name": "url",
+                                        "type": "url",
+                                        "label": "URL",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "serializeUrl",
+                                        "type": "boolean",
+                                        "label": "Serialize URL",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "method",
+                                        "type": "select",
+                                        "label": "Method",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                "get",
+                                                "head",
+                                                "post",
+                                                "put",
+                                                "patch",
+                                                "delete",
+                                                "options"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "headers",
+                                        "spec": [
+                                            {
+                                                "name": "name",
+                                                "type": "text",
+                                                "label": "Name",
+                                                "required": true
+                                            },
+                                            {
+                                                "name": "value",
+                                                "type": "text",
+                                                "label": "Value"
+                                            }
+                                        ],
+                                        "type": "array",
+                                        "label": "Headers"
+                                    },
+                                    {
+                                        "name": "qs",
+                                        "spec": [
+                                            {
+                                                "name": "name",
+                                                "type": "text",
+                                                "label": "Name",
+                                                "required": true
+                                            },
+                                            {
+                                                "name": "value",
+                                                "type": "text",
+                                                "label": "Value"
+                                            }
+                                        ],
+                                        "type": "array",
+                                        "label": "Query String"
+                                    },
+                                    {
+                                        "name": "bodyType",
+                                        "type": "select",
+                                        "label": "Body type",
+                                        "validate": {
+                                            "enum": [
+                                                "raw",
+                                                "x_www_form_urlencoded",
+                                                "multipart_form_data"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "parseResponse",
+                                        "type": "boolean",
+                                        "label": "Parse response",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "authUser",
+                                        "type": "text",
+                                        "label": "User name"
+                                    },
+                                    {
+                                        "name": "authPass",
+                                        "type": "password",
+                                        "label": "Password"
+                                    },
+                                    {
+                                        "name": "timeout",
+                                        "type": "uinteger",
+                                        "label": "Timeout",
+                                        "validate": {
+                                            "max": 300,
+                                            "min": 1
+                                        }
+                                    },
+                                    {
+                                        "name": "shareCookies",
+                                        "type": "boolean",
+                                        "label": "Share cookies with other HTTP modules",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "ca",
+                                        "type": "cert",
+                                        "label": "Self-signed certificate"
+                                    },
+                                    {
+                                        "name": "rejectUnauthorized",
+                                        "type": "boolean",
+                                        "label": "Reject connections that are using unverified (self-signed) certificates",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "followRedirect",
+                                        "type": "boolean",
+                                        "label": "Follow redirect",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "useQuerystring",
+                                        "type": "boolean",
+                                        "label": "Disable serialization of multiple same query string keys as arrays",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "gzip",
+                                        "type": "boolean",
+                                        "label": "Request compressed content",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "useMtls",
+                                        "type": "boolean",
+                                        "label": "Use Mutual TLS",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "followAllRedirects",
+                                        "type": "boolean",
+                                        "label": "Follow all redirect",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 10,
+                            "module": "util:GetVariable2",
+                            "version": 1,
+                            "parameters": {},
+                            "mapper": {
+                                "name": "invoices"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 1500,
+                                    "y": 0
+                                },
+                                "restore": {},
+                                "expect": [
+                                    {
+                                        "name": "name",
+                                        "type": "text",
+                                        "label": "Variable name",
+                                        "required": true
+                                    }
+                                ],
+                                "interface": [
+                                    {
+                                        "name": "invoices",
+                                        "type": "any",
+                                        "label": "invoices"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 11,
+                            "module": "util:SetVariable2",
+                            "version": 1,
+                            "parameters": {},
+                            "mapper": {
+                                "name": "invoices",
+                                "scope": "roundtrip",
+                                "value": "{{if(10.invoices = emptystring; 1.`Unikt ID`; 10.invoices + \",\" + 1.`Unikt ID`)}}"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 1800,
+                                    "y": 0
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "scope": {
+                                            "label": "One cycle"
+                                        }
+                                    }
+                                },
+                                "expect": [
+                                    {
+                                        "name": "name",
+                                        "type": "text",
+                                        "label": "Variable name",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "scope",
+                                        "type": "select",
+                                        "label": "Variable lifetime",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                "roundtrip",
+                                                "execution"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "value",
+                                        "type": "any",
+                                        "label": "Variable value"
+                                    }
+                                ],
+                                "interface": [
+                                    {
+                                        "name": "invoices",
+                                        "type": "any",
+                                        "label": "invoices"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "flow": [
+                        {
+                            "id": 12,
+                            "module": "util:GetVariable2",
+                            "version": 1,
+                            "parameters": {},
+                            "mapper": {
+                                "name": "invoices"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 1200,
+                                    "y": 300
+                                },
+                                "restore": {},
+                                "expect": [
+                                    {
+                                        "name": "name",
+                                        "type": "text",
+                                        "label": "Variable name",
+                                        "required": true
+                                    }
+                                ],
+                                "interface": [
+                                    {
+                                        "name": "invoices",
+                                        "type": "any",
+                                        "label": "invoices"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 7,
+                            "module": "slack:CreateMessage",
+                            "version": 4,
+                            "parameters": {
+                                "__IMTCONN__": 741391
+                            },
+                            "filter": {
+                                "name": "last one send message",
+                                "conditions": [
+                                    [
+                                        {
+                                            "a": "{{1.`__IMTLENGTH__`}}",
+                                            "b": "{{1.`__IMTINDEX__`}}",
+                                            "o": "number:equal"
+                                        }
+                                    ],
+                                    [
+                                        {
+                                            "a": "{{1.`__IMTLENGTH__`}}",
+                                            "b": "0",
+                                            "o": "number:equal"
+                                        }
+                                    ]
+                                ]
+                            },
+                            "mapper": {
+                                "text": "Invoice Check: {{now}}\n\nNumber of invoices found that SHOULD be invoiced:  (Automation queued/sent it to invoice scenario)\n{{1.`__IMTLENGTH__`}}\n\n{{if(1.`__IMTLENGTH__` != 0; \" the invoices have been automatically created\"; emptystring)}}\n\n{{if(12.invoices != emptystring; \"Following projects was sent to invoice: \" + 12.invoices; emptystring)}}",
+                                "parse": false,
+                                "mrkdwn": true,
+                                "channel": "C0314KLBURZ",
+                                "channelType": "public",
+                                "channelWType": "list"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 1500,
+                                    "y": 300
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "parse": {
+                                            "mode": "chose"
+                                        },
+                                        "mrkdwn": {
+                                            "mode": "chose"
+                                        },
+                                        "channel": {
+                                            "mode": "chose",
+                                            "label": "homestyling"
+                                        },
+                                        "link_names": {
+                                            "mode": "chose"
+                                        },
+                                        "channelType": {
+                                            "label": "Public channel"
+                                        },
+                                        "channelWType": {
+                                            "label": "Select from the list"
+                                        },
+                                        "unfurl_links": {
+                                            "mode": "chose"
+                                        },
+                                        "unfurl_media": {
+                                            "mode": "chose"
+                                        },
+                                        "reply_broadcast": {
+                                            "mode": "chose"
+                                        }
+                                    },
+                                    "parameters": {
+                                        "__IMTCONN__": {
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "slack3"
+                                            },
+                                            "label": "Slack Homestyling rhgroup.dev (integromat)"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "__IMTCONN__",
+                                        "type": "account:slack2,slack3",
+                                        "label": "Connection",
+                                        "required": true
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "name": "channelWType",
+                                        "type": "select",
+                                        "label": "Enter a channel ID or name",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                "manualy",
+                                                "list"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "text",
+                                        "type": "text",
+                                        "label": "Text"
+                                    },
+                                    {
+                                        "name": "blocks",
+                                        "type": "text",
+                                        "label": "Blocks"
+                                    },
+                                    {
+                                        "name": "thread_ts",
+                                        "type": "text",
+                                        "label": "Thread message ID (time stamp)"
+                                    },
+                                    {
+                                        "name": "reply_broadcast",
+                                        "type": "boolean",
+                                        "label": "Reply broadcast"
+                                    },
+                                    {
+                                        "name": "link_names",
+                                        "type": "boolean",
+                                        "label": "Link names"
+                                    },
+                                    {
+                                        "name": "parse",
+                                        "type": "boolean",
+                                        "label": "Parse message text"
+                                    },
+                                    {
+                                        "name": "mrkdwn",
+                                        "type": "boolean",
+                                        "label": "Use markdown"
+                                    },
+                                    {
+                                        "name": "unfurl_links",
+                                        "type": "boolean",
+                                        "label": "Unfurl primarily text-based content"
+                                    },
+                                    {
+                                        "name": "unfurl_media",
+                                        "type": "boolean",
+                                        "label": "Unfurl media content"
+                                    },
+                                    {
+                                        "name": "icon_emoji",
+                                        "type": "text",
+                                        "label": "Icon emoji"
+                                    },
+                                    {
+                                        "name": "icon_url",
+                                        "type": "url",
+                                        "label": "Icon url"
+                                    },
+                                    {
+                                        "name": "username",
+                                        "type": "text",
+                                        "label": "User name"
+                                    },
+                                    {
+                                        "name": "channelType",
+                                        "type": "select",
+                                        "label": "Channel type",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                "public",
+                                                "private",
+                                                "im",
+                                                "mpim"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "channel",
+                                        "type": "select",
+                                        "label": "Public channel",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "module": "google-email:ActionSendEmail",
+                            "version": 2,
+                            "parameters": {
+                                "account": 36706
+                            },
+                            "filter": {
+                                "name": "",
+                                "conditions": [
+                                    [
+                                        {
+                                            "a": "{{1.`__IMTLENGTH__`}}",
+                                            "b": "0",
+                                            "o": "text:notequal"
+                                        }
+                                    ]
+                                ]
+                            },
+                            "mapper": {
+                                "cc": [],
+                                "to": [
+                                    "faktura@homestyling.se"
+                                ],
+                                "bcc": [],
+                                "from": "",
+                                "html": "Unikt ID: {{1.`Unikt ID`}}\n",
+                                "subject": "Invoice to be Send",
+                                "attachments": []
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 1800,
+                                    "y": 300
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "cc": {
+                                            "mode": "chose"
+                                        },
+                                        "to": {
+                                            "mode": "chose",
+                                            "items": [
+                                                null
+                                            ]
+                                        },
+                                        "bcc": {
+                                            "mode": "chose"
+                                        },
+                                        "attachments": {
+                                            "mode": "chose"
+                                        }
+                                    },
+                                    "parameters": {
+                                        "account": {
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "google-restricted"
+                                            },
+                                            "label": "Google Faktura Homestlyling (faktura@homestyling.se)"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "account",
+                                        "type": "account:google-restricted",
+                                        "label": "Connection",
+                                        "required": true
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "name": "from",
+                                        "type": "text",
+                                        "label": "From"
+                                    },
+                                    {
+                                        "name": "to",
+                                        "spec": {
+                                            "name": "value",
+                                            "type": "email",
+                                            "label": "Email address",
+                                            "required": true
+                                        },
+                                        "type": "array",
+                                        "label": "To",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "subject",
+                                        "type": "text",
+                                        "label": "Subject"
+                                    },
+                                    {
+                                        "name": "html",
+                                        "type": "text",
+                                        "label": "Content"
+                                    },
+                                    {
+                                        "name": "attachments",
+                                        "spec": [
+                                            {
+                                                "name": "fileName",
+                                                "type": "filename",
+                                                "label": "File name",
+                                                "required": true,
+                                                "semantic": "file:name"
+                                            },
+                                            {
+                                                "name": "data",
+                                                "type": "buffer",
+                                                "label": "Data",
+                                                "required": true,
+                                                "semantic": "file:data"
+                                            },
+                                            {
+                                                "name": "cid",
+                                                "type": "text",
+                                                "label": "Content-ID"
+                                            }
+                                        ],
+                                        "type": "array",
+                                        "label": "Attachments"
+                                    },
+                                    {
+                                        "name": "cc",
+                                        "spec": {
+                                            "name": "value",
+                                            "type": "email",
+                                            "label": "Email address"
+                                        },
+                                        "type": "array",
+                                        "label": "Copy recipient"
+                                    },
+                                    {
+                                        "name": "bcc",
+                                        "spec": {
+                                            "name": "value",
+                                            "type": "email",
+                                            "label": "Email address"
+                                        },
+                                        "type": "array",
+                                        "label": "Blind copy recipient"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "metadata": {
+        "instant": false,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "autoCommitTriggerLast": true,
+            "sequential": false,
+            "slots": null,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false,
+            "freshVariables": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "eu1.make.com"
+    }
+}

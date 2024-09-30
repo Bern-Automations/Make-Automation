@@ -1,0 +1,2516 @@
+{
+    "name": "zoom create room  | should be active",
+    "flow": [
+        {
+            "id": 2,
+            "module": "gateway:CustomWebHook",
+            "version": 1,
+            "parameters": {
+                "hook": 118479,
+                "maxResults": 1
+            },
+            "mapper": {},
+            "metadata": {
+                "designer": {
+                    "x": -628,
+                    "y": -36
+                },
+                "restore": {
+                    "parameters": {
+                        "hook": {
+                            "data": {
+                                "editable": "true"
+                            },
+                            "label": "Rocket Zoom "
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "hook",
+                        "type": "hook:gateway-webhook",
+                        "label": "Webhook",
+                        "required": true
+                    },
+                    {
+                        "name": "maxResults",
+                        "type": "number",
+                        "label": "Maximum number of results"
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "project",
+                        "type": "text"
+                    },
+                    {
+                        "name": "recordid",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 1,
+            "module": "zoom:createMeeting",
+            "version": 2,
+            "parameters": {
+                "__IMTCONN__": 2641961
+            },
+            "mapper": {
+                "type": 2,
+                "topic": "{{2.project}} {{2.taskname}}",
+                "userId": "Hyjuw7uwRya50KxZgnqtrA",
+                "settings": {
+                    "audio": "voip",
+                    "waiting_room": false,
+                    "approval_type": 0
+                },
+                "timezone": "Europe/Stockholm",
+                "start_time": "{{now}}"
+            },
+            "metadata": {
+                "designer": {
+                    "x": -278,
+                    "y": -41
+                },
+                "restore": {
+                    "expect": {
+                        "type": {
+                            "mode": "chose",
+                            "label": "Scheduled meeting"
+                        },
+                        "userId": {
+                            "mode": "chose",
+                            "label": "martinerikssonfakt@gmail.com"
+                        },
+                        "use_pmi": {
+                            "mode": "chose"
+                        },
+                        "settings": {
+                            "nested": {
+                                "audio": {
+                                    "mode": "chose",
+                                    "label": "VoIP only"
+                                },
+                                "watermark": {
+                                    "mode": "chose"
+                                },
+                                "cn_meeting": {
+                                    "mode": "chose"
+                                },
+                                "host_video": {
+                                    "mode": "chose"
+                                },
+                                "in_meeting": {
+                                    "mode": "chose"
+                                },
+                                "waiting_room": {
+                                    "mode": "chose"
+                                },
+                                "approval_type": {
+                                    "mode": "chose",
+                                    "label": "Automatically Approve"
+                                },
+                                "auto_recording": {
+                                    "mode": "chose",
+                                    "label": "Empty"
+                                },
+                                "mute_upon_entry": {
+                                    "mode": "chose"
+                                },
+                                "alternative_hosts": {
+                                    "mode": "chose"
+                                },
+                                "participant_video": {
+                                    "mode": "chose"
+                                },
+                                "close_registration": {
+                                    "mode": "chose"
+                                },
+                                "meeting_authentication": {
+                                    "mode": "chose"
+                                },
+                                "global_dial_in_countries": {
+                                    "mode": "chose"
+                                },
+                                "additional_data_center_regions": {
+                                    "mode": "chose"
+                                },
+                                "registrants_confirmation_email": {
+                                    "mode": "chose"
+                                },
+                                "registrants_email_notification": {
+                                    "mode": "chose"
+                                }
+                            }
+                        },
+                        "timezone": {
+                            "mode": "chose",
+                            "label": "Stockholm"
+                        },
+                        "schedule_for": {
+                            "mode": "edit"
+                        },
+                        "join_before_host": {
+                            "mode": "chose"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "zoom2"
+                            },
+                            "label": "2024 New zoom martinerikssonfakt (Hyjuw7uwRya50KxZgnqtrA)"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:zoom2",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "userId",
+                        "type": "select",
+                        "label": "User ID",
+                        "required": true
+                    },
+                    {
+                        "name": "topic",
+                        "type": "text",
+                        "label": "Topic"
+                    },
+                    {
+                        "name": "type",
+                        "type": "select",
+                        "label": "Type",
+                        "validate": {
+                            "enum": [
+                                1,
+                                2,
+                                3,
+                                8
+                            ]
+                        }
+                    },
+                    {
+                        "mode": "edit",
+                        "name": "schedule_for",
+                        "type": "select",
+                        "label": "Schedule for User ID or Email"
+                    },
+                    {
+                        "name": "password",
+                        "type": "text",
+                        "label": "Password",
+                        "validate": {
+                            "max": 10,
+                            "pattern": "[a-zA-Z0-9@\\-_*!]+"
+                        }
+                    },
+                    {
+                        "name": "agenda",
+                        "type": "text",
+                        "label": "Agenda",
+                        "validate": {
+                            "max": 2000
+                        }
+                    },
+                    {
+                        "name": "settings",
+                        "spec": [
+                            {
+                                "name": "host_video",
+                                "type": "boolean",
+                                "label": "Start Host Video"
+                            },
+                            {
+                                "name": "participant_video",
+                                "type": "boolean",
+                                "label": "Start Participant Video"
+                            },
+                            {
+                                "name": "cn_meeting",
+                                "type": "boolean",
+                                "label": "Host Meeting in China"
+                            },
+                            {
+                                "name": "in_meeting",
+                                "type": "boolean",
+                                "label": "Host Meeting in India"
+                            },
+                            {
+                                "name": "mute_upon_entry",
+                                "type": "boolean",
+                                "label": "Mute Upon Entry"
+                            },
+                            {
+                                "name": "watermark",
+                                "type": "boolean",
+                                "label": "Add Watermark"
+                            },
+                            {
+                                "name": "approval_type",
+                                "type": "select",
+                                "label": "Approval Type",
+                                "validate": {
+                                    "enum": [
+                                        0,
+                                        1,
+                                        2
+                                    ]
+                                }
+                            },
+                            {
+                                "name": "audio",
+                                "type": "select",
+                                "label": "Audio",
+                                "validate": {
+                                    "enum": [
+                                        "both",
+                                        "telephony",
+                                        "voip"
+                                    ]
+                                }
+                            },
+                            {
+                                "name": "auto_recording",
+                                "type": "select",
+                                "label": "Auto Recording",
+                                "validate": {
+                                    "enum": [
+                                        "local",
+                                        "cloud",
+                                        "none"
+                                    ]
+                                }
+                            },
+                            {
+                                "name": "close_registration",
+                                "type": "boolean",
+                                "label": "Close Registration"
+                            },
+                            {
+                                "name": "waiting_room",
+                                "type": "boolean",
+                                "label": "Enable Waiting Room"
+                            },
+                            {
+                                "name": "global_dial_in_countries",
+                                "type": "select",
+                                "label": "Global Dial In Countries",
+                                "multiple": true
+                            },
+                            {
+                                "name": "contact_name",
+                                "type": "text",
+                                "label": "Contact Name"
+                            },
+                            {
+                                "name": "contact_email",
+                                "type": "email",
+                                "label": "Contact Email"
+                            },
+                            {
+                                "name": "registrants_email_notification",
+                                "type": "boolean",
+                                "label": "Registrants Email Notification"
+                            },
+                            {
+                                "name": "registrants_confirmation_email",
+                                "type": "boolean",
+                                "label": "Registrants Confirmation Email"
+                            },
+                            {
+                                "name": "meeting_authentication",
+                                "type": "boolean",
+                                "label": "Only Authenticated Users"
+                            },
+                            {
+                                "name": "additional_data_center_regions",
+                                "spec": {
+                                    "name": "value",
+                                    "type": "text",
+                                    "label": "Additional Data Center Region"
+                                },
+                                "type": "array",
+                                "label": "Additional Data Center Regions"
+                            },
+                            {
+                                "name": "alternative_hosts",
+                                "spec": {
+                                    "name": "value",
+                                    "type": "select",
+                                    "label": "Alternative Host ID or Email",
+                                    "dynamic": true,
+                                    "options": [],
+                                    "required": true
+                                },
+                                "type": "array",
+                                "label": "Alternative Hosts"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Settings"
+                    },
+                    {
+                        "name": "start_time",
+                        "type": "date",
+                        "label": "Start Time"
+                    },
+                    {
+                        "name": "timezone",
+                        "type": "select",
+                        "label": "Timezone"
+                    },
+                    {
+                        "name": "duration",
+                        "type": "uinteger",
+                        "label": "Duration in Minutes"
+                    },
+                    {
+                        "name": "join_before_host",
+                        "type": "boolean",
+                        "label": "Join Before Host"
+                    },
+                    {
+                        "name": "use_pmi",
+                        "type": "boolean",
+                        "label": "Use Personal Meeting ID"
+                    }
+                ],
+                "advanced": true
+            }
+        },
+        {
+            "id": 7,
+            "module": "airtable:ActionGetRecord",
+            "version": 3,
+            "parameters": {
+                "__IMTCONN__": 771874
+            },
+            "mapper": {
+                "id": "{{2.recordid}}",
+                "base": "appLEhSvk48VvE4n7",
+                "table": "tbl6eC4gPGXW9C988",
+                "useColumnId": false
+            },
+            "metadata": {
+                "designer": {
+                    "x": -52,
+                    "y": -69
+                },
+                "restore": {
+                    "expect": {
+                        "base": {
+                            "mode": "chose",
+                            "label": "Internal Project Plan"
+                        },
+                        "table": {
+                            "mode": "chose",
+                            "label": "Tasks"
+                        },
+                        "useColumnId": {
+                            "mode": "chose"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "airtable2"
+                            },
+                            "label": "tech offertizer TOKEN"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:airtable3,airtable2",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "base",
+                        "type": "select",
+                        "label": "Base",
+                        "required": true
+                    },
+                    {
+                        "name": "useColumnId",
+                        "type": "boolean",
+                        "label": "Use Column ID",
+                        "required": true
+                    },
+                    {
+                        "name": "base",
+                        "type": "select",
+                        "label": "Base",
+                        "required": true
+                    },
+                    {
+                        "name": "useColumnId",
+                        "type": "boolean",
+                        "label": "Use Column ID",
+                        "required": true
+                    },
+                    {
+                        "name": "table",
+                        "type": "select",
+                        "label": "Table",
+                        "required": true
+                    },
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "Record ID",
+                        "required": true
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "ID"
+                    },
+                    {
+                        "name": "createdTime",
+                        "type": "date",
+                        "label": "Created Time"
+                    },
+                    {
+                        "name": "Name",
+                        "type": "text",
+                        "label": "Name"
+                    },
+                    {
+                        "name": "Task Name",
+                        "type": "text",
+                        "label": "Task Name"
+                    },
+                    {
+                        "name": "Reviewer",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Reviewer"
+                    },
+                    {
+                        "name": "Attachment",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "width",
+                                "type": "uinteger",
+                                "label": "Width"
+                            },
+                            {
+                                "name": "height",
+                                "type": "uinteger",
+                                "label": "Height"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            },
+                            {
+                                "name": "filename",
+                                "type": "filename",
+                                "label": "File name"
+                            },
+                            {
+                                "name": "size",
+                                "type": "uinteger",
+                                "label": "Size"
+                            },
+                            {
+                                "name": "type",
+                                "type": "text",
+                                "label": "MIME type"
+                            },
+                            {
+                                "name": "thumbnails",
+                                "spec": [
+                                    {
+                                        "name": "small",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Small"
+                                    },
+                                    {
+                                        "name": "large",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Large"
+                                    },
+                                    {
+                                        "name": "full",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Full"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Thumbnails"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Attachment"
+                    },
+                    {
+                        "name": "Sync Task Info",
+                        "type": "array",
+                        "label": "Sync Task Info"
+                    },
+                    {
+                        "name": "Task-number",
+                        "type": "text",
+                        "label": "Task-number"
+                    },
+                    {
+                        "name": "My Task Desktop Link",
+                        "type": "text",
+                        "label": "My Task Desktop Link"
+                    },
+                    {
+                        "name": "ADG Sync Ticket Number",
+                        "type": "array",
+                        "label": "ADG Sync Ticket Number"
+                    },
+                    {
+                        "name": "Autonumber",
+                        "type": "number",
+                        "label": "Autonumber"
+                    },
+                    {
+                        "name": "Parent Task",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Parent Task"
+                    },
+                    {
+                        "name": "Start Date",
+                        "time": false,
+                        "type": "date",
+                        "label": "Start Date"
+                    },
+                    {
+                        "name": "LEGACY Est Hours Needed",
+                        "type": "number",
+                        "label": "LEGACY Est Hours Needed"
+                    },
+                    {
+                        "name": "End Date",
+                        "time": false,
+                        "type": "date",
+                        "label": "End Date"
+                    },
+                    {
+                        "name": "User",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "User"
+                    },
+                    {
+                        "name": "Is this a Interna Economy Project Task",
+                        "type": "array",
+                        "label": "Is this a Interna Economy Project Task"
+                    },
+                    {
+                        "name": "Project Google Drive Folder",
+                        "type": "array",
+                        "label": "Project Google Drive Folder"
+                    },
+                    {
+                        "name": "Drive Folder Name",
+                        "type": "text",
+                        "label": "Drive Folder Name"
+                    },
+                    {
+                        "name": "Drive",
+                        "type": "text",
+                        "label": "Drive"
+                    },
+                    {
+                        "name": "Actual Hours Legacy",
+                        "type": "array",
+                        "label": "Actual Hours Legacy"
+                    },
+                    {
+                        "name": "Assignee",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "email",
+                                "type": "email",
+                                "label": "Email"
+                            },
+                            {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Assignee"
+                    },
+                    {
+                        "name": "Description",
+                        "type": "text",
+                        "label": "Description"
+                    },
+                    {
+                        "name": "Status",
+                        "type": "text",
+                        "label": "Status"
+                    },
+                    {
+                        "name": "Assignee (from User)",
+                        "type": "array",
+                        "label": "Assignee (from User)"
+                    },
+                    {
+                        "name": "Assignee (from PM)",
+                        "type": "array",
+                        "label": "Assignee (from PM)"
+                    },
+                    {
+                        "name": "Project",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Project"
+                    },
+                    {
+                        "name": "Created",
+                        "type": "date",
+                        "label": "Created"
+                    },
+                    {
+                        "name": "Hubstaff Task ID",
+                        "type": "text",
+                        "label": "Hubstaff Task ID"
+                    },
+                    {
+                        "name": "Hubstaff User ID (from User)",
+                        "type": "array",
+                        "label": "Hubstaff User ID (from User)"
+                    },
+                    {
+                        "name": "Hubstaff Task Created Date",
+                        "time": false,
+                        "type": "date",
+                        "label": "Hubstaff Task Created Date"
+                    },
+                    {
+                        "name": "Lat Modified by (Start Tracking)",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "email",
+                                "type": "text",
+                                "label": "Email"
+                            },
+                            {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Lat Modified by (Start Tracking)"
+                    },
+                    {
+                        "name": "Time Log",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Time Log"
+                    },
+                    {
+                        "name": "Company (from Project)",
+                        "type": "array",
+                        "label": "Company (from Project)"
+                    },
+                    {
+                        "name": "Est vs Actual Hours",
+                        "type": "text",
+                        "label": "Est vs Actual Hours"
+                    },
+                    {
+                        "name": "Created By",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "email",
+                                "type": "text",
+                                "label": "Email"
+                            },
+                            {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Created By"
+                    },
+                    {
+                        "name": "internal slack thread",
+                        "type": "text",
+                        "label": "internal slack thread"
+                    },
+                    {
+                        "name": "Predecessor",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Predecessor"
+                    },
+                    {
+                        "name": "Urgency",
+                        "type": "text",
+                        "label": "Urgency"
+                    },
+                    {
+                        "name": "Last Modified",
+                        "type": "date",
+                        "label": "Last Modified"
+                    },
+                    {
+                        "name": "Dev Sync Adgrabber Sync Tasks",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Dev Sync Adgrabber Sync Tasks"
+                    },
+                    {
+                        "name": "Adg Description",
+                        "type": "array",
+                        "label": "Adg Description"
+                    },
+                    {
+                        "name": "ADG_attachment",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "width",
+                                "type": "uinteger",
+                                "label": "Width"
+                            },
+                            {
+                                "name": "height",
+                                "type": "uinteger",
+                                "label": "Height"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            },
+                            {
+                                "name": "filename",
+                                "type": "filename",
+                                "label": "File name"
+                            },
+                            {
+                                "name": "size",
+                                "type": "uinteger",
+                                "label": "Size"
+                            },
+                            {
+                                "name": "type",
+                                "type": "text",
+                                "label": "MIME type"
+                            },
+                            {
+                                "name": "thumbnails",
+                                "spec": [
+                                    {
+                                        "name": "small",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Small"
+                                    },
+                                    {
+                                        "name": "large",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Large"
+                                    },
+                                    {
+                                        "name": "full",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Full"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Thumbnails"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "ADG_attachment"
+                    },
+                    {
+                        "name": "Solution or Answer from the Assigned User - used for review status",
+                        "type": "text",
+                        "label": "Solution or Answer from the Assigned User - used for review status"
+                    },
+                    {
+                        "name": "Adg Task ID (from Dev Sync Adgrabber Sync Tasks)",
+                        "type": "array",
+                        "label": "Adg Task ID (from Dev Sync Adgrabber Sync Tasks)"
+                    },
+                    {
+                        "name": "Task/Invoicing Status_Internal",
+                        "type": "text",
+                        "label": "Task/Invoicing Status_Internal"
+                    },
+                    {
+                        "name": "Status (from Dev Sync Adgrabber Sync Tasks)",
+                        "type": "array",
+                        "label": "Status (from Dev Sync Adgrabber Sync Tasks)"
+                    },
+                    {
+                        "name": "Estimated Hours (or so far)",
+                        "type": "array",
+                        "label": "Estimated Hours (or so far)"
+                    },
+                    {
+                        "name": "Scheduler Ticket Link (from Dev Sync Adgrabber Sync Tasks)",
+                        "type": "array",
+                        "label": "Scheduler Ticket Link (from Dev Sync Adgrabber Sync Tasks)"
+                    },
+                    {
+                        "name": "Week",
+                        "type": "text",
+                        "label": "Week"
+                    },
+                    {
+                        "name": "Paid/Unpaid",
+                        "type": "array",
+                        "label": "Paid/Unpaid"
+                    },
+                    {
+                        "name": "Other  details to add in invoicing",
+                        "type": "text",
+                        "label": "Other  details to add in invoicing"
+                    },
+                    {
+                        "name": "Invoice URL (from Invoice) (from Dev Sync Adgrabber Sync Tasks)",
+                        "type": "array",
+                        "label": "Invoice URL (from Invoice) (from Dev Sync Adgrabber Sync Tasks)"
+                    },
+                    {
+                        "name": "Invoices New Synced From Budget",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Invoices New Synced From Budget"
+                    },
+                    {
+                        "name": "invoice pdf (from Invoices)",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "width",
+                                "type": "uinteger",
+                                "label": "Width"
+                            },
+                            {
+                                "name": "height",
+                                "type": "uinteger",
+                                "label": "Height"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            },
+                            {
+                                "name": "filename",
+                                "type": "filename",
+                                "label": "File name"
+                            },
+                            {
+                                "name": "size",
+                                "type": "uinteger",
+                                "label": "Size"
+                            },
+                            {
+                                "name": "type",
+                                "type": "text",
+                                "label": "MIME type"
+                            },
+                            {
+                                "name": "thumbnails",
+                                "spec": [
+                                    {
+                                        "name": "small",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Small"
+                                    },
+                                    {
+                                        "name": "large",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Large"
+                                    },
+                                    {
+                                        "name": "full",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Full"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Thumbnails"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "invoice pdf (from Invoices)"
+                    },
+                    {
+                        "name": "Invoice_formatted",
+                        "type": "array",
+                        "label": "Invoice_formatted"
+                    },
+                    {
+                        "name": "Issue Date (from Invoices)",
+                        "type": "array",
+                        "label": "Issue Date (from Invoices)"
+                    },
+                    {
+                        "name": "Invoicing Status (from Dev Sync Adgrabber Sync Tasks)",
+                        "type": "array",
+                        "label": "Invoicing Status (from Dev Sync Adgrabber Sync Tasks)"
+                    },
+                    {
+                        "name": "Hours Invoiced",
+                        "type": "number",
+                        "label": "Hours Invoiced"
+                    },
+                    {
+                        "name": "INVOICE STATUS",
+                        "type": "text",
+                        "label": "INVOICE STATUS"
+                    },
+                    {
+                        "name": "part 2",
+                        "type": "text",
+                        "label": "part 2"
+                    },
+                    {
+                        "name": "We Should Invoice?",
+                        "type": "boolean",
+                        "label": "We Should Invoice?"
+                    },
+                    {
+                        "name": "Invoice category/section",
+                        "type": "text",
+                        "label": "Invoice category/section"
+                    },
+                    {
+                        "name": "Why should we invoice it? ",
+                        "type": "text",
+                        "label": "Why should we invoice it? "
+                    },
+                    {
+                        "name": "ADG slack thread link (from Dev Sync Adgrabber Sync Tasks)",
+                        "type": "array",
+                        "label": "ADG slack thread link (from Dev Sync Adgrabber Sync Tasks)"
+                    },
+                    {
+                        "name": "ADG Slack Thread",
+                        "type": "array",
+                        "label": "ADG Slack Thread"
+                    },
+                    {
+                        "name": "Task name (from Dev Sync Adgrabber Sync Tasks)",
+                        "type": "array",
+                        "label": "Task name (from Dev Sync Adgrabber Sync Tasks)"
+                    },
+                    {
+                        "name": "Meeting 23 November Comment",
+                        "type": "text",
+                        "label": "Meeting 23 November Comment",
+                        "multiline": true
+                    },
+                    {
+                        "name": "Suggest Invoice",
+                        "type": "number",
+                        "label": "Suggest Invoice"
+                    },
+                    {
+                        "name": "Internal_Which Slack Channel",
+                        "type": "text",
+                        "label": "Internal_Which Slack Channel"
+                    },
+                    {
+                        "name": "NOW",
+                        "type": "text",
+                        "label": "NOW"
+                    },
+                    {
+                        "name": "Internal Slack thread sent date and time",
+                        "time": true,
+                        "type": "date",
+                        "label": "Internal Slack thread sent date and time"
+                    },
+                    {
+                        "name": "Proj",
+                        "type": "text",
+                        "label": "Proj"
+                    },
+                    {
+                        "name": "Task (from Reformatizer Task List External)",
+                        "type": "array",
+                        "label": "Task (from Reformatizer Task List External)"
+                    },
+                    {
+                        "name": "Reformatizer Task List Internal",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Reformatizer Task List Internal"
+                    },
+                    {
+                        "name": "Type",
+                        "type": "text",
+                        "label": "Type"
+                    },
+                    {
+                        "name": "RFM Internal details (from Reformatizer Task List Internal)",
+                        "type": "array",
+                        "label": "RFM Internal details (from Reformatizer Task List Internal)"
+                    },
+                    {
+                        "name": "Link to other source base",
+                        "type": "text",
+                        "label": "Link to other source base"
+                    },
+                    {
+                        "name": "Trigger_Update User",
+                        "type": "text",
+                        "label": "Trigger_Update User"
+                    },
+                    {
+                        "name": "User_Scheduler",
+                        "type": "array",
+                        "label": "User_Scheduler"
+                    },
+                    {
+                        "name": "Users_Internal",
+                        "type": "array",
+                        "label": "Users_Internal"
+                    },
+                    {
+                        "name": "External Slack thread sent date and time",
+                        "time": true,
+                        "type": "date",
+                        "label": "External Slack thread sent date and time"
+                    },
+                    {
+                        "name": "RFM ID",
+                        "type": "array",
+                        "label": "RFM ID"
+                    },
+                    {
+                        "name": "TASK ID",
+                        "type": "text",
+                        "label": "TASK ID"
+                    },
+                    {
+                        "name": "Status (from Reformatizer Task List Internal)",
+                        "type": "array",
+                        "label": "Status (from Reformatizer Task List Internal)"
+                    },
+                    {
+                        "name": "Status from the source base",
+                        "type": "text",
+                        "label": "Status from the source base"
+                    },
+                    {
+                        "name": "Status remarks",
+                        "type": "text",
+                        "label": "Status remarks"
+                    },
+                    {
+                        "name": "Interface (from Project) (from Reformatizer Task List Internal)",
+                        "type": "array",
+                        "label": "Interface (from Project) (from Reformatizer Task List Internal)"
+                    },
+                    {
+                        "name": "Interfaces",
+                        "type": "text",
+                        "label": "Interfaces"
+                    },
+                    {
+                        "name": "External_Customerfacing_Which Slack Channel",
+                        "type": "text",
+                        "label": "External_Customerfacing_Which Slack Channel"
+                    },
+                    {
+                        "name": "Users tagged from other base",
+                        "type": "text",
+                        "label": "Users tagged from other base"
+                    },
+                    {
+                        "name": "Task Text",
+                        "type": "text",
+                        "label": "Task Text"
+                    },
+                    {
+                        "name": "RFMINT_attachment",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "width",
+                                "type": "uinteger",
+                                "label": "Width"
+                            },
+                            {
+                                "name": "height",
+                                "type": "uinteger",
+                                "label": "Height"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            },
+                            {
+                                "name": "filename",
+                                "type": "filename",
+                                "label": "File name"
+                            },
+                            {
+                                "name": "size",
+                                "type": "uinteger",
+                                "label": "Size"
+                            },
+                            {
+                                "name": "type",
+                                "type": "text",
+                                "label": "MIME type"
+                            },
+                            {
+                                "name": "thumbnails",
+                                "spec": [
+                                    {
+                                        "name": "small",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Small"
+                                    },
+                                    {
+                                        "name": "large",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Large"
+                                    },
+                                    {
+                                        "name": "full",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Full"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Thumbnails"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "RFMINT_attachment"
+                    },
+                    {
+                        "name": "Mark Comments",
+                        "type": "text",
+                        "label": "Mark Comments"
+                    },
+                    {
+                        "name": "Task details - Marks Interface",
+                        "type": "text",
+                        "label": "Task details - Marks Interface"
+                    },
+                    {
+                        "name": "trigger",
+                        "type": "text",
+                        "label": "trigger"
+                    },
+                    {
+                        "name": "Start Date How Long Ago Weeks",
+                        "type": "text",
+                        "label": "Start Date How Long Ago Weeks"
+                    },
+                    {
+                        "name": "Hours Budgetted / Est Hours Needed",
+                        "type": "number",
+                        "label": "Hours Budgetted / Est Hours Needed"
+                    },
+                    {
+                        "name": "Durations Days",
+                        "type": "number",
+                        "label": "Durations Days"
+                    },
+                    {
+                        "name": "Hubstaff Project ID",
+                        "type": "array",
+                        "label": "Hubstaff Project ID"
+                    },
+                    {
+                        "name": "RecordID",
+                        "type": "text",
+                        "label": "RecordID"
+                    },
+                    {
+                        "name": "Project's recordID",
+                        "type": "array",
+                        "label": "Project's recordID"
+                    },
+                    {
+                        "name": "Lan's comment",
+                        "type": "text",
+                        "label": "Lan's comment"
+                    },
+                    {
+                        "name": "Reviewer_assignee",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "email",
+                                "type": "email",
+                                "label": "Email"
+                            },
+                            {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Reviewer_assignee"
+                    },
+                    {
+                        "name": "Last Modified 2",
+                        "type": "date",
+                        "label": "Last Modified 2"
+                    },
+                    {
+                        "name": "Get Slack Link",
+                        "spec": [
+                            {
+                                "name": "label",
+                                "type": "text",
+                                "label": "Label"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Get Slack Link"
+                    },
+                    {
+                        "name": "My Role",
+                        "type": "text",
+                        "label": "My Role"
+                    },
+                    {
+                        "name": "Count (Tasks) (from Reformatizer Task List Internal)",
+                        "type": "array",
+                        "label": "Count (Tasks) (from Reformatizer Task List Internal)"
+                    },
+                    {
+                        "name": "Slack Member ID (from User)",
+                        "type": "array",
+                        "label": "Slack Member ID (from User)"
+                    },
+                    {
+                        "name": "Invoicing Status",
+                        "type": "text",
+                        "label": "Invoicing Status"
+                    },
+                    {
+                        "name": "Type (from Project)",
+                        "type": "array",
+                        "label": "Type (from Project)"
+                    },
+                    {
+                        "name": "slack thread message ID",
+                        "type": "text",
+                        "label": "slack thread message ID"
+                    },
+                    {
+                        "name": "slack channel ID",
+                        "type": "text",
+                        "label": "slack channel ID"
+                    },
+                    {
+                        "name": "slack channel ID_formatted",
+                        "type": "text",
+                        "label": "slack channel ID_formatted"
+                    },
+                    {
+                        "name": "slack thread message ID_formatted",
+                        "type": "text",
+                        "label": "slack thread message ID_formatted"
+                    },
+                    {
+                        "name": "Internal Slack Channel Link (For Project)",
+                        "type": "array",
+                        "label": "Internal Slack Channel Link (For Project)"
+                    },
+                    {
+                        "name": "REVIEWER Member ID",
+                        "type": "array",
+                        "label": "REVIEWER Member ID"
+                    },
+                    {
+                        "name": "Economy Team Task Link",
+                        "type": "text",
+                        "label": "Economy Team Task Link"
+                    },
+                    {
+                        "name": "Working Hours (from User)",
+                        "type": "array",
+                        "label": "Working Hours (from User)"
+                    },
+                    {
+                        "name": "Working Hours Week",
+                        "type": "array",
+                        "label": "Working Hours Week"
+                    },
+                    {
+                        "name": "Aaron's detail's view",
+                        "type": "text",
+                        "label": "Aaron's detail's view"
+                    },
+                    {
+                        "name": "task text with ID & proj name",
+                        "type": "text",
+                        "label": "task text with ID & proj name"
+                    },
+                    {
+                        "name": "Status based on dates",
+                        "type": "text",
+                        "label": "Status based on dates"
+                    },
+                    {
+                        "name": "ED DIFF FROM TODAY",
+                        "type": "text",
+                        "label": "ED DIFF FROM TODAY"
+                    },
+                    {
+                        "name": "SD DIFF FROM TODAY",
+                        "type": "text",
+                        "label": "SD DIFF FROM TODAY"
+                    },
+                    {
+                        "name": "Email of Who has access to the project Type",
+                        "type": "array",
+                        "label": "Email of Who has access to the project Type"
+                    },
+                    {
+                        "name": "Status based on dates lev1",
+                        "type": "text",
+                        "label": "Status based on dates lev1"
+                    },
+                    {
+                        "name": "INT ID",
+                        "type": "text",
+                        "label": "INT ID"
+                    },
+                    {
+                        "name": "INT AUTOID",
+                        "type": "number",
+                        "label": "INT AUTOID"
+                    },
+                    {
+                        "name": "Status last modified date and time",
+                        "type": "date",
+                        "label": "Status last modified date and time"
+                    },
+                    {
+                        "name": "Last status integromat sent",
+                        "type": "text",
+                        "label": "Last status integromat sent"
+                    },
+                    {
+                        "name": "Team",
+                        "type": "array",
+                        "label": "Team"
+                    },
+                    {
+                        "name": "Full Ticket Details",
+                        "type": "text",
+                        "label": "Full Ticket Details"
+                    },
+                    {
+                        "name": "User/Reviewer",
+                        "type": "text",
+                        "label": "User/Reviewer"
+                    },
+                    {
+                        "name": "My Task Mobile Link",
+                        "type": "text",
+                        "label": "My Task Mobile Link"
+                    },
+                    {
+                        "name": "reviewer assigned",
+                        "type": "array",
+                        "label": "reviewer assigned"
+                    },
+                    {
+                        "name": "Day Schedule",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Day Schedule"
+                    },
+                    {
+                        "name": "Order Day Schedule",
+                        "type": "number",
+                        "label": "Order Day Schedule"
+                    },
+                    {
+                        "name": "Day Schedule Comment",
+                        "type": "text",
+                        "label": "Day Schedule Comment",
+                        "multiline": true
+                    },
+                    {
+                        "name": "Order Day Schedule Name Comment",
+                        "type": "text",
+                        "label": "Order Day Schedule Name Comment"
+                    },
+                    {
+                        "name": "Day Task Planner",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Day Task Planner"
+                    },
+                    {
+                        "name": "Done / Test Notes - used for Done status",
+                        "type": "text",
+                        "label": "Done / Test Notes - used for Done status"
+                    },
+                    {
+                        "name": "Status modified date and time",
+                        "type": "date",
+                        "label": "Status modified date and time"
+                    },
+                    {
+                        "name": "Get Last Message From Thread",
+                        "type": "text",
+                        "label": "Get Last Message From Thread"
+                    },
+                    {
+                        "name": "Last Slack Message in internal Thread",
+                        "type": "text",
+                        "label": "Last Slack Message in internal Thread",
+                        "multiline": true
+                    },
+                    {
+                        "name": "Get Last Messages Number",
+                        "type": "text",
+                        "label": "Get Last Messages Number"
+                    },
+                    {
+                        "name": "Day Schedule Date",
+                        "type": "array",
+                        "label": "Day Schedule Date"
+                    },
+                    {
+                        "name": "Channel ID For Slack Thread",
+                        "type": "array",
+                        "label": "Channel ID For Slack Thread"
+                    },
+                    {
+                        "name": "PreLink to a day schedule",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "PreLink to a day schedule"
+                    },
+                    {
+                        "name": "Slack Log",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Slack Log"
+                    },
+                    {
+                        "name": "Last Modified by Slack Channel",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "email",
+                                "type": "text",
+                                "label": "Email"
+                            },
+                            {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Last Modified by Slack Channel"
+                    },
+                    {
+                        "name": "Urgency sorting",
+                        "type": "text",
+                        "label": "Urgency sorting"
+                    },
+                    {
+                        "name": "hubstaff task status",
+                        "type": "text",
+                        "label": "hubstaff task status"
+                    },
+                    {
+                        "name": "Trigger Hubstaff Task Creation",
+                        "type": "boolean",
+                        "label": "Trigger Hubstaff Task Creation"
+                    },
+                    {
+                        "name": "Hubstaff Status",
+                        "type": "text",
+                        "label": "Hubstaff Status"
+                    },
+                    {
+                        "name": "Project ID  count",
+                        "type": "text",
+                        "label": "Project ID  count"
+                    },
+                    {
+                        "name": "user ID  count",
+                        "type": "text",
+                        "label": "user ID  count"
+                    },
+                    {
+                        "name": "Order by m",
+                        "type": "array",
+                        "label": "Order by m"
+                    },
+                    {
+                        "name": "Hubstaff Project Members",
+                        "type": "array",
+                        "label": "Hubstaff Project Members"
+                    },
+                    {
+                        "name": "project and user id count hubstaff",
+                        "type": "text",
+                        "label": "project and user id count hubstaff"
+                    },
+                    {
+                        "name": "Task ID count",
+                        "type": "text",
+                        "label": "Task ID count"
+                    },
+                    {
+                        "name": "Task hubstaff status",
+                        "type": "text",
+                        "label": "Task hubstaff status"
+                    },
+                    {
+                        "name": "Project hubstaff status",
+                        "type": "text",
+                        "label": "Project hubstaff status"
+                    },
+                    {
+                        "name": "User hubstaff status",
+                        "type": "text",
+                        "label": "User hubstaff status"
+                    },
+                    {
+                        "name": "Hubstaff Task Download",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Hubstaff Task Download"
+                    },
+                    {
+                        "name": "Count (User)",
+                        "type": "number",
+                        "label": "Count (User)"
+                    },
+                    {
+                        "name": "Today",
+                        "type": "text",
+                        "label": "Today"
+                    },
+                    {
+                        "name": "hubstaff Task ID rollup",
+                        "type": "number",
+                        "label": "hubstaff Task ID rollup"
+                    },
+                    {
+                        "name": "Hubstaff Project ID from downloader",
+                        "type": "array",
+                        "label": "Hubstaff Project ID from downloader"
+                    },
+                    {
+                        "name": "hubstaff Task ID from downloader",
+                        "type": "array",
+                        "label": "hubstaff Task ID from downloader"
+                    },
+                    {
+                        "name": "Hubstaff automation status",
+                        "type": "text",
+                        "label": "Hubstaff automation status"
+                    },
+                    {
+                        "name": "Last Modified_trigger",
+                        "type": "date",
+                        "label": "Last Modified_trigger"
+                    },
+                    {
+                        "name": "Slack thread last checked",
+                        "time": true,
+                        "type": "date",
+                        "label": "Slack thread last checked"
+                    },
+                    {
+                        "name": "Day planner Comment (from Day Task Planner)",
+                        "type": "array",
+                        "label": "Day planner Comment (from Day Task Planner)"
+                    },
+                    {
+                        "name": "order by lan",
+                        "type": "number",
+                        "label": "order by lan"
+                    },
+                    {
+                        "name": "Read thread",
+                        "spec": [
+                            {
+                                "name": "label",
+                                "type": "text",
+                                "label": "Label"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Read thread"
+                    },
+                    {
+                        "name": "Last Modified - STATUS",
+                        "type": "date",
+                        "label": "Last Modified - STATUS"
+                    },
+                    {
+                        "name": "Time Tracker - Time Log Report",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Time Tracker - Time Log Report"
+                    },
+                    {
+                        "name": "Time Tracker - Logs",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Time Tracker - Logs"
+                    },
+                    {
+                        "name": "Set Activity",
+                        "type": "text",
+                        "label": "Set Activity"
+                    },
+                    {
+                        "name": "Activity Status",
+                        "type": "text",
+                        "label": "Activity Status"
+                    },
+                    {
+                        "name": "Last Modified By - Hubstaff mockup",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "email",
+                                "type": "text",
+                                "label": "Email"
+                            },
+                            {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Last Modified By - Hubstaff mockup"
+                    },
+                    {
+                        "name": "Start Tracking",
+                        "type": "text",
+                        "label": "Start Tracking"
+                    },
+                    {
+                        "name": "Task Rollup (from Time Tracker - Logs)",
+                        "type": "array",
+                        "label": "Task Rollup (from Time Tracker - Logs)"
+                    },
+                    {
+                        "name": "Assignee (From Users) (from Time Tracker - Logs)",
+                        "type": "array",
+                        "label": "Assignee (From Users) (from Time Tracker - Logs)"
+                    },
+                    {
+                        "name": "last modified - set activity",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "email",
+                                "type": "text",
+                                "label": "Email"
+                            },
+                            {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "last modified - set activity"
+                    },
+                    {
+                        "name": "Last Modified By",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "email",
+                                "type": "text",
+                                "label": "Email"
+                            },
+                            {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Last Modified By"
+                    },
+                    {
+                        "name": "My timelog",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "My timelog"
+                    },
+                    {
+                        "name": "Economy Team Task Link Button",
+                        "spec": [
+                            {
+                                "name": "label",
+                                "type": "text",
+                                "label": "Label"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Economy Team Task Link Button"
+                    },
+                    {
+                        "name": "Part of Daily Routine",
+                        "type": "boolean",
+                        "label": "Part of Daily Routine"
+                    },
+                    {
+                        "name": "Send to external",
+                        "type": "text",
+                        "label": "Send to external"
+                    },
+                    {
+                        "name": "External Comment",
+                        "type": "text",
+                        "label": "External Comment"
+                    },
+                    {
+                        "name": "External Status Override",
+                        "type": "text",
+                        "label": "External Status Override"
+                    },
+                    {
+                        "name": "NEW RFM ID (Created in this base)",
+                        "type": "text",
+                        "label": "NEW RFM ID (Created in this base)"
+                    },
+                    {
+                        "name": "Salary Payout Week",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Salary Payout Week"
+                    },
+                    {
+                        "name": "Trigger Zoom Creation",
+                        "spec": [
+                            {
+                                "name": "label",
+                                "type": "text",
+                                "label": "Label"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Trigger Zoom Creation"
+                    },
+                    {
+                        "name": "Zoom meetings",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Zoom meetings"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 5,
+            "module": "airtable:ActionCreateRecord",
+            "version": 3,
+            "parameters": {
+                "__IMTCONN__": 771874
+            },
+            "mapper": {
+                "base": "appLEhSvk48VvE4n7",
+                "table": "tblYIZB1nvGR4WMYw",
+                "record": {
+                    "fld3hnFPbhd7jZk1h": "{{1.start_url}}",
+                    "fld4p5ItWlplMWDjo": {},
+                    "fldF48uKLCaYpG52d": "{{1.join_url}}",
+                    "fldWDrcPFYCooRxXE": "{{7.id}}",
+                    "fldWyRP1i0cDxMenE": "{{7.id}}",
+                    "fldhBm3ccZzV7rlOz": "{{1.topic}}",
+                    "fldtnaYjea1gJ2Hij": "{{now}}",
+                    "fldwWgLFihYxAFkl3": "{{1.uuid}}"
+                },
+                "typecast": false,
+                "useColumnId": false
+            },
+            "metadata": {
+                "designer": {
+                    "x": 268,
+                    "y": -81
+                },
+                "restore": {
+                    "expect": {
+                        "base": {
+                            "label": "Internal Project Plan"
+                        },
+                        "table": {
+                            "label": "Zoom meetings",
+                            "nested": [
+                                {
+                                    "name": "record",
+                                    "spec": [
+                                        {
+                                            "name": "fldhBm3ccZzV7rlOz",
+                                            "type": "text",
+                                            "label": "Name"
+                                        },
+                                        {
+                                            "name": "fld3hnFPbhd7jZk1h",
+                                            "type": "text",
+                                            "label": "Start Url"
+                                        },
+                                        {
+                                            "name": "fldF48uKLCaYpG52d",
+                                            "type": "text",
+                                            "label": "Join Url"
+                                        },
+                                        {
+                                            "name": "fldtnaYjea1gJ2Hij",
+                                            "time": true,
+                                            "type": "date",
+                                            "label": "Created"
+                                        },
+                                        {
+                                            "name": "fld4p5ItWlplMWDjo",
+                                            "spec": [
+                                                {
+                                                    "help": "Unique user id",
+                                                    "name": "id",
+                                                    "type": "text",
+                                                    "label": "ID"
+                                                },
+                                                {
+                                                    "help": "User's email address",
+                                                    "name": "email",
+                                                    "type": "email",
+                                                    "label": "Email"
+                                                }
+                                            ],
+                                            "type": "collection",
+                                            "label": "Assignee"
+                                        },
+                                        {
+                                            "mode": "edit",
+                                            "name": "fldNFtoyXuuclzUTf",
+                                            "type": "select",
+                                            "label": "Status",
+                                            "dynamic": true,
+                                            "options": [
+                                                {
+                                                    "label": "Todo",
+                                                    "value": "Todo"
+                                                },
+                                                {
+                                                    "label": "In progress",
+                                                    "value": "In progress"
+                                                },
+                                                {
+                                                    "label": "Done",
+                                                    "value": "Done"
+                                                }
+                                            ],
+                                            "validate": false
+                                        },
+                                        {
+                                            "name": "fldWDrcPFYCooRxXE",
+                                            "type": "text",
+                                            "label": "Task"
+                                        },
+                                        {
+                                            "name": "fldwWgLFihYxAFkl3",
+                                            "type": "text",
+                                            "label": "UUDID"
+                                        },
+                                        {
+                                            "name": "fldWyRP1i0cDxMenE",
+                                            "spec": {
+                                                "label": "Record ID"
+                                            },
+                                            "type": "array",
+                                            "label": "Tasks"
+                                        }
+                                    ],
+                                    "type": "collection",
+                                    "label": "Record"
+                                }
+                            ]
+                        },
+                        "record": {
+                            "nested": {
+                                "fldNFtoyXuuclzUTf": {
+                                    "mode": "edit"
+                                },
+                                "fldWyRP1i0cDxMenE": {
+                                    "mode": "edit",
+                                    "items": [
+                                        null
+                                    ]
+                                }
+                            }
+                        },
+                        "typecast": {
+                            "mode": "chose"
+                        },
+                        "useColumnId": {
+                            "mode": "chose"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "airtable2"
+                            },
+                            "label": "tech offertizer TOKEN"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:airtable3,airtable2",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "base",
+                        "type": "select",
+                        "label": "Base",
+                        "required": true
+                    },
+                    {
+                        "name": "typecast",
+                        "type": "boolean",
+                        "label": "Smart links",
+                        "required": true
+                    },
+                    {
+                        "name": "useColumnId",
+                        "type": "boolean",
+                        "label": "Use Column ID",
+                        "required": true
+                    },
+                    {
+                        "name": "table",
+                        "type": "select",
+                        "label": "Table",
+                        "required": true
+                    },
+                    {
+                        "name": "record",
+                        "spec": [
+                            {
+                                "name": "fldhBm3ccZzV7rlOz",
+                                "type": "text",
+                                "label": "Name"
+                            },
+                            {
+                                "name": "fld3hnFPbhd7jZk1h",
+                                "type": "text",
+                                "label": "Start Url"
+                            },
+                            {
+                                "name": "fldF48uKLCaYpG52d",
+                                "type": "text",
+                                "label": "Join Url"
+                            },
+                            {
+                                "name": "fldtnaYjea1gJ2Hij",
+                                "time": true,
+                                "type": "date",
+                                "label": "Created"
+                            },
+                            {
+                                "name": "fld4p5ItWlplMWDjo",
+                                "spec": [
+                                    {
+                                        "name": "id",
+                                        "type": "text",
+                                        "label": "ID"
+                                    },
+                                    {
+                                        "name": "email",
+                                        "type": "email",
+                                        "label": "Email"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Assignee"
+                            },
+                            {
+                                "mode": "edit",
+                                "name": "fldNFtoyXuuclzUTf",
+                                "type": "select",
+                                "label": "Status"
+                            },
+                            {
+                                "name": "fldWDrcPFYCooRxXE",
+                                "type": "text",
+                                "label": "Task"
+                            },
+                            {
+                                "name": "fldwWgLFihYxAFkl3",
+                                "type": "text",
+                                "label": "UUDID"
+                            },
+                            {
+                                "name": "fldWyRP1i0cDxMenE",
+                                "spec": {
+                                    "name": "value",
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "Tasks"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Record"
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "ID"
+                    },
+                    {
+                        "name": "createdTime",
+                        "type": "date",
+                        "label": "Created Time"
+                    },
+                    {
+                        "name": "Name",
+                        "type": "text",
+                        "label": "Name"
+                    },
+                    {
+                        "name": "Start Url",
+                        "type": "text",
+                        "label": "Start Url"
+                    },
+                    {
+                        "name": "Join Url",
+                        "type": "text",
+                        "label": "Join Url"
+                    },
+                    {
+                        "name": "Created",
+                        "time": true,
+                        "type": "date",
+                        "label": "Created"
+                    },
+                    {
+                        "name": "Assignee",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "email",
+                                "type": "email",
+                                "label": "Email"
+                            },
+                            {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Assignee"
+                    },
+                    {
+                        "name": "Status",
+                        "type": "text",
+                        "label": "Status"
+                    },
+                    {
+                        "name": "Task",
+                        "type": "text",
+                        "label": "Task"
+                    },
+                    {
+                        "name": "UUDID",
+                        "type": "text",
+                        "label": "UUDID"
+                    },
+                    {
+                        "name": "Tasks",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Tasks"
+                    }
+                ]
+            }
+        }
+    ],
+    "metadata": {
+        "instant": true,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": false,
+            "sequential": false,
+            "slots": null,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "eu2.make.com"
+    }
+}
